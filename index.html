@@ -41,6 +41,34 @@
       float: right;
     }
 
+    .collapsible {
+  background-color: #D8D8D8;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.first_steps {
+      padding-top: 100px;
+      width: 1000px;
+      height: 1000px;
+      margin: 0 auto;
+}
     @media screen and (max-width: 600px) {
 
       ul.topnav li.right,
@@ -61,9 +89,45 @@
     <li><a href="#getting_started">Getting Started</a></li>
     <li><a href="#explore_endpoints">Explore Endpoints</a></li>
     <li><a href="#websockets">Websockets</a></li>
+    <li><a href="#workflow">Workflow</a></li>
     <li class="right"><a href="#support">Support</a></li>
   </ul>
 
+
+<div class="first_steps">
+    <button type="button" class="collapsible">What is Client Portal Web API?</button>
+  <div class="content">
+    <p>Client Portal Web API is based on Interactive Brokers' Client Portal.</p>
+  </div>
+  <button type="button" class="collapsible">What can be done with Client Portal Web API?</button>
+  <div class="content">
+    <p>You can place trades, request market data, retrieve account and portfolio information, etc.</p>
+  </div>
+  <button type="button" class="collapsible">What is Client Portal Web API not?</button>
+  <div class="content">
+    <p>Client Portal Web API is not capable of creating and managing accounts (For that, we offer <a href="">DAM API</a>)</p>
+  </div>
+  <button type="button" class="collapsible">How to get started?</button>
+  <div class="content">
+    <p>You can start by following <a href="">Getting Started</a> section or review existing <a href="">Endpoints</a></p>
+  </div>
+</div>
+  <script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+  </script>
 
 
 </body>
