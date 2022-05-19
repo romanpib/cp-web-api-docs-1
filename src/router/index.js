@@ -1,22 +1,54 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Home from '../views/Home.vue'
+import Quickstart from '../views/Quickstart.vue'
+import Authentication from '../views/Authentication.vue'
+import Endpoints from '../views/Endpoints.vue'
+import Websockets from '../views/Websockets.vue'
+import Workflows from '../views/Workflows.vue'
+import Changelog from '../views/Changelog.vue'
+import Support from '../views/Support.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-    }
-  }
+    path: '/quickstart',
+    name: 'quickstart',
+    component: Quickstart
+  },
+  {
+    path: '/authentication',
+    name: 'authentication',
+    component: Authentication
+  },
+  {
+    path: '/endpoints',
+    name: 'endpoints',
+    component: Endpoints
+  },
+  {
+    path: '/websockets',
+    name: 'websockets',
+    component: Websockets
+  },
+  {
+    path: '/workflows',
+    name: 'workflows',
+    component: Workflows
+  },
+  {
+    path: '/changelog',
+    name: 'changelog',
+    component: Changelog
+  },
+  {
+    path: '/support',
+    name: 'support',
+    component: Support
+  },
 ]
 
 const router = createRouter({
