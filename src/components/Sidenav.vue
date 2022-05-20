@@ -21,7 +21,7 @@
 nav {
   display: flex;
   flex-direction: column;
-  background-color: rgba(196, 196, 196, 0.25);
+  background-color: #f5f5f5;
   text-align: left;
   width: 300px;
   height: 100vh;
