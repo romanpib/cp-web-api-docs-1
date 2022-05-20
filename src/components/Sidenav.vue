@@ -1,8 +1,10 @@
 <template>
   <nav>
     <div id="brand">
-      <img src="@/assets/ib-logo-text-black.svg" alt="ibkr-logo">
-      <h6>Client Portal API Documentation</h6>
+      <a href="/">
+        <img src="@/assets/ib-logo-text-black.svg" alt="ibkr-logo">
+        <h6>Client Portal API Documentation</h6>
+      </a>
     </div>
     <router-link to="/">Home</router-link>
     <router-link to="/quickstart">Quickstart</router-link>
@@ -53,5 +55,9 @@ h6 {
   width: 75%;
   padding-left: 1.5rem;
   padding-block: 1rem;
+}
+
+#brand a {
+  padding-left: 0;
 }
 </style>
