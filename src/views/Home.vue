@@ -15,7 +15,7 @@
           },
           {
             title: 'Account Requirements',
-            content: 'This is the home page.'
+            content: 'In order to use the API, and IBKR PRO account is required. IBKR PRO accounts are free and can be created in just a few minutes.'
           },
           {
             title: 'Information for institutional clients',
@@ -49,6 +49,12 @@
       </ul>
       <ExpandableCard v-for="card in cards" :title="card.title" :content="card.content" />
     </div>
+    <div class="latest-changes">
+      <div class="header">
+        <h2>Latest Updates</h2>
+        <router-link to="/changelog">Changelog</router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,7 +68,7 @@
 
   .container .content {
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
   }
 
   .container .latest-changes {
@@ -76,6 +82,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
+    gap: 10px;
+  }
+
+  .latest-changes .header a {
+    text-decoration: underline;
+    color: #db1222;
+    font-size: small;
+    font-weight: bold;
   }
 
   #features-list {
