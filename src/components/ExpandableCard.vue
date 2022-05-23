@@ -37,9 +37,8 @@
 
 <style>
     .expandable-card {
-        width: 100%;
-        background-color: #f5f5f5;
         margin-bottom: 1.25rem;
+        background-color: #f5f5f5;
     }
 
     .expandable-card .header {
@@ -51,8 +50,9 @@
         color: white;
         padding: 0.75rem;
     }
-    
-    .expandable-card .content {
+
+    .expandable-card .content p {
+        margin: 0;
         padding: 1rem;
     }
 </style>

@@ -24,6 +24,6 @@
 
   main {
     padding-left: 250px;
-    padding-top: 40px;
+    padding-block: 40px;
   }
 </style>
