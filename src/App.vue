@@ -1,34 +1,29 @@
-<script setup>
-  import Sidenav from './components/Sidenav.vue'
-</script>
-
 <template>
   <Sidenav />
   <main>
-    <!-- This is where the views are injected -->
     <router-view />
   </main>
 </template>
 
+<script>
+  import Sidenav from './components/Sidenav.vue'
+  export default {
+    components: {
+      Sidenav
+    }
+  }
+</script>
+
 <style>
-body {
-  margin: 0;
-}
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+  }
 
-#app {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  display: flex;
-  flex-direction: row;
-}
-
-/* 250px is the width of the sidenav */
-/* flex 1 fills in the remaining width */
-main {
-  flex: 1;
-  margin-left: 250px;
-  padding-inline: 50px;
-}
+  main {
+    padding-left: 250px;
+    padding-top: 40px;
+  }
 </style>
