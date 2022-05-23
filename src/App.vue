@@ -24,11 +24,11 @@ body {
   flex-direction: row;
 }
 
-/* 300px is the width of the sidenav */
+/* 250px is the width of the sidenav */
 /* flex 1 fills in the remaining width */
 main {
   flex: 1;
-  margin-left: 300px;
+  margin-left: 250px;
   padding-inline: 50px;
 }
 </style>

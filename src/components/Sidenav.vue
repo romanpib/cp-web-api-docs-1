@@ -9,7 +9,12 @@
     <router-link to="/">Home</router-link>
     <router-link to="/quickstart">Quickstart</router-link>
     <router-link to="/authentication">Authentication</router-link>
-    <router-link to="/endpoints">Endpoint Explorer</router-link>
+    <a @click="toggleDropdown">Endpoints Explorer <i id="dropdown-status-icon" class="fa-solid fa-chevron-right"></i></a>
+    <div id='endpoints-dropdown'>
+      <router-link to="/endpoints">Available Endpoints</router-link>
+      <a href="https://interactivebrokers.github.io/cpwebapi/swagger.json" target="_blank">Swagger</a>
+      <a href="https://www.interactivebrokers.com/api/doc.html" target="_blank">DOC Style</a>
+    </div>
     <router-link to="/websockets">Websockets</router-link>
     <router-link to="/workflows">Workflows</router-link>
     <router-link to="/changelog">Changelog</router-link>
@@ -17,13 +22,35 @@
   </nav>
 </template>
 
+<script>
+  export default {
+    methods: {
+      toggleDropdown() {
+        const dropdown = document.getElementById('endpoints-dropdown')
+        const dropdownIndicator = document.getElementById('dropdown-status-icon')
+        if (dropdown.style.display === 'block') {
+          dropdown.style.display = 'none'
+          dropdownIndicator.classList.remove('fa-chevron-down')
+          dropdownIndicator.classList.add('fa-chevron-right')
+        } 
+        else {
+          dropdown.style.display = 'block'
+          dropdownIndicator.classList.remove('fa-chevron-right')
+          dropdownIndicator.classList.add('fa-chevron-down')
+        }
+      }
+    }
+  }
+</script>
+
 <style>
 nav {
+  user-select: none;
   display: flex;
   flex-direction: column;
   background-color: #f5f5f5;
   text-align: left;
-  width: 300px;
+  width: 250px;
   height: 100vh;
   position: fixed;
   overflow: hidden;
@@ -34,6 +61,11 @@ nav a {
   padding-left: 1.5rem;
   text-decoration: none;
   color: black;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 1rem;
+  align-items: center;
+  cursor: pointer;
 }
 
 nav a:hover {
@@ -54,10 +86,21 @@ h6 {
 #brand {
   width: 75%;
   padding-left: 1.5rem;
-  padding-block: 1rem;
 }
 
 #brand a {
   padding-left: 0;
+  padding-block: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#endpoints-dropdown {
+  display: none;
+  font-size: small;
+}
+
+#endpoints-dropdown a {
+  padding-left: 3rem;
 }
 </style>
