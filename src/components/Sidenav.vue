@@ -51,6 +51,7 @@
     background-color: #f5f5f5;
     text-align: left;
     width: 250px;
+    flex: 1;
     height: 100vh;
     position: fixed;
     overflow: hidden;

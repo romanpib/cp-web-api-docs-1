@@ -1,8 +1,10 @@
 <script>
   import ExpandableCard from '../components/ExpandableCard.vue'
+  import LatestUpdateCard from '../components/LatestUpdateCard.vue'
   export default {
     components: {
-      ExpandableCard
+      ExpandableCard,
+      LatestUpdateCard
     },
     props: {
       cards: {
@@ -26,7 +28,28 @@
             content: 'This is the home page.'
           }
         ]
-      }
+      },
+      updates: {
+        type: Array,
+        required: true,
+        default: () => [
+          {
+            title: 'New API documentation released',
+            content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem.',
+            updateDate: '1 day'
+          },
+          {
+            title: 'Lorem Ipsum',
+            content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper.',
+            updateDate: '1 week'
+          },
+          {
+            title: 'Lorem Ipsum and a veeeeeryyyy long title',
+            content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.',
+            updateDate: '1 month'
+          },
+        ]
+      },
     }
   }
 </script>
@@ -54,6 +77,7 @@
         <h2>Latest Updates</h2>
         <router-link to="/changelog">Changelog</router-link>
       </div>
+      <LatestUpdateCard v-for="update in updates" :title="update.title" :content="update.content" :updateDate="update.updateDate" />
     </div>
   </div>
 </template>
@@ -62,18 +86,17 @@
   .container {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 5rem;
     padding-inline: 50px;
   }
 
   .container .content {
     width: 100%;
-    max-width: 700px;
+    flex: 2;
   }
 
   .container .latest-changes {
-    width: 300px;
-    max-width: 300px;
+    flex: 1;
     text-align: left;
   }
 
