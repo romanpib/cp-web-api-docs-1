@@ -4,6 +4,23 @@
             title: { type: String, required: true},
             content: {type: String, required: true},
             updateDate: {type: String, required: true}
+        },
+        computed: {
+            formatUpdateDate() {
+                // Show when the update was published in days ago
+                const date = Date.parse(this.updateDate);
+                const now = Date.now();
+                const diff = (now - date) / 1000;
+                if (diff < 60) {
+                    return 'just now';
+                } else if (diff < 3600) {
+                    return Math.floor(diff / 60) + ' minutes ago';
+                } else if (diff < 86400) {
+                    return Math.floor(diff / 3600) + ' hours ago';
+                } else {
+                    return Math.floor(diff / 86400) + ' days ago';
+                }
+            }
         }
     }
 </script>
@@ -12,7 +29,7 @@
     <div class="latest-update-card">
         <div class="header">
             <span>{{ title }}</span>
-            <span>{{ updateDate }}</span>
+            <span>{{ formatUpdateDate }}</span>
         </div>
         <div class="content">
             <p>{{ content }}</p>
@@ -25,6 +42,7 @@
         margin-bottom: 1.25rem;
         background-color: #f5f5f5;
         font-size: small;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     }
 
     .latest-update-card .header {
