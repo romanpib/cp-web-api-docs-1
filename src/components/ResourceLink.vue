@@ -1,11 +1,11 @@
 <script>
-    export default {
-        props: {
-            title: {type: String, required: true},
-            url: {type: String, required: true},
-            description: {type: String, required: true}
-        }
+export default {
+    props: {
+        title: { type: String, required: true },
+        url: { type: String, required: true },
+        description: { type: String, required: true }
     }
+}
 </script>
 
 <template>
@@ -18,20 +18,20 @@
 </template>
 
 <style>
-    .link-container {
-        display: flex;
-        flex-direction: row;
-        font-size: small;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-    }
+.link-container {
+    display: flex;
+    flex-direction: row;
+    font-size: small;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
 
-    .link-container a {
-        color: black;
-    }
+.link-container a {
+    color: black;
+}
 
-    .link-container i {
-        color: #344D78;
-    }
+.link-container i {
+    color: #344D78;
+}
 </style>

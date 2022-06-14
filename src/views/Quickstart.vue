@@ -1,18 +1,30 @@
 <script>
 import BaseView from './BaseView.vue'
 import DownloadCard from '@/components/DownloadCard.vue'
-import QuickstartIndividual from '@/components/QuickstartIndividual.vue'
-import QuickstartInstitutional from '@/components/QuickstartInstitutional.vue'
+import QuickstartIndividual from '@/components/quickstart/QuickstartIndividual.vue'
+import QuickstartInstitutional from '@/components/quickstart/QuickstartInstitutional.vue'
+import AccountToggle from '@/components/AccountToggle.vue'
 export default {
   components: {
     BaseView,
     DownloadCard,
     QuickstartIndividual,
-    QuickstartInstitutional
+    QuickstartInstitutional,
+    AccountToggle
+  },
+  computed: {
+    activeTab() {
+      return (this.accountType === 'individual') ? 'QuickstartIndividual' : 'QuickstartInstitutional';
+    },
+  },
+  methods: {
+    onAccountToggleClicked(accountType) {
+      this.accountType = accountType;
+    },
   },
   data() {
     return {
-      activeTab: 'QuickstartIndividual',
+      accountType: localStorage.getItem('accountType') || 'individual',
       downloads: [
         {
           title: 'Gateway',
@@ -20,68 +32,44 @@ export default {
           url: 'https://www.interactivebrokers.com/en/?f=%2Fen%2Ftrading%2Fibgateway-stable.php'
         },
         {
-          title: 'OLD CP WEB API',
-          url: 'https://interactivebrokers.github.io/cpwebapi/index.html',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper.',
-        },
-        {
-          title: 'TWS API',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.',
-          url: 'https://interactivebrokers.github.io/tws-api/introduction.html'
-        },
-        {
           title: 'Java',
           content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.',
           url: 'https://java.com/en/'
-        },
-        {
-          title: 'grgaresgh5wbtresh',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.',
-          url: 'https://interactivebrokers.github.io/tws-api/introduction.html'
-        },
+        }
       ]
     }
   },
 }
-
-
 </script>
 
 <template>
-  <BaseView>
+  <base-view>
     <template #content>
       <div class="page_header">
-      <h2>Quickstart Guide</h2>
-      <div class="toggle_switch">
-        <button class="QuickstartIndividualTab" @click="activeTab = 'QuickstartIndividual'">Individual</button>
-        <button class="QuickstartInstitutionalTab" @click="activeTab = 'QuickstartInstitutional'">Institutional</button>
-        </div>
+        <h2>Quickstart Guide</h2>
+        <account-toggle @account-toggled="onAccountToggleClicked" />
       </div>
-      
-
-  <keep-alive>
-    <component :is="activeTab"></component>
-  </keep-alive>
+      <component :is="activeTab"></component>
     </template>
     <template #aside>
       <div class="download-header">
         <h2>Downloads</h2>
       </div>
-      <DownloadCard v-for="download in downloads" v-bind="download" />
+      <download-card v-for="download in downloads" v-bind="download" />
     </template>
-  </BaseView>
+  </base-view>
 </template>
 
 <style>
-.page_header{
+.page_header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  
+
 }
 
-.toggle_switch{
+.toggle_switch {
   margin: 0;
   padding: 0;
   background-color: #C4C4C4;
@@ -90,7 +78,7 @@ export default {
   height: 30px;
 }
 
-.QuickstartIndividualTab{
+.QuickstartIndividualTab {
   padding: 0px;
   background-color: #344D78;
   color: white;
@@ -102,7 +90,8 @@ export default {
   border: none;
   cursor: pointer;
 }
-.QuickstartInstitutionalTab{
+
+.QuickstartInstitutionalTab {
   padding: 0px;
   background-color: #C4C4C4;
   opacity: 1;
@@ -116,10 +105,9 @@ export default {
 
 
 
-.QuickstartInstitutionalTab:focus{
+.QuickstartInstitutionalTab:focus {
   background-color: #344D78;
   color: white;
   font-weight: bold;
 }
-
 </style>

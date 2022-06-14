@@ -59,7 +59,7 @@ export default {
 </script>
 
 <template>
-  <BaseView>
+  <base-view>
     <template #content>
       <h2>Client Portal Web API Documentation</h2>
       <p>
@@ -75,16 +75,16 @@ export default {
         <li>Enjoy access to data that's not available through our existing APIs, including PortfolioAnalyst, Statements,
           Transaction History (up to 90 days) and more.</li>
       </ul>
-      <ExpandableCard v-for="card in cards" v-bind="card" />
+      <expandable-card v-for="card in cards" v-bind="card" />
     </template>
     <template #aside>
       <div class="latest-changes-header">
         <h2>Latest Updates</h2>
         <router-link to="/changelog">Changelog</router-link>
       </div>
-      <LatestUpdateCard v-for="update in latestUpdates" v-bind="update" />
+      <latest-update-card v-for="update in latestUpdates" v-bind="update" />
     </template>
-  </BaseView>
+  </base-view>
 </template>
 
 <style>

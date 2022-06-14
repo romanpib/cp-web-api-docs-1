@@ -1,7 +1,7 @@
 <script>
 import BaseView from '@/views/BaseView.vue';
-import ChangelogSection from '@/components/ChangelogSection.vue';
-import ChangelogFilter from '@/components/ChangelogFilter.vue';
+import ChangelogSection from '@/components/changelog/ChangelogSection.vue';
+import ChangelogFilter from '@/components/changelog/ChangelogFilter.vue';
 import Warning from '@/components/Warning.vue';
 export default {
   components:

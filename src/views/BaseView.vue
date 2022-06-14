@@ -10,22 +10,20 @@
 </template>
 
 <style>
-    .container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 50px;
-        padding-inline: 50px;
-    }
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    padding-inline: 50px;
+}
 
-    .content {
-        flex: 2;
-    }
+.content {
+    flex: 2;
+}
 
-    .aside {
-        flex: 1;
-    }
-
-   
+.aside {
+    flex: 1;
+}
 </style>

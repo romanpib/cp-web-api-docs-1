@@ -5,9 +5,9 @@
 </template>
 
 <style>
-    .warning-message {
-        text-align: center;
-        background-color: #FFC107;
-        padding: 1.5rem;
-    }
+.warning-message {
+    text-align: center;
+    background-color: #FFC107;
+    padding: 1.5rem;
+}
 </style>

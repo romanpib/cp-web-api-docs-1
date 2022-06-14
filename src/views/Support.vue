@@ -48,23 +48,23 @@ export default {
 </script>
 
 <template>
-  <BaseView>
+  <base-view>
     <template #content>
       <h2>Support</h2>
-      <Warning>
+      <warning>
         <span>For common integration questions, please see the <router-link to="/workflows"
             style="color: black; font-weight: bold;">workflows</router-link> section</span>
-      </Warning>
+      </warning>
       <p>
         Before reaching out to us, please try the following troubleshooting steps:
       </p>
-      <ExpandableCard v-for="card in cards" v-bind="card" />
+      <expandable-card v-for="card in cards" v-bind="card" />
     </template>
     <template #aside>
       <h2>Resources</h2>
       <ResourceLink v-for="resource in resources" v-bind="resource" />
     </template>
-  </BaseView>
+  </base-view>
 </template>
 
 <style>
