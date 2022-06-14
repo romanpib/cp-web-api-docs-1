@@ -1,7 +1,7 @@
 <script>
 import BaseView from './BaseView.vue'
 import ExpandableCard from '@/components/ExpandableCard.vue'
-import LatestUpdateCard from '@/components/LatestUpdateCard.vue'
+import LatestUpdateCard from '@/components/home/LatestUpdateCard.vue'
 export default {
   components: {
     BaseView,

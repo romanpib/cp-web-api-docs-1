@@ -1,7 +1,7 @@
 <script>
 import BaseView from './BaseView.vue'
 import ExpandableCard from '@/components/ExpandableCard.vue'
-import ResourceLink from '@/components/ResourceLink.vue'
+import ResourceLink from '@/components/support/ResourceLink.vue'
 import Warning from '@/components/Warning.vue'
 export default {
   components: {
