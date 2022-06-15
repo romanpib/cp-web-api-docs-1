@@ -18,20 +18,30 @@
 
 .content {
     flex: 1;
-    padding-inline: 2rem;
-    max-width: 800px;
-    padding-top: 2.5rem;
+    padding: 2rem 2.5rem;
+    margin-right: 250px;
 }
 
 .aside {
+    position: fixed;
     width: 250px;
     background-color: #f5f5f5;
-    padding-top: 0.5rem;
+    padding-block: 2.5rem;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 @media only screen and (max-width: 1200px) {
-  .aside {
-    display: none;
-  }
+    .aside {
+        display: none;
+    }
+
+    .content {
+        flex: 1;
+        padding: 2rem 2.5rem;
+        margin-right: 0;
+    }
 }
 </style>
