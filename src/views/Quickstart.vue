@@ -45,9 +45,9 @@ export default {
 <template>
   <base-view>
     <template #content>
-      <div class="page_header">
+      <div class="page-header">
         <h2>Quickstart Guide</h2>
-        <account-toggle @account-toggled="onAccountToggleClicked" />
+        <account-toggle @accountToggled="onAccountToggleClicked" />
       </div>
       <component :is="activeTab"></component>
     </template>
@@ -61,7 +61,7 @@ export default {
 </template>
 
 <style>
-.page_header {
+.page-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

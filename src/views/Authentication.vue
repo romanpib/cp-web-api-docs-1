@@ -52,7 +52,7 @@ export default {
     <template #content>
       <div class="page_header">
         <h2>Authentication</h2>
-        <account-toggle @account-toggled="onAccountToggleClicked"/>
+        <account-toggle @accountToggled="onAccountToggleClicked"/>
       </div>
       <keep-alive>
         <component :is="activeTab"></component>

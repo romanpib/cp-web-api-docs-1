@@ -8,7 +8,7 @@ export default {
             }
             this.accountType = targetId;
             localStorage.setItem("accountType", this.accountType);
-            this.$emit('account-toggled', this.accountType);
+            this.$emit('accountToggled', this.accountType);
         }
     },
     data() {

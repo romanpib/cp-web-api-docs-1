@@ -32,9 +32,13 @@ export default {
     onAccountToggleClicked(accountType) {
       this.accountType = accountType;
     },
+    onSectionClicked(id) {
+      this.activeSection = id;
+    }
   },
   data() {
     return {
+      activeSection: "snapshot-data",
       accountType: localStorage.getItem('accountType') || 'individual'
     };
   }
@@ -46,7 +50,7 @@ export default {
     <template #content>
       <div class="page_header">
         <h2>Websockets</h2>
-        <account-toggle @account-toggled="onAccountToggleClicked" />
+        <account-toggle @accountToggled="onAccountToggleClicked" />
       </div>
       <template v-for="section in activeTab">
         <h3>{{ section.category }}</h3>
@@ -57,7 +61,7 @@ export default {
       </template>
     </template>
     <template #aside>
-      <scrollable-sidenav :sections="sections" />
+      <scrollable-sidenav :sections="sections" :activeSection="this.activeSection" @sectionClicked="onSectionClicked" />
     </template>
   </base-view-sidenav>
 </template>

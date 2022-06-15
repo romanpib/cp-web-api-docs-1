@@ -12,9 +12,10 @@ export default {
     },
     methods: {
         onSectionSelect(event) {
-            this.$emit('select', event.target.href);
+            this.$emit('sectionClicked', event.target.href.split('#')[1]);
         }
-    }
+    },
+    emits: ['sectionClicked']
 }
 </script>
 
@@ -36,14 +37,13 @@ export default {
     .subsections {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-        padding: 0.5rem 2rem;
     }
 
     .subsections a {
         text-decoration: none;
         color: #000;
         display: block;
+        padding: 0.5rem 2rem;
     }
 
     .subsections a.active {
