@@ -55,9 +55,7 @@ export default {
         <span>For common integration questions, please see the <router-link to="/workflows"
             style="color: black; font-weight: bold;">workflows</router-link> section</span>
       </warning>
-      <p>
-        Before reaching out to us, please try the following troubleshooting steps:
-      </p>
+      <p>Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.</p>
       <expandable-card v-for="card in cards" v-bind="card" />
     </template>
     <template #aside>

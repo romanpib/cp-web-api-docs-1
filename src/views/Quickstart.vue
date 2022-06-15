@@ -69,15 +69,6 @@ export default {
 
 }
 
-.toggle_switch {
-  margin: 0;
-  padding: 0;
-  background-color: #C4C4C4;
-  border-radius: 40px;
-  width: 200px;
-  height: 30px;
-}
-
 .QuickstartIndividualTab {
   padding: 0px;
   background-color: #344D78;

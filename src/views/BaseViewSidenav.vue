@@ -13,33 +13,25 @@
 .container {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    padding-block: 2.5rem;
+    justify-content: space-between;
 }
 
 .content {
     flex: 1;
     padding-inline: 2rem;
-    max-width: 900px;
+    max-width: 800px;
+    padding-top: 2.5rem;
 }
 
 .aside {
-    width: 300px;
-    padding-inline: 2rem;
+    width: 250px;
+    background-color: #f5f5f5;
+    padding-top: 0.5rem;
 }
 
 @media only screen and (max-width: 1200px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content {
-        width: inherit;
-    }
-
-    .aside {
-        width: inherit;
-    }
+  .aside {
+    display: none;
+  }
 }
 </style>

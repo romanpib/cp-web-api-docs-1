@@ -88,11 +88,6 @@ export default {
 </template>
 
 <style>
-.features-list {
-  margin-bottom: 2rem;
-  line-height: 1rem;
-}
-
 .latest-changes-header {
   display: flex;
   flex-direction: row;

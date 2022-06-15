@@ -3,9 +3,9 @@
     <h3>Step One: Create a free Interactive Brokers account</h3>
     <p>In order to use the API, an IBKR PRO account is required. IBKR PRO accounts are free and can be created in just a
       few minutes. If you already have a IBKR LITE account you can change the type to PRO.</p>
-    <div>
-      <button type="button" class="account"><b>Create</b> a free account</button>
-      <button type="button" class="account"><b>Upgrade</b> an existing account</button>
+    <div class="action-buttons">
+      <button>Create a free <b>account</b></button>
+      <button>Upgrade an existing <b>account</b></button>
     </div>
     <h3>Step two: Download the Client Portal API Gateway</h3>
     <p>Vivamus nec iaculis ligula. Donec tincidunt vel odio vel tristique. Etiam eget mi in lorem rutrum suscipit quis
@@ -27,15 +27,29 @@
 </template>
 
 <style scoped>
-.account {
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.action-buttons button {
   border: 1px;
+  padding: 1rem;
   border-style: solid;
   border-color: #db1222;
   background-color: white;
   color: #db1222;
-  height: 37px;
-  width: 233px;
   cursor: pointer;
-  margin-right: 5%;
+}
+
+.action-buttons button:hover {
+  background-color: #db1222;
+  color: white;
+}
+
+.account {
+  width: 233px;
 }
 </style>

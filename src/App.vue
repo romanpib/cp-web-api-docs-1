@@ -25,6 +25,5 @@ body {
 
 main {
   padding-left: 250px;
-  padding-block: 40px;
 }
 </style>

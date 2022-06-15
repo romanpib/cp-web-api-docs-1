@@ -44,7 +44,7 @@ export default {
         {
           updateDate: '2019-01-02',
           tags: ["orders", "authentication"],
-          content: 'This is the second changelog entry.'
+          content: '<p>Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.</p>'
         },
         {
           updateDate: '2019-01-03',

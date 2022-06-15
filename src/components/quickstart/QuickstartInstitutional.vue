@@ -2,9 +2,9 @@
   <div>
     <h3>Step One: Have an Institutional type account</h3>
     <p>Have an organizational account</p>
-    <div>
-      <button type="button" class="account">Create a free <b>account</b></button>
-      <button type="button" class="account">Upgrade an existing <b>account</b></button>
+    <div class="action-buttons">
+      <button type="button">Create a free <b>account</b></button>
+      <button type="button">Upgrade an existing <b>account</b></button>
     </div>
 
     <h3>Step two: Request OAuth consumer key</h3>
@@ -40,15 +40,29 @@
 </template>
 
 <style>
-.account {
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.action-buttons button {
   border: 1px;
+  padding: 1rem;
   border-style: solid;
   border-color: #db1222;
   background-color: white;
   color: #db1222;
-  height: 37px;
-  width: 233px;
   cursor: pointer;
-  margin-right: 5%;
+}
+
+.action-buttons button:hover {
+  background-color: #db1222;
+  color: white;
+}
+
+.account {
+  width: 233px;
 }
 </style>
