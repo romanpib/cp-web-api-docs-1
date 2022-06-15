@@ -1,16 +1,18 @@
 <script>
 import BaseViewSidenav from "./BaseViewSidenav.vue";
 import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
-import websockets from "@/docs/websockets";
+import AccountToggle from '@/components/AccountToggle.vue'
+import { websocketsIndividual, websocketsInstitutional } from "@/docs/websockets";
+
 export default {
   components: {
     BaseViewSidenav,
-    ScrollableSidenav
+    ScrollableSidenav,
+    AccountToggle
   },
   computed: {
     sections() {
-      // Calcualte the sections and pass them to the ScrollableSidenav component
-      return websockets.map(section => {
+      return this.activeTab.map(section => {
         return {
           category: section.category,
           titles: section.items.map(item => {
@@ -21,11 +23,19 @@ export default {
           })
         };
       });
+    },
+    activeTab() {
+      return (this.accountType === 'individual') ? websocketsIndividual : websocketsInstitutional;
     }
+  },
+  methods: {
+    onAccountToggleClicked(accountType) {
+      this.accountType = accountType;
+    },
   },
   data() {
     return {
-      websockets: websockets
+      accountType: localStorage.getItem('accountType') || 'individual'
     };
   }
 }
@@ -34,8 +44,11 @@ export default {
 <template>
   <base-view-sidenav>
     <template #content>
-      <h2>Websockets</h2>
-      <template v-for="section in websockets">
+      <div class="page_header">
+        <h2>Websockets</h2>
+        <account-toggle @account-toggled="onAccountToggleClicked" />
+      </div>
+      <template v-for="section in activeTab">
         <h3>{{ section.category }}</h3>
         <template v-for="article in section.items">
           <h4 :id="`${article.id}`">{{ article.title }}</h4>
@@ -48,3 +61,12 @@ export default {
     </template>
   </base-view-sidenav>
 </template>
+
+<style>
+.page_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>
