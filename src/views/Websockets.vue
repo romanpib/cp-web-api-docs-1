@@ -1,8 +1,9 @@
 <script>
+import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
+import { websocketsIndividual, websocketsInstitutional } from "@/docs/websockets";
 import BaseViewSidenav from "./BaseViewSidenav.vue";
 import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
 import AccountToggle from '@/components/AccountToggle.vue'
-import { websocketsIndividual, websocketsInstitutional } from "@/docs/websockets";
 
 export default {
   components: {
@@ -25,21 +26,18 @@ export default {
       });
     },
     activeTab() {
-      return (this.accountType === 'individual') ? websocketsIndividual : websocketsInstitutional;
+      const store = useAccountTypeStore();
+      return (store.accountType == 'individual') ? websocketsIndividual : websocketsInstitutional;
     }
   },
   methods: {
-    onAccountToggleClicked(accountType) {
-      this.accountType = accountType;
-    },
     onSectionClicked(id) {
       this.activeSection = id;
     }
   },
   data() {
     return {
-      activeSection: "snapshot-data",
-      accountType: localStorage.getItem('accountType') || 'individual'
+      activeSection: "snapshot-data"
     };
   }
 }
@@ -50,7 +48,7 @@ export default {
     <template #content>
       <div class="page_header">
         <h2>Websockets</h2>
-        <account-toggle @accountToggled="onAccountToggleClicked" />
+        <account-toggle />
       </div>
       <template v-for="section in activeTab">
         <h3>{{ section.category }}</h3>

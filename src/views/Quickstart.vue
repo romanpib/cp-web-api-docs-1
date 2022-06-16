@@ -1,4 +1,5 @@
 <script>
+import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 import BaseView from './BaseView.vue'
 import DownloadCard from '@/components/DownloadCard.vue'
 import QuickstartIndividual from '@/components/quickstart/QuickstartIndividual.vue'
@@ -14,17 +15,12 @@ export default {
   },
   computed: {
     activeTab() {
-      return (this.accountType === 'individual') ? 'QuickstartIndividual' : 'QuickstartInstitutional';
-    },
-  },
-  methods: {
-    onAccountToggleClicked(accountType) {
-      this.accountType = accountType;
-    },
+      const store = useAccountTypeStore()
+      return (store.accountType == 'individual') ? 'QuickstartIndividual' : 'QuickstartInstitutional';
+    }
   },
   data() {
     return {
-      accountType: localStorage.getItem('accountType') || 'individual',
       downloads: [
         {
           title: 'Gateway',
@@ -47,9 +43,9 @@ export default {
     <template #content>
       <div class="page-header">
         <h2>Quickstart Guide</h2>
-        <account-toggle @accountToggled="onAccountToggleClicked" />
+        <account-toggle />
       </div>
-      <component :is="activeTab"></component>
+      <component :is="activeTab" />
     </template>
     <template #aside>
       <div class="download-header">
@@ -65,7 +61,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 
 }
 

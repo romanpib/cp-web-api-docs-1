@@ -1,4 +1,5 @@
 <script>
+import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 import BaseView from './BaseView.vue'
 import DownloadCard from '@/components/DownloadCard.vue'
 import AuthenticationIndividual from '@/components/authentication/AuthenticationIndividual.vue'
@@ -14,12 +15,8 @@ export default {
   },
   computed: {
     activeTab() {
-      return (this.accountType === 'individual') ? 'AuthenticationIndividual' : 'AuthenticationInstitutional';
-    },
-  },
-  methods: {
-    onAccountToggleClicked(accountType) {
-      this.accountType = accountType;
+      const store = useAccountTypeStore()
+      return (store.accountType == 'individual') ? 'AuthenticationIndividual' : 'AuthenticationInstitutional';
     },
   },
   data() {
@@ -52,11 +49,9 @@ export default {
     <template #content>
       <div class="page_header">
         <h2>Authentication</h2>
-        <account-toggle @accountToggled="onAccountToggleClicked"/>
+        <account-toggle />
       </div>
-      <keep-alive>
-        <component :is="activeTab"></component>
-      </keep-alive>
+      <component :is="activeTab" />
     </template>
     <template #aside>
       <div class="download-header">

@@ -1,28 +1,28 @@
 <script>
+import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 export default {
-    methods: {
-        onAccountToggle(event) {
-            let targetId = event.target.id;
-            if (!targetId) {
-                return;
-            }
-            this.accountType = targetId;
-            localStorage.setItem("accountType", this.accountType);
-            this.$emit('accountToggled', this.accountType);
+    setup() {
+        const store = useAccountTypeStore();
+        return {
+            store
         }
     },
-    data() {
-        return {
-            accountType: localStorage.getItem("accountType") || "individual"
+    methods: {
+        onAccountToggled(event) {
+            let clickedElement = event.target.id;
+            if (!clickedElement) {
+                return;
+            }
+            this.store.setAccountType(clickedElement);
         }
     }
 }
 </script>
 
 <template>
-    <div class="toggle-switch" @click="onAccountToggle">
-        <button id="individual" :class="(this.accountType == 'individual') ? 'active' : ''">Individual</button>
-        <button id="institutional" :class="(this.accountType == 'institutional') ? 'active' : ''">Institutional</button>
+    <div class="toggle-switch" @click="onAccountToggled">
+        <button id="individual" :class="(store.accountType == 'individual') ? 'active' : ''">Individual</button>
+        <button id="institutional" :class="(store.accountType == 'institutional') ? 'active' : ''">Institutional</button>
     </div>
 </template>
 
