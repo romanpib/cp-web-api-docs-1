@@ -18,29 +18,27 @@
 
 .content {
     flex: 1;
-    padding: 2rem 2.5rem;
-    margin-right: 250px;
+    padding: 2.5rem 2rem;
+    margin-right: 300px;
 }
 
 .aside {
     position: fixed;
-    width: 250px;
-    background-color: #f5f5f5;
-    padding-block: 2.5rem;
     top: 0;
     right: 0;
+    padding-top: 3rem;
+    width: 300px;
+    background-color: #f5f5f5;
     height: 100vh;
     overflow-y: auto;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1100px) {
     .aside {
         display: none;
     }
 
     .content {
-        flex: 1;
-        padding: 2rem 2.5rem;
         margin-right: 0;
     }
 }

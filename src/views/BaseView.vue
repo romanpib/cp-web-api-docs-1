@@ -13,22 +13,20 @@
 .container {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    padding-block: 2.5rem;
 }
 
 .content {
     flex: 1;
-    padding-inline: 2rem;
-    max-width: 900px;
+    padding: 2.5rem 2rem;
 }
 
 .aside {
     width: 300px;
-    padding-inline: 2rem;
+    padding-block: 2.5rem;
+    padding-right: 2rem;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1100px) {
     .container {
         display: flex;
         flex-direction: column;
@@ -36,10 +34,14 @@
 
     .content {
         width: inherit;
+        padding-right: 2rem;
+        padding-bottom: 0;
     }
 
     .aside {
         width: inherit;
+        padding-inline: 2rem;
+        padding-top: 0;
     }
 }
 </style>

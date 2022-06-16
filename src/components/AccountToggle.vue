@@ -43,6 +43,7 @@ export default {
     padding-block: 0.5rem;
     border: none;
     cursor: pointer;
+    color: #959595;
 }
 
 .toggle-switch button.active {

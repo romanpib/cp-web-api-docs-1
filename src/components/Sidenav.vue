@@ -84,8 +84,11 @@ h6 {
 }
 
 #brand {
-  width: 75%;
   padding-left: 1.5rem;
+}
+
+#brand img {
+  width: 75%;
 }
 
 #brand a {

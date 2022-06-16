@@ -43,7 +43,7 @@ export default {
         text-decoration: none;
         color: #000;
         display: block;
-        padding: 0.5rem 2rem;
+        padding: 0.75rem 1.5rem;
     }
 
     .subsections a.active {
