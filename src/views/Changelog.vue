@@ -44,7 +44,7 @@ export default {
         {
           updateDate: '2019-01-02',
           tags: ["orders", "authentication"],
-          content: '<p>Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.</p>'
+          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.'
         },
         {
           updateDate: '2019-01-03',

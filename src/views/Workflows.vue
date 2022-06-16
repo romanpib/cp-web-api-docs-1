@@ -55,7 +55,7 @@ export default {
         <h3>{{ section.category }}</h3>
         <template v-for="article in section.items">
           <h4 :id="`${article.id}`">{{ article.title }}</h4>
-          <p>{{ article.content }}</p>
+          <component :innerHTML="article.content" />
         </template>
       </template>
     </template>
@@ -67,9 +67,20 @@ export default {
 
 <style>
 .page_header {
+  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+div.code {
+  width: 100%;
+  background-color: black;
+  padding: 1rem 1.5rem;
+}
+
+code {
+  color: white;
 }
 </style>

@@ -54,7 +54,7 @@ export default {
         <h3>{{ section.category }}</h3>
         <template v-for="article in section.items">
           <h4 :id="`${article.id}`">{{ article.title }}</h4>
-          <p>{{ article.content }}</p>
+          <component :innerHTML="article.content" />
         </template>
       </template>
     </template>
