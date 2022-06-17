@@ -4,13 +4,17 @@ import { websocketsIndividual, websocketsInstitutional } from "@/docs/websockets
 import BaseViewSidenav from "./BaseViewSidenav.vue";
 import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
 import AccountToggle from '@/components/AccountToggle.vue'
+import WebscoketPlayground from '@/components/websockets/WebsocketPlayground.vue'
+import Warning from '../components/Warning.vue';
 
 export default {
   components: {
     BaseViewSidenav,
     ScrollableSidenav,
-    AccountToggle
-  },
+    AccountToggle,
+    WebscoketPlayground,
+    Warning
+},
   computed: {
     sections() {
       return this.activeTab.map(section => {
@@ -57,6 +61,16 @@ export default {
           <component :innerHTML="article.content" />
         </template>
       </template>
+      <div>
+        <h3>Websockets Playground</h3>
+        <p>
+          Donec non arcu sollicitudin, hendrerit nisl vitae, ullamcorper ex. Etiam hendrerit nisl viverra lectus lacinia, sed semper ligula sagittis. Etiam efficitur tortor et sem pharetra vulputate. Ut vulputate tristique turpis vitae fringilla.
+        </p>
+        <warning>
+          <span>In order to use the playground, you need to authetnticate your session. See the <router-link to='/authentication' style="color: black; font-weight: bold;">authentication</router-link> page for getting started instructions.</span>
+        </warning>
+        <webscoket-playground />
+      </div>
     </template>
     <template #aside>
       <scrollable-sidenav :sections="sections" :activeSection="this.activeSection" @sectionClicked="onSectionClicked" />
