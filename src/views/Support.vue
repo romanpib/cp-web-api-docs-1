@@ -60,7 +60,7 @@ export default {
     </template>
     <template #aside>
       <h2>Resources</h2>
-      <ResourceLink v-for="resource in resources" v-bind="resource" />
+      <resource-link v-for="resource in resources" v-bind="resource" />
     </template>
   </base-view>
 </template>

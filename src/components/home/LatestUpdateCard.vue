@@ -2,13 +2,14 @@
 export default {
     props: {
         title: { type: String, required: true },
-        content: { type: String, required: true },
-        updateDate: { type: String, required: true }
+        description: { type: String, required: true },
+        date: { type: String, required: true }
     },
     computed: {
         formatUpdateDate() {
+
             // Show when the update was published in days ago
-            const date = Date.parse(this.updateDate);
+            const date = Date.parse(this.date);
             const now = Date.now();
             const diff = (now - date) / 1000;
             if (diff < 60) {
@@ -32,7 +33,7 @@ export default {
             <span>{{ formatUpdateDate }}</span>
         </div>
         <div class="content">
-            <p>{{ content }}</p>
+            <p>{{ description }}</p>
         </div>
     </div>
 </template>

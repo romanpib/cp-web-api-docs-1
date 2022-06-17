@@ -41,60 +41,24 @@ export default {
 <template>
   <base-view>
     <template #content>
-      <div class="page-header">
+      <div class="content-header">
         <h2>Quickstart Guide</h2>
         <account-toggle />
       </div>
       <component :is="activeTab" />
     </template>
     <template #aside>
-      <div class="download-header">
-        <h2>Downloads</h2>
-      </div>
+      <h2>Downloads</h2>
       <download-card v-for="download in downloads" v-bind="download" />
     </template>
   </base-view>
 </template>
 
 <style>
-.page-header {
+.content-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-}
-
-.QuickstartIndividualTab {
-  padding: 0px;
-  background-color: #344D78;
-  color: white;
-  opacity: 1;
-  border-radius: 40px;
-  height: 30px;
-  width: 100px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-
-.QuickstartInstitutionalTab {
-  padding: 0px;
-  background-color: #C4C4C4;
-  opacity: 1;
-  border-radius: 40px;
-  height: 30px;
-  width: 100px;
-  color: grey;
-  border: none;
-  cursor: pointer;
-}
-
-
-
-.QuickstartInstitutionalTab:focus {
-  background-color: #344D78;
-  color: white;
-  font-weight: bold;
 }
 </style>

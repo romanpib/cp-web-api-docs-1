@@ -21,7 +21,6 @@ export default {
   },
   data() {
     return {
-      accountType: localStorage.getItem('accountType') || 'individual',
       downloads: [
         {
           title: 'Gateway',
@@ -54,9 +53,7 @@ export default {
       <component :is="activeTab" />
     </template>
     <template #aside>
-      <div class="download-header">
-        <h2>Resources</h2>
-      </div>
+      <h2>Resources</h2>
       <DownloadCard v-for="download in downloads" v-bind="download" />
     </template>
   </base-view>
@@ -68,38 +65,5 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-.AuthenticationInstitutional {
-  padding: 0px;
-  background-color: #344D78;
-  color: white;
-  opacity: 1;
-  border-radius: 40px;
-  height: 30px;
-  width: 100px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-
-.AuthenticationIndividual {
-  padding: 0px;
-  background-color: #C4C4C4;
-  opacity: 1;
-  border-radius: 40px;
-  height: 30px;
-  width: 100px;
-  color: grey;
-  border: none;
-  cursor: pointer;
-}
-
-
-
-.AuthenticationIndividual:focus {
-  background-color: #344D78;
-  color: white;
-  font-weight: bold;
 }
 </style>

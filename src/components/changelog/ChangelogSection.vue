@@ -1,39 +1,37 @@
 <script>
-import ChangelogTag from './ChangelogTag.vue';
+import ChangelogFilter from './ChangelogFilter.vue';
 export default {
-    components: {
-        ChangelogTag
-    },
     props: {
-        updateDate: { type: String, required: true },
+        date: { type: String, required: true },
+        description: { type: String, required: true },
         tags: { type: Array, required: true },
-        content: { type: String, required: true }
+        changes: { type: Array, required: true }
+    },
+    components: {
+        ChangelogFilter
     },
     computed: {
         humanReadableDate() {
-            let date = new Date(this.updateDate);
-            let month = date.getMonth() + 1;
-            let day = date.getDate();
-            let year = date.getFullYear();
-            return `${month}/${day}/${year}`;
+            let date = new Date(this.date);
+            return date.toDateString();
         }
     }
 }
 </script>
 
 <template>
-    <!-- TODO Better date formatting,  -->
     <div class="section-container">
         <div class="section-header">
             <h3>{{ humanReadableDate }}</h3>
             <div class="tags">
                 <span v-if="tags.length == 0">No tags</span>
-                <changelog-tag v-for="tag in tags" :tag="tag" />
+                <changelog-filter v-for="tag in tags" :tag="tag" />
             </div>
         </div>
-        <div>
-            <p>{{ content }}</p>
-        </div>
+        <p>{{ description }}</p>
+        <ul>
+            <li v-for="change in changes">{{ change }}</li>
+        </ul>
         <hr>
     </div>
 </template>

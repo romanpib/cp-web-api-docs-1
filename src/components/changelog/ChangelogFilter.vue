@@ -1,28 +1,19 @@
 <script>
 export default {
-    props: 
-    {
-        tag: { type: String, required: true }
-    },
-    methods: {
-        toggleFilter(event) {
-            let target = event.currentTarget; // currentTarget targets the actual element that contains the event listener
-            target.id == ""
-                ? target.id = "active"
-                : target.id = "";
-            this.$emit('toggleActive', this.tag);
-        }
+    props: {
+        tag: { type: String, required: true },
+        isActive: { type: Boolean, required: false, default: false }
     }
 }
 </script>
 
 <template>
-    <div @click="toggleFilter" class="filter-container">
+    <div class="filter-container" :id="(isActive) ? 'active' : null">
         <span>{{ tag }}</span>
     </div>
 </template>
 
-<style>
+<style scoped>
 .filter-container {
     background-color: #344D78;
     color: white;
@@ -30,6 +21,7 @@ export default {
     width: fit-content;
     padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
+    user-select: none;
 }
 
 #active {

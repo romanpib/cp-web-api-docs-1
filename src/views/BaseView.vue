@@ -28,7 +28,6 @@
 
 @media only screen and (max-width: 1100px) {
     .container {
-        display: flex;
         flex-direction: column;
     }
 

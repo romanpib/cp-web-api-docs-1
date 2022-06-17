@@ -1,21 +1,20 @@
 <script>
+import { changelog } from '@/docs/changelog';
 import BaseView from '@/views/BaseView.vue';
 import ChangelogSection from '@/components/changelog/ChangelogSection.vue';
-import ChangelogFilter from '@/components/changelog/ChangelogFilter.vue';
+import ChangelogFiltersList from '@/components/changelog/ChangelogFiltersList.vue';
 import Warning from '@/components/Warning.vue';
 export default {
   components:
   {
     BaseView,
     ChangelogSection,
-    ChangelogFilter,
+    ChangelogFiltersList,
     Warning
   },
   methods: {
-    filter(tag) {
-      this.activeFilters.includes(tag)
-        ? this.activeFilters = this.activeFilters.filter(filter => filter !== tag)
-        : this.activeFilters.push(tag)
+    toggleFilter(filters) {
+      this.activeFilters = filters;
     }
   },
   computed: {
@@ -35,28 +34,7 @@ export default {
   },
   data() {
     return {
-      changelog: [
-        {
-          updateDate: '2019-01-01',
-          tags: ["market-data", "orders", "authentication", "accounts"],
-          content: 'This is the first changelog entry.'
-        },
-        {
-          updateDate: '2019-01-02',
-          tags: ["orders", "authentication"],
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.'
-        },
-        {
-          updateDate: '2019-01-03',
-          tags: ["accounts", "authentication", "portfolio"],
-          content: 'This is the third changelog entry.'
-        },
-        {
-          updateDate: '2019-01-04',
-          tags: ["positions", "documentation"],
-          content: 'This is the fourth changelog entry.'
-        }
-      ],
+      changelog: changelog,
       activeFilters: []
     };
   },
@@ -74,9 +52,7 @@ export default {
     </template>
     <template #aside>
       <h2>Filter changes</h2>
-      <div class="changelog-tags">
-        <changelog-filter v-for="(tag, index) in uniqueChangelogTags" :tag="tag" :key="index" @toggleActive="filter(tag)" />
-      </div>
+      <changelog-filters-list :filters="uniqueChangelogTags" @filterClick="toggleFilter" />
     </template>
   </base-view>
 </template>

@@ -1,5 +1,3 @@
-import { marked } from 'marked'
-
 const workflowsIndividual = [
     {
         category: 'Market Data',
