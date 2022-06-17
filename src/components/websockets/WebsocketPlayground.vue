@@ -10,6 +10,7 @@ export default {
                 return;
             }
             this.socket = new WebSocket(this.url);
+            this.socket.binaryType = 'blob';
             this.socket.onopen = () => {
                 this.connected = true;
                 this.socket.addEventListener('message', event => {
@@ -40,10 +41,10 @@ export default {
             });
         },
         onMessageReceived(event) {
-            this.messages.push({
+            event.data.text().then(message => {this.messages.push({
                 type: 'inbound',
-                message: event.data
-            });
+                message: message
+            })})
         }
     },
     data() {
@@ -52,7 +53,8 @@ export default {
             url: 'wss://localhost:5000/v1/api/ws',
             socket: null,
             currentMessage: '',
-            messages: []
+            messages: [],
+            reader: null
         }
     }
 }
@@ -75,13 +77,9 @@ export default {
                 <button id="send" @click="sendMessage">Send</button>
             </div>
         </div>
-        <div>
-            <span>Output:</span>
-            <div class="playground-output-container">
-                <div v-for="(message, index) in messages">
-                    <websocket-message v-bind="message" :key="index" />
-                </div>
-            </div>
+        <span>Output:</span>
+        <div class="playground-output-container">
+            <websocket-message v-for="(message, index) in messages" v-bind="message" :key="index" />
         </div>
     </div>
 </template>
@@ -91,21 +89,23 @@ export default {
     margin-top: 1rem;
     border: 1px solid #e0e0e0;
     padding: 1rem;
+    overflow-x: hidden;
 }
 
 .playground-row {
     display: flex;
     flex-direction: row;
-    padding: 0.5rem 0;
+    flex: 1;
+    padding-block: 0.5rem ;
     gap: 1rem;
 }
 
 .playground-row span {
-    width: 10%;
+    flex: 1;
 }
 
 .playground-row input {
-    flex: 4;
+    flex: 5;
     padding-inline: 1rem;
     border: 1px solid #e0e0e0;
 }
