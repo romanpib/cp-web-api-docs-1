@@ -4,7 +4,7 @@ import 'swagger-ui/dist/swagger-ui.css'
 export default {
     mounted() {
         SwaggerUI({
-            spec: require('@/components/endpoints/swagger-institutional.json'),
+            spec: require('@/docs/endpoints/swagger-institutional.json'),
             dom_id: '#swagger'
         })
     }
