@@ -1,8 +1,8 @@
 <script>
 import { changelog } from '@/docs/changelog';
-import BaseView from './BaseView.vue'
+import BaseView from '@/views/base-views/BaseView.vue'
 import ExpandableCard from '@/components/ExpandableCard.vue'
-import LatestUpdatesList from '../components/home/LatestUpdatesList.vue'
+import LatestUpdatesList from '@/components/home/LatestUpdatesList.vue'
 
 export default {
   components: {

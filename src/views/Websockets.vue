@@ -1,11 +1,11 @@
 <script>
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 import { websocketsIndividual, websocketsInstitutional } from "@/docs/websockets";
-import BaseViewSidenav from "./BaseViewSidenav.vue";
+import BaseViewSidenav from "@/views/base-views/BaseViewSidenav.vue";
 import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
 import AccountToggle from '@/components/AccountToggle.vue'
 import WebscoketPlayground from '@/components/websockets/WebsocketPlayground.vue'
-import Warning from '../components/Warning.vue';
+import Warning from '@/components/Warning.vue';
 
 export default {
   components: {

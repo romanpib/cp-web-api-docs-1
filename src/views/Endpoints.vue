@@ -1,6 +1,6 @@
 <script>
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
-import BaseViewNoAside from "@/views/BaseViewNoAside.vue";
+import BaseViewNoAside from "@/views/base-views/BaseViewNoAside.vue";
 import AccountToggle from "@/components/AccountToggle.vue";
 import EndpointsIndividual from "@/components/endpoints/EndpointsIndividual.vue"
 import EndpointsInstitutional from "@/components/endpoints/EndpointsInstitutional.vue"

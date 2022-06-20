@@ -1,6 +1,6 @@
 <script>
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
-import BaseView from './BaseView.vue'
+import BaseView from '@/views/base-views/BaseView.vue'
 import DownloadCard from '@/components/DownloadCard.vue'
 import AuthenticationIndividual from '@/components/authentication/AuthenticationIndividual.vue'
 import AuthenticationInstitutional from '@/components/authentication/AuthenticationInstitutional.vue'

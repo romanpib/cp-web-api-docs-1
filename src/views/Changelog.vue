@@ -1,6 +1,6 @@
 <script>
 import { changelog } from '@/docs/changelog';
-import BaseView from '@/views/BaseView.vue';
+import BaseView from '@/views/base-views/BaseView.vue';
 import ChangelogSection from '@/components/changelog/ChangelogSection.vue';
 import ChangelogFiltersList from '@/components/changelog/ChangelogFiltersList.vue';
 import Warning from '@/components/Warning.vue';

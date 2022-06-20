@@ -1,5 +1,5 @@
 <script>
-import BaseView from './BaseView.vue'
+import BaseView from '@/views/base-views/BaseView.vue'
 import ExpandableCard from '@/components/ExpandableCard.vue'
 import ResourceLink from '@/components/support/ResourceLink.vue'
 import Warning from '@/components/Warning.vue'

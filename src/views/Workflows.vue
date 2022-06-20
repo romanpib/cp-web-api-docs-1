@@ -1,7 +1,7 @@
 <script>
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 import { workflowsIndividual, workflowsInstitutional } from "@/docs/workflows";
-import BaseViewSidenav from "./BaseViewSidenav.vue";
+import BaseViewSidenav from "@/views/base-views/BaseViewSidenav.vue";
 import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
 import AccountToggle from '@/components/AccountToggle.vue'
 
