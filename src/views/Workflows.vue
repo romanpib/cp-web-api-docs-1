@@ -72,7 +72,7 @@ export default {
 <template>
   <base-view-sidenav>
     <template #content>
-      <div class="page_header">
+      <div class="content-header">
         <h2>Workflows</h2>
         <account-toggle />
       </div>
@@ -91,8 +91,8 @@ export default {
 </template>
 
 <style>
-.page_header {
-  flex: 1;
+.content-header {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

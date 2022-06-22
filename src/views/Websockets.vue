@@ -95,7 +95,7 @@ export default {
           turpis vitae fringilla.
         </p>
         <warning>
-          <span>In order to use the playground, you need to authetnticate your session. See the <router-link
+          <span>In order to use the playground, you need to authenticate your session. See the <router-link
               to='/authentication' style="color: black; font-weight: bold;">authentication</router-link> page for
             getting started instructions.</span>
         </warning>
