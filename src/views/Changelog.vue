@@ -1,43 +1,18 @@
 <script>
-import { changelog } from '@/docs/changelog';
+import { useChangelogStore } from '@/stores/changelogStore';
 import BaseView from '@/views/base-views/BaseView.vue';
 import ChangelogSection from '@/components/changelog/ChangelogSection.vue';
 import ChangelogFiltersList from '@/components/changelog/ChangelogFiltersList.vue';
 import Warning from '@/components/Warning.vue';
 export default {
+  setup: () => ({store: useChangelogStore()}),
   components:
   {
     BaseView,
     ChangelogSection,
     ChangelogFiltersList,
     Warning
-  },
-  methods: {
-    toggleFilter(filters) {
-      this.activeFilters = filters;
-    }
-  },
-  computed: {
-    filteredChangelog() {
-      return this.changelog.filter(change => {
-        return this.activeFilters.every(tag => change.tags.includes(tag));
-      });
-    },
-    uniqueChangelogTags() {
-      return this.changelog.reduce((tags, change) => {
-        change.tags.forEach(tag => {
-          tags.includes(tag) ? null : tags.push(tag)
-        });
-        return tags;
-      }, []);
-    }
-  },
-  data() {
-    return {
-      changelog: changelog,
-      activeFilters: []
-    };
-  },
+  }
 }
 </script>
 
@@ -45,14 +20,14 @@ export default {
   <base-view :reverseWrap="true">
     <template #content>
       <h2>Changelog</h2>
-      <warning v-if="filteredChangelog.length === 0" >
+      <warning v-if="store.filteredChangelog.length == 0" >
         <span>There are no changes available that meet the selected criteria. Remove some filters to see results.</span>
       </warning>
-      <changelog-section v-for="(change, index) in filteredChangelog" v-bind="change" :key="index" />
+      <changelog-section v-for="(change, index) in store.filteredChangelog" v-bind="change" :key="index" />
     </template>
     <template #aside>
       <h2>Filter changes</h2>
-      <changelog-filters-list :filters="uniqueChangelogTags" @filterClick="toggleFilter" />
+      <changelog-filters-list />
     </template>
   </base-view>
 </template>

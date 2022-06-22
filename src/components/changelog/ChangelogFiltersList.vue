@@ -1,24 +1,10 @@
 <script>
-import ChangelogFilter from './ChangelogFilter.vue';
+import { useChangelogStore } from '@/stores/changelogStore';
+import ChangelogFilter from '@/components/changelog/ChangelogFilter.vue';
 export default {
+    setup: () => ({store: useChangelogStore()}),
     components: {
         ChangelogFilter
-    },
-    props: {
-        filters: { type: Array, required: true }
-    },
-    methods: {
-        onFilterClickedHandler(filter) {
-            this.activeFilters.includes(filter)
-                ? this.activeFilters = this.activeFilters.filter(tag => tag !== filter)
-                : this.activeFilters.push(filter);
-            this.$emit('filterClick', this.activeFilters);
-        }
-    },
-    data() {
-        return {
-            activeFilters: []
-        }
     }
 }
 </script>
@@ -26,11 +12,11 @@ export default {
 <template>
     <div class="changelog-filters-list">
         <changelog-filter 
-            v-for="(filter, index) in filters"
+            v-for="(filter, index) in store.changelogTags"
             :tag="filter"
-            :isActive="this.activeFilters.includes(filter)" 
-            :key="index" 
-            @click="onFilterClickedHandler(filter)" 
+            :isActive="store.activeFilters.includes(filter)"
+            :key="index"
+            @click="store.toggleFilter(filter)" 
         />
     </div>
 </template>
