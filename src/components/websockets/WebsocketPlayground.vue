@@ -4,6 +4,15 @@ export default {
     components: {
         WebsocketMessage
     },
+    data() {
+        return {
+            connected: false,
+            url: 'wss://localhost:5000/v1/api/ws',
+            socket: null,
+            currentMessage: '',
+            messages: []
+        }
+    },
     methods: {
         connect() {
             if (this.connected) {
@@ -17,7 +26,7 @@ export default {
                     this.onMessageReceived(event);
                 });
                 this.messages.push({
-                    type: 'outbound',
+                    type: 'inbound',
                     message: `Connected to websocket server: ${this.url}`
                 });
             };
@@ -31,7 +40,6 @@ export default {
         },
         sendMessage() {
             if (!this.connected) {
-                console.log('socket not connected');
                 return;
             }
             this.socket.send(this.currentMessage);
@@ -45,16 +53,6 @@ export default {
                 type: 'inbound',
                 message: message
             })})
-        }
-    },
-    data() {
-        return {
-            connected: false,
-            url: 'wss://localhost:5000/v1/api/ws',
-            socket: null,
-            currentMessage: '',
-            messages: [],
-            reader: null
         }
     }
 }

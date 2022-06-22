@@ -10,10 +10,10 @@ export default {
 
 <template>
     <div class="link-container">
-        <a :href="url" target="_blank">
-            <span>{{ title }}</span>
+        <a :href="this.url" target="_blank">
+            <span>{{ this.title }}</span>
         </a>
-        <i class="fa-solid fa-circle-question" :title="description"></i>
+        <i class="fa-solid fa-circle-question" :title="this.description"></i>
     </div>
 </template>
 

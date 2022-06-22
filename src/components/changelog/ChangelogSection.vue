@@ -1,5 +1,6 @@
 <script>
 import ChangelogFilter from './ChangelogFilter.vue';
+
 export default {
     props: {
         date: { type: String, required: true },
@@ -20,41 +21,34 @@ export default {
 </script>
 
 <template>
-    <div class="section-container">
-        <div class="section-header">
-            <h3>{{ humanReadableDate }}</h3>
-            <div class="tags">
-                <span v-if="tags.length == 0">No tags</span>
-                <changelog-filter v-for="tag in tags" :tag="tag" />
-            </div>
+    <div class="section-header">
+        <h3>{{ humanReadableDate }}</h3>
+        <div>
+            <changelog-filter v-for="tag in tags" :tag="tag" />
         </div>
-        <p>{{ description }}</p>
-        <ul>
-            <li v-for="change in changes">{{ change }}</li>
-        </ul>
-        <hr>
     </div>
+    <p>{{ description }}</p>
+    <ul>
+        <li v-for="change in changes">{{ change }}</li>
+    </ul>
+    <hr>
 </template>
 
-<style>
+<style scoped>
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.section-header h3 {
-    margin: 0;
-    font-weight: normal;
-}
-
-.section-header .tags {
+.section-header > div {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     gap: 0.5rem;
+    align-items: center;
 }
 
-.section-container hr {
+hr {
     margin-block: 2rem;
     height: 1px;
     border: 0;

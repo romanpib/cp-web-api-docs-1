@@ -54,7 +54,7 @@ export default {
     </template>
     <template #aside>
       <h2>Resources</h2>
-      <DownloadCard v-for="download in downloads" v-bind="download" />
+      <download-card v-for="download in downloads" v-bind="download" />
     </template>
   </base-view>
 </template>

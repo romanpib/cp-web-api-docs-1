@@ -3,14 +3,19 @@ export default {
     props: {
         message: {type: String, required: true},
         type: {type: String, required: true}
+    },
+    computed: {
+        messageIcon () {
+            return (this.type == 'outbound') ? 'fa-solid fa-arrow-right' : 'fa-solid fa-arrow-left'
+        }
     }
 }
 </script>
 
 <template>
     <div class="message">
-        <i :class="(type == 'outbound') ? 'fa-solid fa-arrow-right' : 'fa-solid fa-arrow-left'"></i>
-        <span>{{ message }}</span>
+        <i :class="this.messageIcon"></i>
+        <span>{{ this.message }}</span>
     </div>
 </template>
 

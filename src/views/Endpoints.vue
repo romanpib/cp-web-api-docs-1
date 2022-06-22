@@ -2,19 +2,17 @@
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 import BaseViewNoAside from "@/views/base-views/BaseViewNoAside.vue";
 import AccountToggle from "@/components/AccountToggle.vue";
-import EndpointsIndividual from "@/components/endpoints/EndpointsIndividual.vue"
-import EndpointsInstitutional from "@/components/endpoints/EndpointsInstitutional.vue"
+import EndpointsList from '@/components/endpoints/EndpointsList.vue';
 export default {
   components: {
     BaseViewNoAside,
     AccountToggle,
-    EndpointsIndividual,
-    EndpointsInstitutional
+    EndpointsList
   },
   computed: {
-    activeTab() {
+    activeAccountType() {
       const store = useAccountTypeStore()
-      return (store.accountType == 'individual') ? EndpointsIndividual : EndpointsInstitutional
+      return store.accountType;
     }
   }
 }
@@ -23,25 +21,28 @@ export default {
 <template>
   <base-view-no-aside>
     <template #content>
-      <div class="page_header">
+      <div class="content-header">
         <h2>Endpoints Explorer</h2>
         <account-toggle />
       </div>
       <p>
         Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
-        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
-        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
-        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
-        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. 
- 
+        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris
+        bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
+        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris
+        bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
+        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris
+        bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
+        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.
+
       </p>
-      <component :is="activeTab" />
+      <endpoints-list :accountType="this.activeAccountType" />
     </template>
   </base-view-no-aside>
 </template>
 
 <style>
-.page_header {
+.content-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

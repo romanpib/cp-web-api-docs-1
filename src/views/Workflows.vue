@@ -11,6 +11,39 @@ export default {
     ScrollableSidenav,
     AccountToggle
   },
+  created() {
+    document.addEventListener('scroll', this.onScroll);
+  },
+  destroyed() {
+    document.removeEventListener('scroll', this.onScroll);
+  },
+  mounted() {
+    // On mounted is called after the component's DOM is rendered, hence the get here
+    let elements = Array.prototype.slice.call(document.getElementsByTagName('h4'));
+    this.elementToIdMap = elements.reduce((result, ele) => {
+      let top = ele.getBoundingClientRect().top;
+      result[top] = ele.id;
+      return result
+    }, {})
+  },
+  data() {
+    return {
+      activeSectionID: null,
+      elementToIdMap: null 
+    }
+  },
+  methods: {
+    onScroll() {
+      let scrollPosition = window.scrollY;
+      let keys = Object.keys(this.elementToIdMap);
+      for (var i = 0; i < keys.length; i++) {
+        if (keys[i  ] > scrollPosition) {
+          this.activeSectionID = this.elementToIdMap[keys[i]];
+          break;
+        }
+      }
+    }
+  },
   computed: {
     sections() {
       return this.activeTab.map(section => {
@@ -28,18 +61,10 @@ export default {
     activeTab() {
       const store = useAccountTypeStore();
       return (store.accountType == 'individual') ? workflowsIndividual : workflowsInstitutional;
+    },
+    activeSection() {
+      return this.activeSectionID || this.sections[0].titles[0].id;
     }
-  },
-  methods: {
-    onSectionClicked(id) {
-      this.activeSection = id;
-    }
-  },
-  data() {
-    return {
-      // TODO This is a hack to get the active section to be set to the first one. Make sure it's the first element in the array.
-      activeSection: "snapshot-data"
-    };
   }
 }
 </script>
@@ -60,7 +85,7 @@ export default {
       </template>
     </template>
     <template #aside>
-      <scrollable-sidenav :sections="sections" :activeSection="this.activeSection" @sectionClicked="onSectionClicked" />
+      <scrollable-sidenav :sections="this.sections" :activeSection="this.activeSection" />
     </template>
   </base-view-sidenav>
 </template>
