@@ -42,7 +42,7 @@ export default {
 </script>
 
 <template>
-  <base-view>
+  <base-view :reverseWrap="true">
     <template #content>
       <h2>Changelog</h2>
       <warning v-if="filteredChangelog.length === 0" >
