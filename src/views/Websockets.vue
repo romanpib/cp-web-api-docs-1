@@ -6,15 +6,17 @@ import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
 import AccountToggle from '@/components/AccountToggle.vue'
 import WebsocketPlayground from '@/components/websockets/WebsocketPlayground.vue'
 import Warning from '@/components/Warning.vue';
-
+import ArticleList from '../components/ArticleList.vue';
 export default {
   components: {
     BaseViewSidenav,
     ScrollableSidenav,
     AccountToggle,
     WebsocketPlayground,
-    Warning
+    Warning,
+    ArticleList
   },
+  setup: () => ({store: useAccountTypeStore()}),
   created() {
     document.addEventListener('scroll', this.onScroll);
   },
@@ -63,8 +65,7 @@ export default {
       });
     },
     activeTab() {
-      const store = useAccountTypeStore();
-      return (store.accountType == 'individual') ? websocketsIndividual : websocketsInstitutional;
+      return (this.store.accountType == 'individual') ? websocketsIndividual : websocketsInstitutional;
     },
     activeSection() {
       return this.activeSectionID || this.sections[0].titles[0].id;
@@ -80,27 +81,8 @@ export default {
         <h2>Websockets</h2>
         <account-toggle />
       </div>
-      <template v-for="section in this.activeTab">
-        <h3>{{ section.category }}</h3>
-        <template v-for="article in section.items">
-          <h4 :id="`${article.id}`">{{ article.title }}</h4>
-          <component :innerHTML="article.content" />
-        </template>
-      </template>
-      <div>
-        <h3>Websockets Playground</h3>
-        <p>
-          Donec non arcu sollicitudin, hendrerit nisl vitae, ullamcorper ex. Etiam hendrerit nisl viverra lectus
-          lacinia, sed semper ligula sagittis. Etiam efficitur tortor et sem pharetra vulputate. Ut vulputate tristique
-          turpis vitae fringilla.
-        </p>
-        <warning>
-          <span>In order to use the playground, you need to authenticate your session. See the <router-link
-              to='/authentication' style="color: black; font-weight: bold;">authentication</router-link> page for
-            getting started instructions.</span>
-        </warning>
-        <websocket-playground />
-      </div>
+      <article-list :articles="this.activeTab" />
+      <websocket-playground />
     </template>
     <template #aside>
       <scrollable-sidenav :sections="this.sections" :activeSection="this.activeSection" />

@@ -4,18 +4,16 @@ import { workflowsIndividual, workflowsInstitutional } from "@/docs/workflows";
 import BaseViewSidenav from "@/views/base-views/BaseViewSidenav.vue";
 import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
 import AccountToggle from '@/components/AccountToggle.vue'
-
+import ArticleList from '../components/ArticleList.vue';
 export default {
   components: {
     BaseViewSidenav,
     ScrollableSidenav,
-    AccountToggle
+    AccountToggle,
+    ArticleList
   },
   created() {
-    document.addEventListener('scroll', this.onScroll);
-  },
-  destroyed() {
-    document.removeEventListener('scroll', this.onScroll);
+    document.addEventListener('scroll', this.onScroll)
   },
   mounted() {
     // On mounted is called after the component's DOM is rendered, hence the get here
@@ -27,10 +25,7 @@ export default {
     }, {})
   },
   data() {
-    return {
-      activeSectionID: null,
-      elementToIdMap: null 
-    }
+    return {activeSectionID: null, elementToIdMap: null}
   },
   methods: {
     onScroll() {
@@ -76,13 +71,7 @@ export default {
         <h2>Workflows</h2>
         <account-toggle />
       </div>
-      <template v-for="section in activeTab">
-        <h3>{{ section.category }}</h3>
-        <template v-for="article in section.items">
-          <h4 :id="`${article.id}`">{{ article.title }}</h4>
-          <component :innerHTML="article.content" />
-        </template>
-      </template>
+      <article-list :articles="this.activeTab" />
     </template>
     <template #aside>
       <scrollable-sidenav :sections="this.sections" :activeSection="this.activeSection" />
