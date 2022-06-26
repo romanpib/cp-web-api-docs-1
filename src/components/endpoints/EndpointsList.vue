@@ -13,10 +13,10 @@ export default {
             });
         }
     },
-    updated() {
+    mounted() {
         this.renderSwagger();
     },
-    mounted() {
+    updated() {
         this.renderSwagger();
     }
 }
@@ -26,4 +26,23 @@ export default {
     <div id="swagger"></div>
 </template>
 
-<style></style>
+<style>
+/* Override the default swagger wrapper to fill entire screen */
+.swagger-ui .wrapper {
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+}
+/* Comment these out if you need to show the information */
+.swagger-ui .info hgroup.main {
+    display: none;
+}
+.swagger-ui .scheme-container {
+    display: none;
+}
+.swagger-ui .info {
+    display: none;
+}
+
+</style>

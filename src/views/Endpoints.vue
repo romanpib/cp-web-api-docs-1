@@ -9,11 +9,10 @@ export default {
     AccountToggle,
     EndpointsList
   },
-  computed: {
-    activeAccountType() {
-      const store = useAccountTypeStore()
-      return store.accountType;
-    }
+  setup() {
+    return {
+      store: useAccountTypeStore(),
+    };
   }
 }
 </script>
@@ -36,7 +35,7 @@ export default {
         fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.
 
       </p>
-      <endpoints-list :accountType="this.activeAccountType" />
+      <endpoints-list :accountType="this.store.accountType" />
     </template>
   </base-view-no-aside>
 </template>
