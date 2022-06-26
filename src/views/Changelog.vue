@@ -26,7 +26,6 @@ export default {
       <changelog-section v-for="(change, index) in store.filteredChangelog" v-bind="change" :key="index" />
     </template>
     <template #aside>
-      <h2>Filter changes</h2>
       <changelog-filters-list />
     </template>
   </base-view>
@@ -39,7 +38,7 @@ export default {
   gap: 0.5rem;
 }
 
-div.changelog-tags>* {
+div.changelog-tags > * {
   cursor: pointer;
   user-select: none;
 }

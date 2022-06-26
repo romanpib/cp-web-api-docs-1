@@ -13,8 +13,14 @@ export default {
     },
     computed: {
         humanReadableDate() {
-            let date = new Date(this.date);
-            return date.toDateString();
+            // Convert the date to the format "Saturday, January 1, 2020"
+            const date = new Date(this.date);
+            const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+            const month = date.toLocaleDateString('en-US', { month: 'long' });
+            const dayNum = date.getDate();
+            const dayNumPostfix = dayNum % 10 === 1 && dayNum !== 11 ? 'st' : dayNum % 10 === 2 && dayNum !== 12 ? 'nd' : dayNum % 10 === 3 && dayNum !== 13 ? 'rd' : 'th';
+            const year = date.getFullYear();
+            return `${day}, ${month} ${dayNum}${dayNumPostfix}, ${year}`;
         }
     }
 }
@@ -39,6 +45,11 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.section-header h3 {
+    font-size: large;
+    font-weight: normal;
 }
 
 .section-header > div {

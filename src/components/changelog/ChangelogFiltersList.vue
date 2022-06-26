@@ -10,6 +10,10 @@ export default {
 </script>
 
 <template>
+    <div class="header">
+        <h2>Filter changes</h2>
+        <a v-if="store.activeFilters.length != 0" @click="store.clearFilters">Clear all</a>
+    </div>
     <div class="changelog-filters-list">
         <changelog-filter 
             v-for="(filter, index) in store.changelogTags"
@@ -21,7 +25,7 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
 .changelog-filters-list {
     display: flex;
     flex-wrap: wrap;
@@ -29,6 +33,21 @@ export default {
 }
 
 .changelog-filters-list > *{
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.header a {
+    text-decoration: underline;
+    color: #db1222;
+    font-size: small;
+    font-weight: bold;
     cursor: pointer;
 }
 </style>

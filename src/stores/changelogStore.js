@@ -39,6 +39,9 @@ export const useChangelogStore = defineStore('changelog', {
             else {
                 this.activeFilters.push(filter);
             }
+        },
+        clearFilters() {
+            this.activeFilters = [];
         }
     }
 });
