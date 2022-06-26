@@ -12,31 +12,14 @@ export default {
     AccountToggle,
     ArticleList
   },
-  created() {
-    document.addEventListener('scroll', this.onScroll)
-  },
-  mounted() {
-    // On mounted is called after the component's DOM is rendered, hence the get here
-    let elements = Array.prototype.slice.call(document.getElementsByTagName('h4'));
-    this.elementToIdMap = elements.reduce((result, ele) => {
-      let top = ele.getBoundingClientRect().top;
-      result[top] = ele.id;
-      return result
-    }, {})
-  },
   data() {
-    return {activeSectionID: null, elementToIdMap: null}
+    return {
+      activeSectionID: null
+    }
   },
   methods: {
-    onScroll() {
-      let scrollPosition = window.scrollY;
-      let keys = Object.keys(this.elementToIdMap);
-      for (var i = 0; i < keys.length; i++) {
-        if (keys[i  ] > scrollPosition) {
-          this.activeSectionID = this.elementToIdMap[keys[i]];
-          break;
-        }
-      }
+    onScroll(articleID) {
+      this.activeSectionID = articleID;
     }
   },
   computed: {
@@ -71,7 +54,7 @@ export default {
         <h2>Workflows</h2>
         <account-toggle />
       </div>
-      <article-list :articles="this.activeTab" />
+      <article-list :articles="this.activeTab" @onArticleScroll="this.onScroll" />
     </template>
     <template #aside>
       <scrollable-sidenav :sections="this.sections" :activeSection="this.activeSection" />
