@@ -5,5 +5,5 @@ module.exports = {
         title: 'Client Portal Web API Documentation',
       },
     },
-    publicPath: process.env.NODE_ENV === "production" ? "/cp-web-api-docs/" : ""
+    publicPath: '/cp-web-api-docs/'
   }

@@ -14,9 +14,3 @@
 
   </div>
 </template>
-
-<script>
-export default {
-  name: 'AuthenticationInstitutional',
-}
-</script>

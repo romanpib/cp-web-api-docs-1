@@ -1,24 +1,16 @@
 <script>
-import LatestUpdateCard from './LatestUpdateCard.vue'
+import { useChangelogStore } from '@/stores/changelogStore'
+import LatestUpdateCard from '@/components/home/LatestUpdateCard.vue'
 export default {
-    props: {
-        updates: { type: Array, required: true }
-    },
+    setup: () => ({store: useChangelogStore()}),
+    data: () => ({numChanges: 3}),
     components: {
         LatestUpdateCard
-    },
-    computed: {
-        latestUpdates() {
-            // Return the last three updates, sorted by date
-            return this.updates.sort((a, b) => {
-                return Date.parse(b.date) - Date.parse(a.date);
-            }).slice(0, 3);
-        }
     }
 }
 </script>
 
 <template>
-    <latest-update-card v-for="update in latestUpdates" v-bind="update" />
+    <latest-update-card v-for="update in store.recentChanges(numChanges)" v-bind="update" />
 </template>
 

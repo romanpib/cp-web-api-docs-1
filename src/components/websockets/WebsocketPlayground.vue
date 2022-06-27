@@ -1,8 +1,19 @@
 <script>
 import WebsocketMessage from './WebsocketMessage.vue';
+import Warning from '@/components/Warning.vue';
 export default {
     components: {
-        WebsocketMessage
+        WebsocketMessage,
+        Warning
+    },
+    data() {
+        return {
+            connected: false,
+            url: 'wss://localhost:5000/v1/api/ws',
+            socket: null,
+            currentMessage: '',
+            messages: []
+        }
     },
     methods: {
         connect() {
@@ -11,14 +22,18 @@ export default {
             }
             this.socket = new WebSocket(this.url);
             this.socket.binaryType = 'blob';
+            this.messages.push({
+                type: 'outbound',
+                message: `Attempting to open a websocket connection to: ${this.url}`
+            });
             this.socket.onopen = () => {
                 this.connected = true;
                 this.socket.addEventListener('message', event => {
                     this.onMessageReceived(event);
                 });
                 this.messages.push({
-                    type: 'outbound',
-                    message: `Connected to websocket server: ${this.url}`
+                    type: 'inbound',
+                    message: 'Connection with server established succesfully'
                 });
             };
         },
@@ -28,10 +43,16 @@ export default {
             }
             this.socket.close();
             this.connected = false;
+            this.messages.push({
+                type: 'inbound',
+                message: `Closed websocket connection to: ${this.url}`
+            });
         },
         sendMessage() {
             if (!this.connected) {
-                console.log('socket not connected');
+                return;
+            }
+            if (!this.currentMessage) {
                 return;
             }
             this.socket.send(this.currentMessage);
@@ -46,28 +67,29 @@ export default {
                 message: message
             })})
         }
-    },
-    data() {
-        return {
-            connected: false,
-            url: 'wss://localhost:5000/v1/api/ws',
-            socket: null,
-            currentMessage: '',
-            messages: [],
-            reader: null
-        }
     }
 }
 </script>
 
 <template>
+    <h3>Websockets Playground</h3>
+    <p>
+        Donec non arcu sollicitudin, hendrerit nisl vitae, ullamcorper ex. Etiam hendrerit nisl viverra lectus
+        lacinia, sed semper ligula sagittis. Etiam efficitur tortor et sem pharetra vulputate. Ut vulputate tristique
+        turpis vitae fringilla.
+    </p>
+    <warning>
+        <span>In order to use the playground, you need to authenticate your session. See the <router-link
+            to='/authentication' style="color: black; font-weight: bold;">authentication</router-link> page for
+        getting started instructions.</span>
+    </warning>
     <div class="playground-container">
         <div class="playground-row">
             <span>URL:</span>
             <input type="url" v-model="this.url" />
             <div class="buttons">
-                <button id="connect" @click="connect">Connect</button>
-                <button id="disconnect" @click="disconnect">Disconnect</button>
+                <button id="connect" v-if="!this.connected" @click="connect">Connect</button>
+                <button id="disconnect" v-if="this.connected" @click="disconnect">Disconnect</button>
             </div>
         </div>
         <div class="playground-row">
@@ -94,8 +116,8 @@ export default {
 
 .playground-row {
     display: flex;
-    flex-direction: row;
     flex: 1;
+    flex-direction: row;
     padding-block: 0.5rem ;
     gap: 1rem;
 }
@@ -105,12 +127,12 @@ export default {
 }
 
 .playground-row input {
-    flex: 5;
+    flex: 8;
     padding-inline: 1rem;
     border: 1px solid #e0e0e0;
 }
 
-.playground-row .buttons {
+.buttons {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -118,10 +140,11 @@ export default {
     flex: 1;
 }
 
-.playground-container button {
+.buttons button {
+    width: 100%;
     border: none;
-    padding: 0.5rem 1rem;
     color: white;
+    padding: 0.5rem 1rem;
 }
 
 button#connect {
@@ -141,5 +164,6 @@ button#send {
     height: 600px;
     background-color: #f5f5f5;
     overflow-y: scroll;
+    overflow-x: auto;
 }
 </style>

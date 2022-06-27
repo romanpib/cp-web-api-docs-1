@@ -11,11 +11,7 @@ export default {
         }
     },
     methods: {
-        onSectionSelect(event) {
-            this.$emit('sectionClicked', event.target.href.split('#')[1]);
-        }
-    },
-    emits: ['sectionClicked']
+    }
 }
 </script>
 
@@ -23,8 +19,7 @@ export default {
     <template v-for="section in sections">
         <h3 class="section">{{ section.category }}</h3>
         <div class="subsections">
-            <a v-for="item in section.titles" @click="onSectionSelect" :href="`#${item.id}`"
-                :class="(item.id === this.activeSection) ? 'active' : null">{{ item.title }}</a>
+            <a v-for="item in section.titles" :class="(item.id === this.activeSection) ? 'active' : null" :href="`#${item.id}`">{{ item.title }}</a>
         </div>
     </template>
 </template>
@@ -46,6 +41,7 @@ export default {
     display: block;
     font-size: small;
     padding: 0.75rem 1.5rem;
+    cursor: pointer;
 }
 
 .subsections a.active {

@@ -1,5 +1,4 @@
 <script>
-import { changelog } from '@/docs/changelog';
 import BaseView from '@/views/base-views/BaseView.vue'
 import ExpandableCard from '@/components/ExpandableCard.vue'
 import LatestUpdatesList from '@/components/home/LatestUpdatesList.vue'
@@ -10,9 +9,7 @@ export default {
     ExpandableCard,
     LatestUpdatesList
   },
-  data() {
-    return {
-      changelog: changelog,
+  data: () => ({
       cards: [
         {
           title: 'How to use this guide',
@@ -31,8 +28,7 @@ export default {
           content: 'This is the home page.'
         }
       ]
-    }
-  }
+    })
 }
 </script>
 
@@ -60,7 +56,7 @@ export default {
         <h2>Latest Updates</h2>
         <router-link to="/changelog">Changelog</router-link>
       </div>
-      <latest-updates-list :updates="this.changelog" />
+      <latest-updates-list />
     </template>
   </base-view>
 </template>

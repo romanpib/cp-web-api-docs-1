@@ -1,5 +1,13 @@
+<script>
+export default {
+    props: {
+        reverseWrap: {type: Boolean, required: false, default: false}
+    }
+}
+</script>
+
 <template>
-    <div class="container">
+    <div :class="(reverseWrap) ? 'container reverse' : 'container'">
         <div class="content">
             <slot name="content"></slot>
         </div>
@@ -41,6 +49,19 @@
         width: inherit;
         padding-inline: 2rem;
         padding-top: 0;
+    }
+
+    .container.reverse {
+        flex-direction: column-reverse;
+    }
+
+    .container.reverse .content {
+        padding-block: 0;
+        padding-bottom: 2.5rem;
+    }
+
+    .container.reverse .aside {
+        padding-top: 2.5rem;
     }
 }
 </style>

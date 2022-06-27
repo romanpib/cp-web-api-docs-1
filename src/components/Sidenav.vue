@@ -14,6 +14,14 @@ export default {
         dropdownIndicator.classList.remove('fa-chevron-right')
         dropdownIndicator.classList.add('fa-chevron-down')
       }
+    },
+    onEndpointsClicked() {
+      this.dropdownIsActive != this.dropdownIsActive
+    }
+  },
+  data() {
+    return {
+      dropdownIsActive: false
     }
   }
 }
@@ -30,9 +38,9 @@ export default {
     <router-link to="/">Home</router-link>
     <router-link to="/quickstart">Quickstart</router-link>
     <router-link to="/authentication">Authentication</router-link>
-    <a @click="toggleEndpointsDropdown">Endpoints Explorer <i class="fa-solid fa-chevron-right"></i></a>
+    <a @click="toggleEndpointsDropdown" :class="(this.dropdownIsActive) ? 'router-link-exact-active' : null" >Endpoints Explorer <i class="fa-solid fa-chevron-right"></i></a>
     <div id='endpoints-dropdown'>
-      <router-link to="/endpoints">Available Endpoints</router-link>
+      <router-link to="/endpoints" @click="onEndpointsClicked" >Available Endpoints</router-link>
       <a href="https://interactivebrokers.github.io/cpwebapi/swagger.json" target="_blank">Swagger</a>
       <a href="https://www.interactivebrokers.com/api/doc.html" target="_blank">DOC Style</a>
     </div>

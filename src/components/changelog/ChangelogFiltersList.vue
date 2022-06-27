@@ -1,41 +1,31 @@
 <script>
-import ChangelogFilter from './ChangelogFilter.vue';
+import { useChangelogStore } from '@/stores/changelogStore';
+import ChangelogFilter from '@/components/changelog/ChangelogFilter.vue';
 export default {
+    setup: () => ({store: useChangelogStore()}),
     components: {
         ChangelogFilter
-    },
-    props: {
-        filters: { type: Array, required: true }
-    },
-    methods: {
-        onFilterClickedHandler(filter) {
-            this.activeFilters.includes(filter)
-                ? this.activeFilters = this.activeFilters.filter(tag => tag !== filter)
-                : this.activeFilters.push(filter);
-            this.$emit('filterClick', this.activeFilters);
-        }
-    },
-    data() {
-        return {
-            activeFilters: []
-        }
     }
 }
 </script>
 
 <template>
+    <div class="header">
+        <h2>Filter changes</h2>
+        <a v-if="store.activeFilters.length != 0" @click="store.clearFilters">Clear all</a>
+    </div>
     <div class="changelog-filters-list">
         <changelog-filter 
-            v-for="(filter, index) in filters"
+            v-for="(filter, index) in store.changelogTags"
             :tag="filter"
-            :isActive="this.activeFilters.includes(filter)" 
-            :key="index" 
-            @click="onFilterClickedHandler(filter)" 
+            :isActive="store.activeFilters.includes(filter)"
+            :key="index"
+            @click="store.toggleFilter(filter)" 
         />
     </div>
 </template>
 
-<style>
+<style scoped>
 .changelog-filters-list {
     display: flex;
     flex-wrap: wrap;
@@ -43,6 +33,21 @@ export default {
 }
 
 .changelog-filters-list > *{
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.header a {
+    text-decoration: underline;
+    color: #db1222;
+    font-size: small;
+    font-weight: bold;
     cursor: pointer;
 }
 </style>

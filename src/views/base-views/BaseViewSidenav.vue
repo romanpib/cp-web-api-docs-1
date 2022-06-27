@@ -11,16 +11,16 @@
 
 <style scoped>
 .container {
-    display: flex;
+    flex: 1;
     flex-direction: row;
     justify-content: space-between;
     overflow: auto;
+    margin-right: 300px;
 }
 
 .content {
     flex: 1;
     padding: 2.5rem 2rem;
-    margin-right: 300px;
 }
 
 .aside {
@@ -35,6 +35,10 @@
 }
 
 @media only screen and (max-width: 1100px) {
+    .container {
+        margin-right: 0;
+    }
+
     .aside {
         display: none;
     }

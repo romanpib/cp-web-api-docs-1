@@ -1,5 +1,6 @@
 <script>
-import ChangelogFilter from './ChangelogFilter.vue';
+import ChangelogFilter from '@/components/changelog/ChangelogFilter.vue';
+
 export default {
     props: {
         date: { type: String, required: true },
@@ -12,49 +13,53 @@ export default {
     },
     computed: {
         humanReadableDate() {
-            let date = new Date(this.date);
-            return date.toDateString();
+            // Convert the date to the format "Saturday, January 1, 2020"
+            const date = new Date(this.date);
+            const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+            const month = date.toLocaleDateString('en-US', { month: 'long' });
+            const dayNum = date.getDate();
+            const dayNumPostfix = dayNum % 10 === 1 && dayNum !== 11 ? 'st' : dayNum % 10 === 2 && dayNum !== 12 ? 'nd' : dayNum % 10 === 3 && dayNum !== 13 ? 'rd' : 'th';
+            const year = date.getFullYear();
+            return `${day}, ${month} ${dayNum}${dayNumPostfix}, ${year}`;
         }
     }
 }
 </script>
 
 <template>
-    <div class="section-container">
-        <div class="section-header">
-            <h3>{{ humanReadableDate }}</h3>
-            <div class="tags">
-                <span v-if="tags.length == 0">No tags</span>
-                <changelog-filter v-for="tag in tags" :tag="tag" />
-            </div>
+    <div class="header">
+        <h3>{{ this.humanReadableDate }}</h3>
+        <div class="changelog-tags">
+            <changelog-filter v-for="tag in tags" :tag="tag" />
         </div>
-        <p>{{ description }}</p>
-        <ul>
-            <li v-for="change in changes">{{ change }}</li>
-        </ul>
-        <hr>
     </div>
+    <p>{{ description }}</p>
+    <ul>
+        <li v-for="change in changes">{{ change }}</li>
+    </ul>
+    <hr>
 </template>
 
-<style>
-.section-header {
+<style scoped>
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-.section-header h3 {
-    margin: 0;
+.header h3 {
+    font-size: large;
     font-weight: normal;
 }
-
-.section-header .tags {
+.header .changelog-tags {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 0.5rem;
+    overflow: hidden;
 }
-
-.section-container hr {
+.header .changelog-tags > * {
+    cursor: default;
+}
+hr {
     margin-block: 2rem;
     height: 1px;
     border: 0;
