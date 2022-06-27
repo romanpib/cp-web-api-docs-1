@@ -44,5 +44,10 @@ export default {
 .swagger-ui .info {
     display: none;
 }
-
+.swagger-ui .opblock-tag {
+    padding: 0.5rem 0rem;
+    padding-right: 1px;
+    font-size: large;
+    border-bottom: 0;
+}
 </style>

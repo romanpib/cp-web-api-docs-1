@@ -1,32 +1,3 @@
-<script>
-export default {
-  methods: {
-    toggleEndpointsDropdown() {
-      const dropdown = this.$el.querySelector('#endpoints-dropdown')
-      const dropdownIndicator = this.$el.querySelector('i')
-      if (dropdown.style.display === 'block') {
-        dropdown.style.display = 'none'
-        dropdownIndicator.classList.remove('fa-chevron-down')
-        dropdownIndicator.classList.add('fa-chevron-right')
-      }
-      else {
-        dropdown.style.display = 'block'
-        dropdownIndicator.classList.remove('fa-chevron-right')
-        dropdownIndicator.classList.add('fa-chevron-down')
-      }
-    },
-    onEndpointsClicked() {
-      this.dropdownIsActive != this.dropdownIsActive
-    }
-  },
-  data() {
-    return {
-      dropdownIsActive: false
-    }
-  }
-}
-</script>
-
 <template>
   <nav>
     <div id="brand">
@@ -38,12 +9,7 @@ export default {
     <router-link to="/">Home</router-link>
     <router-link to="/quickstart">Quickstart</router-link>
     <router-link to="/authentication">Authentication</router-link>
-    <a @click="toggleEndpointsDropdown" :class="(this.dropdownIsActive) ? 'router-link-exact-active' : null" >Endpoints Explorer <i class="fa-solid fa-chevron-right"></i></a>
-    <div id='endpoints-dropdown'>
-      <router-link to="/endpoints" @click="onEndpointsClicked" >Available Endpoints</router-link>
-      <a href="https://interactivebrokers.github.io/cpwebapi/swagger.json" target="_blank">Swagger</a>
-      <a href="https://www.interactivebrokers.com/api/doc.html" target="_blank">DOC Style</a>
-    </div>
+    <router-link to="/endpoints">Endpoints Explorer</router-link>
     <router-link to="/websockets">Websockets</router-link>
     <router-link to="/workflows">Workflows</router-link>
     <router-link to="/changelog">Changelog</router-link>
@@ -104,14 +70,5 @@ h6 {
   padding-block: 1.25rem;
   display: flex;
   flex-direction: column;
-}
-
-#endpoints-dropdown {
-  display: none;
-  font-size: small;
-}
-
-#endpoints-dropdown a {
-  padding-left: 3rem;
 }
 </style>

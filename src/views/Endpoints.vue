@@ -1,14 +1,16 @@
 <script>
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
-import BaseViewNoAside from "@/views/base-views/BaseViewNoAside.vue";
+import BaseView from "@/views/base-views/BaseView.vue";
 import AccountToggle from "@/components/AccountToggle.vue";
 import EndpointsList from '@/components/endpoints/EndpointsList.vue';
+import DownloadCard from '../components/DownloadCard.vue';
 export default {
   components: {
-    BaseViewNoAside,
+    BaseView,
     AccountToggle,
-    EndpointsList
-  },
+    EndpointsList,
+    DownloadCard
+},
   setup() {
     return {
       store: useAccountTypeStore(),
@@ -18,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <base-view-no-aside>
+  <base-view>
     <template #content>
       <div class="content-header">
         <h2>Endpoints Explorer</h2>
@@ -37,7 +39,12 @@ export default {
       </p>
       <endpoints-list :accountType="this.store.accountType" />
     </template>
-  </base-view-no-aside>
+    <template #aside>
+      <h2>Resources</h2>
+      <download-card :title="'Download swagger.json'" :url="'https://interactivebrokers.github.io/cpwebapi/swagger.json'" :content="'Download the swagger.json file'"/>
+      <download-card :title="'Doc style endpoints'" :url="'https://www.interactivebrokers.com/api/doc.html'" :content="'DOC style endpoints'"/>
+    </template>
+  </base-view>
 </template>
 
 <style>
