@@ -30,7 +30,7 @@ export default {
 <template>
   <nav>
     <div id="brand">
-      <a href="/">
+      <a href="./">
         <img src="@/assets/ib-logo-text-black.svg" alt="ibkr-logo">
         <h6>Client Portal API Documentation</h6>
       </a>
