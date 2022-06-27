@@ -1,15 +1,15 @@
 <script>
-import BaseView from './BaseView.vue'
+import BaseView from '@/views/base-views/BaseView.vue'
 import ExpandableCard from '@/components/ExpandableCard.vue'
-import LatestUpdateCard from '@/components/LatestUpdateCard.vue'
+import LatestUpdatesList from '@/components/home/LatestUpdatesList.vue'
+
 export default {
   components: {
     BaseView,
     ExpandableCard,
-    LatestUpdateCard
+    LatestUpdatesList
   },
-  data() {
-    return {
+  data: () => ({
       cards: [
         {
           title: 'How to use this guide',
@@ -27,39 +27,13 @@ export default {
           title: 'Comparison between CP API and TWS API',
           content: 'This is the home page.'
         }
-      ],
-      updates: [
-        {
-          title: 'New API documentation released',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem.',
-          updateDate: '2022-01-01'
-        },
-        {
-          title: 'Lorem Ipsum',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper.',
-          updateDate: '2022-05-27'
-        },
-        {
-          title: 'Lorem Ipsum and a veeeeeryyyy long title',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.',
-          updateDate: '2022-06-01 12:00:00'
-        },
       ]
-    }
-  },
-  computed: {
-    latestUpdates() {
-      // Sort the updates by date and return only the latest 5
-      return this.updates.sort((a, b) => {
-        return Date.parse(b.updateDate) - Date.parse(a.updateDate)
-      }).slice(0, 3)
-    }
-  }
+    })
 }
 </script>
 
 <template>
-  <BaseView>
+  <base-view>
     <template #content>
       <h2>Client Portal Web API Documentation</h2>
       <p>
@@ -75,36 +49,30 @@ export default {
         <li>Enjoy access to data that's not available through our existing APIs, including PortfolioAnalyst, Statements,
           Transaction History (up to 90 days) and more.</li>
       </ul>
-      <ExpandableCard v-for="card in cards" v-bind="card" />
+      <expandable-card v-for="card in cards" v-bind="card" />
     </template>
     <template #aside>
-      <div class="latest-changes-header">
+      <div class="latest-updates-header">
         <h2>Latest Updates</h2>
         <router-link to="/changelog">Changelog</router-link>
       </div>
-      <LatestUpdateCard v-for="update in latestUpdates" v-bind="update" />
+      <latest-updates-list />
     </template>
-  </BaseView>
+  </base-view>
 </template>
 
 <style>
-.features-list {
-  margin-bottom: 2rem;
-  line-height: 1rem;
+.latest-updates-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
-.latest-changes-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.latest-changes-header a {
-  text-decoration: underline;
-  color: #db1222;
-  font-size: small;
-  font-weight: bold;
+.latest-updates-header a {
+    text-decoration: underline;
+    color: #db1222;
+    font-size: small;
+    font-weight: bold;
 }
 </style>

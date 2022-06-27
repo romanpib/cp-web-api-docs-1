@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Quickstart from '../views/Quickstart.vue'
 import Authentication from '../views/Authentication.vue'
@@ -52,8 +52,11 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
+  history: createWebHistory('/cp-web-api-docs'),
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    return { top: 0 }
+  }
 })
 
 export default router

@@ -10,12 +10,12 @@
 
 <template>
     <div class="download-card">
-        <div class="header">
-            <a :href="url" target="_blank">
-            <span>{{ title }}</span>
-            <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
-            </a>
-        </div>
+        <a :href="url" target="_blank">
+            <div class="header">
+                <span>{{ title }}</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+        </a>
         <div class="content">
             <p>{{ content }}</p>
         </div>
@@ -35,6 +35,8 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        gap: 1rem;
+
         background-color: #344D78;
         color: white;
         padding: 1rem 0.75rem;

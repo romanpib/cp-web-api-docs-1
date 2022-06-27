@@ -1,28 +1,31 @@
 <script>
-import BaseView from './BaseView.vue'
+import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
+import BaseView from '@/views/base-views/BaseView.vue'
 import DownloadCard from '@/components/DownloadCard.vue'
-import AuthenticationIndividual from '@/components/AuthenticationIndividual.vue'
-import AuthenticationInstitutional from '@/components/AuthenticationInstitutional.vue'
+import AuthenticationIndividual from '@/components/authentication/AuthenticationIndividual.vue'
+import AuthenticationInstitutional from '@/components/authentication/AuthenticationInstitutional.vue'
+import AccountToggle from '@/components/AccountToggle.vue'
 export default {
   components: {
     BaseView,
     DownloadCard,
     AuthenticationIndividual,
-    AuthenticationInstitutional
+    AuthenticationInstitutional,
+    AccountToggle,
+  },
+  computed: {
+    activeTab() {
+      const store = useAccountTypeStore()
+      return (store.accountType == 'individual') ? 'AuthenticationIndividual' : 'AuthenticationInstitutional';
+    },
   },
   data() {
     return {
-      activeTab: 'AuthenticationIndividual',
       downloads: [
         {
           title: 'Gateway',
           content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem.',
           url: 'https://www.interactivebrokers.com/en/?f=%2Fen%2Ftrading%2Fibgateway-stable.php'
-        },
-        {
-          title: 'OLD CP WEB API',
-          url: 'https://interactivebrokers.github.io/cpwebapi/index.html',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper.',
         },
         {
           title: 'TWS API',
@@ -33,93 +36,34 @@ export default {
           title: 'Java',
           content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.',
           url: 'https://java.com/en/'
-        },
-        {
-          title: 'grgaresgh5wbtresh',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.',
-          url: 'https://interactivebrokers.github.io/tws-api/introduction.html'
-        },
+        }
       ]
     }
   },
 }
-
-
 </script>
 
 <template>
-  <BaseView>
+  <base-view>
     <template #content>
       <div class="page_header">
-      <h2>Authentication</h2>
-      <div class="toggle_switch">
-        <button class="AuthenticationIndividual" @click="activeTab = 'AuthenticationIndividual'">Individual</button>
-        <button class="AuthenticationInstitutional" @click="activeTab = 'AuthenticationInstitutional'">Institutional</button>
-        </div>
+        <h2>Authentication</h2>
+        <account-toggle />
       </div>
-      
-
-  <keep-alive>
-    <component :is="activeTab"></component>
-  </keep-alive>
+      <component :is="activeTab" />
     </template>
     <template #aside>
-      <div class="download-header">
-        <h2>Resources</h2>
-      </div>
-      <DownloadCard v-for="download in downloads" v-bind="download" />
+      <h2>Resources</h2>
+      <download-card v-for="download in downloads" v-bind="download" />
     </template>
-  </BaseView>
+  </base-view>
 </template>
 
 <style>
-.page_header{
+.page_header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
-  
+  align-items: center;
 }
-
-.toggle_switch{
-  margin: 0;
-  padding: 0;
-  background-color: #C4C4C4;
-  border-radius: 40px;
-  width: 200px;
-  height: 30px;
-}
-
-.AuthenticationInstitutional{
-  padding: 0px;
-  background-color: #344D78;
-  color: white;
-  opacity: 1;
-  border-radius: 40px;
-  height: 30px;
-  width: 100px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-.AuthenticationIndividual{
-  padding: 0px;
-  background-color: #C4C4C4;
-  opacity: 1;
-  border-radius: 40px;
-  height: 30px;
-  width: 100px;
-  color: grey;
-  border: none;
-  cursor: pointer;
-}
-
-
-
-.AuthenticationIndividual:focus{
-  background-color: #344D78;
-  color: white;
-  font-weight: bold;
-}
-
 </style>
