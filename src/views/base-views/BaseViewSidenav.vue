@@ -1,5 +1,15 @@
+<script>
+import Navbar from '../../components/Navbar.vue'
+export default {
+    components: {
+        Navbar
+    }
+}
+</script>
+
 <template>
     <div class="container">
+        <navbar />
         <div class="content">
             <slot name="content"></slot>
         </div>
@@ -10,41 +20,41 @@
 </template>
 
 <style scoped>
-.container {
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-between;
-    overflow: auto;
-    margin-right: 300px;
+
+.container:not(:nth-child(1)) {
+    padding-block: 2rem;
 }
 
 .content {
-    flex: 1;
-    padding: 2.5rem 2rem;
+    padding: 2rem;
 }
 
 .aside {
-    position: fixed;
-    top: 0;
-    right: 0;
-    padding-top: 3rem;
-    width: 300px;
-    background-color: #f5f5f5;
-    height: 100vh;
-    overflow-y: auto;
+    display: none;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (min-width: 1200px) {
     .container {
-        margin-right: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .content {
+        flex: 1;
+        overflow: hidden;
+        padding-top: 2rem;
     }
 
     .aside {
-        display: none;
-    }
-
-    .content {
-        margin-right: 0;
+        width: 300px;
+        background-color: #f5f5f5;
+        overflow-y: auto;
+        position: sticky;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        display: block;
+        padding-top: 2.75rem;
     }
 }
 </style>

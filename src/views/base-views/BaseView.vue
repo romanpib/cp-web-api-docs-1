@@ -1,13 +1,18 @@
 <script>
+import Navbar from '../../components/Navbar.vue'
 export default {
     props: {
-        reverseWrap: {type: Boolean, required: false, default: false}
+        reverseWrap: { type: Boolean, required: false, default: false }
+    },
+    components: {
+        Navbar
     }
 }
 </script>
 
 <template>
     <div :class="(reverseWrap) ? 'container reverse' : 'container'">
+        <navbar />
         <div class="content">
             <slot name="content"></slot>
         </div>
@@ -18,50 +23,31 @@ export default {
 </template>
 
 <style scoped>
-.container {
-    display: flex;
-    flex-direction: row;
-}
-
 .content {
-    flex: 1;
-    padding: 2.5rem 2rem;
+    padding-inline: 1rem;
 }
 
 .aside {
-    width: 300px;
-    padding-block: 2.5rem;
-    padding-right: 2rem;
+    padding-inline: 1rem;
+    padding-bottom: 2rem;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (min-width: 1100px) {
     .container {
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
     }
-
+    
     .content {
-        width: inherit;
-        padding-right: 2rem;
-        padding-bottom: 0;
+        padding-top: 2rem;
+        flex: 1;
     }
 
     .aside {
-        width: inherit;
-        padding-inline: 2rem;
-        padding-top: 0;
-    }
-
-    .container.reverse {
-        flex-direction: column-reverse;
-    }
-
-    .container.reverse .content {
-        padding-block: 0;
-        padding-bottom: 2.5rem;
-    }
-
-    .container.reverse .aside {
-        padding-top: 2.5rem;
+        width: 300px;
+        padding-top: 2rem;
+        padding-right: 2rem;
+        padding-left: 0rem;
     }
 }
 </style>

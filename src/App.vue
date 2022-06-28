@@ -1,17 +1,14 @@
 <script>
-import Sidenav from '@/components/Sidenav.vue'
+import Navbar from '@/components/Navbar.vue'
 export default {
   components: {
-    Sidenav
+    Navbar
   }
 }
 </script>
 
 <template>
-  <sidenav />
-  <main>
-    <router-view />
-  </main>
+  <router-view />
 </template>
 
 
@@ -29,9 +26,5 @@ body {
   margin: 0;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-
-main {
-  padding-left: 250px;
 }
 </style>
