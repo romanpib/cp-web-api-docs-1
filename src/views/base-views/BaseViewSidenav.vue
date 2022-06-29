@@ -1,5 +1,5 @@
 <script>
-import Navbar from '../../components/Navbar.vue'
+import Navbar from '@/components/Navbar.vue'
 export default {
     components: {
         Navbar
@@ -10,51 +10,76 @@ export default {
 <template>
     <div class="container">
         <navbar />
-        <div class="content">
-            <slot name="content"></slot>
-        </div>
-        <div class="aside">
-            <slot name="aside"></slot>
+        <div class="main">
+            <div class="content">
+                <slot name="content"></slot>
+            </div>
+            <div class="aside">
+                <slot name="aside"></slot>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-
-.container:not(:nth-child(1)) {
-    padding-block: 2rem;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
 }
 
-.content {
-    padding: 2rem;
+.main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-inline: 1.5rem;
 }
 
 .aside {
     display: none;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 700px) {
     .container {
-        display: flex;
         flex-direction: row;
+        align-items: flex-start;
     }
-    
+
+    .main {
+        flex-direction: column;
+        padding-inline: 2rem;
+    }
+
     .content {
+        padding-block: 2rem;
         flex: 1;
-        overflow: hidden;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .main {
+        flex-direction: row;
+        padding-left: 2rem;
+        padding-right: 0;
+        padding-top: 0;
+    }
+
+    .content {
         padding-top: 2rem;
+        padding-right: 2rem;
     }
 
     .aside {
-        width: 300px;
-        background-color: #f5f5f5;
-        overflow-y: auto;
+        display: block;
         position: sticky;
         top: 0;
         right: 0;
         height: 100vh;
-        display: block;
-        padding-top: 2.75rem;
+        width: 300px;
+        background-color: #F5F5F5;
+        padding-top: 2.5rem;
     }
 }
 </style>

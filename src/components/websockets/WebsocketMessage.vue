@@ -23,8 +23,9 @@ export default {
 .message {
     display: flex;
     flex: row;
-    align-items: center;
+    align-items: baseline;
     padding: 0.5rem 1rem;
     gap: 1rem;
+    word-break: break-all;
 }
 </style>

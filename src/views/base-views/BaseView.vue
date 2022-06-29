@@ -11,43 +11,74 @@ export default {
 </script>
 
 <template>
-    <div :class="(reverseWrap) ? 'container reverse' : 'container'">
+    <div class="container">
         <navbar />
-        <div class="content">
-            <slot name="content"></slot>
-        </div>
-        <div class="aside">
-            <slot name="aside"></slot>
+        <div :class="(reverseWrap) ? 'main reverse' : 'main'">
+            <div class="content">
+                <slot name="content"></slot>
+            </div>
+            <div class="aside">
+                <slot name="aside"></slot>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-.content {
-    padding-inline: 1rem;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-inline: 1.5rem;
+}
+
+.main.reverse {
+    flex-direction: column-reverse;
 }
 
 .aside {
-    padding-inline: 1rem;
+    width: 100%;
     padding-bottom: 2rem;
 }
 
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 700px) {
     .container {
-        display: flex;
         flex-direction: row;
+        align-items: flex-start;
     }
-    
-    .content {
+
+    .container > div {
         padding-top: 2rem;
+    }
+
+    .main {
+        flex: 1;
+        padding-inline: 2rem;
+        flex-direction: column;
+    }
+
+    .content {
         flex: 1;
     }
+}
+
+@media only screen and (min-width: 1200px) {
+    .main {
+        flex-direction: row;
+    }
+
 
     .aside {
         width: 300px;
-        padding-top: 2rem;
-        padding-right: 2rem;
-        padding-left: 0rem;
+        padding-left: 2rem;
     }
 }
 </style>

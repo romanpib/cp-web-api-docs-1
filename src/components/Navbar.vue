@@ -28,10 +28,12 @@ nav {
   top: 0;
   flex-direction: column;
   user-select: none;
+  background-color: #F5F5F5;
+  width: 100%;
 }
 
 nav>div {
-  padding-inline: 1rem;
+  padding-inline: 1.5rem;
 }
 
 nav a {
@@ -40,7 +42,6 @@ nav a {
 
 .branding {
   margin: 0;
-  background-color: #F5F5F5;
   padding-block: 1rem;
 }
 
@@ -70,7 +71,7 @@ nav a {
   align-items: baseline;
 }
 
-.links > * {
+.links>* {
   color: white;
 }
 
@@ -78,5 +79,45 @@ nav a:not(:first-child) {
   display: none;
 }
 
-@media only screen and (min-width: 1100px) {}
+@media only screen and (min-width: 700px) {
+  nav {
+    height: 100vh;
+    width: 250px;
+  }
+
+  nav a:not(:first-child) {
+    display: block;
+  }
+
+  .links {
+    background-color: #F5F5F5;
+    flex-direction: column;
+    padding-top: 0;
+    padding-inline: 0;
+  }
+
+  .links a {
+    width: 100%;
+    color: black;
+    padding-block: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .links a:hover {
+    color: #DB1222;
+  }
+
+  .links a.router-link-exact-active {
+    background-color: #DB1222;
+    color: white;
+  }
+
+  .links i {
+    display: none;
+  }
+
+  .branding {
+    padding-left: 1.5rem;
+  }
+}
 </style>
