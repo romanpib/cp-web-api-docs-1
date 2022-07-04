@@ -61,18 +61,22 @@ nav {
   width: 100%;
 }
 
-nav>div {
-  padding-inline: 1.5rem;
-}
-
 nav a {
   text-decoration: none;
+  color: black;
+}
+
+nav a:hover {
+  color: #DB1222;
+}
+
+nav a.router-link-active {
+  color: white;
 }
 
 .branding {
+  padding: 1rem 1.5rem;
   display: flex;
-  margin: 0;
-  padding-block: 1rem;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -103,10 +107,6 @@ nav a {
 
 .branding a {
   color: black;
-}
-
-.branding a:hover {
-  color: #DB1222;
 }
 
 .links {
