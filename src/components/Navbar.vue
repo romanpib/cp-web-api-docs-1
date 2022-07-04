@@ -1,12 +1,30 @@
+<script>
+import AccountToggle from './AccountToggle.vue';
+export default {
+    methods: {
+        unrollNavbarLinks(event) {
+            // If event target is not an 'a' or 'i', return
+            if (event.target.tagName !== 'A' && event.target.tagName !== 'I') {
+                return;
+            }
+            this.$el.querySelector(".links").classList.toggle("unrolled");
+            this.$el.querySelector(".fa-solid.fa-xmark").classList.toggle("hidden");
+        }
+    },
+    components: { AccountToggle }
+}
+</script>
+
 <template>
   <nav>
     <div class="branding">
-      <a href="./">
+      <a href="./" class="branding-logo">
         <img src="@/assets/ib-logo-text-black.svg" alt="ibkr-logo">
         <h6>Client Portal API Documentation</h6>
       </a>
+      <i class="fa-solid fa-xmark hidden" @click="unrollNavbarLinks"></i>
     </div>
-    <div class="links">
+    <div class="links" @click="unrollNavbarLinks">
       <router-link to="/">Home</router-link>
       <router-link to="/quickstart">Quickstart</router-link>
       <router-link to="/authentication">Authentication</router-link>
@@ -16,6 +34,17 @@
       <router-link to="/changelog">Changelog</router-link>
       <router-link to="/support">Support</router-link>
       <i class="fa-solid fa-chevron-down"></i>
+      <account-toggle />
+    </div>
+    <div class="links-desktop">
+      <router-link to="/">Home</router-link>
+      <router-link to="/quickstart">Quickstart</router-link>
+      <router-link to="/authentication">Authentication</router-link>
+      <router-link to="/endpoints">Endpoints Explorer</router-link>
+      <router-link to="/websockets">Websockets</router-link>
+      <router-link to="/workflows">Workflows</router-link>
+      <router-link to="/changelog">Changelog</router-link>
+      <router-link to="/support">Support</router-link>
     </div>
   </nav>
 </template>
@@ -41,12 +70,30 @@ nav a {
 }
 
 .branding {
+  display: flex;
   margin: 0;
   padding-block: 1rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .branding img {
   width: 10rem;
+}
+
+.branding i.hidden {
+  display: none;
+}
+
+.branding i {
+  font-size: large;
+  display: block;
+  cursor: pointer;
+}
+
+.branding i:hover {
+  color: #DB1222;
 }
 
 .branding h6 {
@@ -64,18 +111,78 @@ nav a {
 
 .links {
   background-color: #db1222;
-  padding-block: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
+  padding-inline: 1.5rem;
 }
 
-.links>* {
+.links > * {
   color: white;
+  cursor: pointer;
 }
 
-nav a:not(:first-child) {
+.links > a.router-link-active {
+  padding-block: 1rem;
+  flex: 1;
+}
+
+.links > .toggle-switch {
+  display: none;
+}
+
+.links:not(.unrolled) > a:not(.router-link-active) {
+  display: none;
+}
+
+.links.unrolled {
+  position: sticky;
+  width: 100%;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 0;
+  z-index: 99;
+}
+
+.links.unrolled > a {
+  width: 100%;
+  color: black;
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+}
+
+.links.unrolled > .toggle-switch {
+  margin-left: 1.5rem;
+  position: fixed;
+  bottom: 5%;
+  display: block;
+}
+
+.links.unrolled > .toggle-switch {
+  display: block;
+}
+
+.links.unrolled > a.router-link-exact-active {
+  background-color: #DB1222;
+  color: white;
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  flex: none;
+}
+
+.links.unrolled > a:hover:not(.router-link-exact-active) {
+  color: #DB1222;
+}
+
+.links.unrolled > i {
+  display: none;
+}
+
+.links-desktop {
   display: none;
 }
 
@@ -90,34 +197,51 @@ nav a:not(:first-child) {
   }
 
   .links {
+    display: none;
+  }
+
+  .links-desktop {
+    padding-block: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
     background-color: #F5F5F5;
     flex-direction: column;
     padding-top: 0;
     padding-inline: 0;
   }
 
-  .links a {
+  .links-desktop a {
     width: 100%;
     color: black;
     padding-block: 1rem;
     padding-left: 1.5rem;
   }
 
-  .links a:hover {
+  .links-desktop a:hover {
     color: #DB1222;
   }
 
-  .links a.router-link-exact-active {
+  .links-desktop a.router-link-exact-active {
     background-color: #DB1222;
     color: white;
   }
 
-  .links i {
+  .links-desktop i {
     display: none;
   }
 
   .branding {
     padding-left: 1.5rem;
+  }
+
+  .branding > i {
+    display: none;
+  }
+
+  .links.unrolled {
+    display: none;
   }
 }
 </style>

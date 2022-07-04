@@ -46,7 +46,7 @@ export default {
 <template>
   <base-view>
     <template #content>
-      <div class="page_header">
+      <div class="content-header">
         <h2>Authentication</h2>
         <account-toggle />
       </div>
@@ -60,10 +60,12 @@ export default {
 </template>
 
 <style>
-.page_header {
+.content-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  word-break: break-all;
+
 }
 </style>

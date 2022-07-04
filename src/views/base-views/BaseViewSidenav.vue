@@ -35,6 +35,7 @@ export default {
     flex-direction: column;
     flex: 1;
     padding-inline: 1.5rem;
+    padding-bottom: 2rem;
 }
 
 .aside {
@@ -50,6 +51,7 @@ export default {
     .main {
         flex-direction: column;
         padding-inline: 2rem;
+        padding-block: 0;
     }
 
     .content {

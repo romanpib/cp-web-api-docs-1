@@ -164,5 +164,6 @@ button#send {
     height: 600px;
     background-color: #f5f5f5;
     overflow: auto;
+    overflow-y: scroll;
 }
 </style>

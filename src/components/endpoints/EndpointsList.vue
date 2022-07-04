@@ -50,4 +50,5 @@ export default {
     font-size: large;
     border-bottom: 0;
 }
+
 </style>

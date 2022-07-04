@@ -24,7 +24,7 @@ export default {
     </div>
 </template>
 
-<style scoped>
+<style>
 .container {
     display: flex;
     flex-direction: column;
@@ -46,10 +46,18 @@ export default {
 
 .aside {
     width: 100%;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.toggle-switch {
+    display: none;
 }
 
 @media only screen and (min-width: 700px) {
+    .toggle-switch {
+        display: block;
+    }
+
     .container {
         flex-direction: row;
         align-items: flex-start;
@@ -75,10 +83,14 @@ export default {
         flex-direction: row;
     }
 
+    .main.reverse {
+        flex-direction: row;
+    }
 
     .aside {
         width: 300px;
         padding-left: 2rem;
+        padding-bottom: 0;
     }
 }
 </style>
