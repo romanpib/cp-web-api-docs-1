@@ -82,6 +82,7 @@ export default {
         width: 300px;
         background-color: #F5F5F5;
         padding-top: 2.5rem;
+        padding-left: 0;
     }
 }
 </style>
