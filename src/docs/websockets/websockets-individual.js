@@ -4,15 +4,15 @@ const websocketsInstitutional = [
         items: [
             {
                 id: 'streaming-data',
-                title: 'Streaming Data',
+                title: 'Streaming Market Data',
                 content: `
                 <p>
-                    Donec quis venenatis mi, in finibus neque. Vestibulum molestie felis vel metus tempus scelerisque. Suspendisse in magna viverra, sollicitudin lacus sed, porttitor libero. Nam faucibus risus ligula, eu ultrices risus lacinia et. Nunc porttitor magna eget euismod dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus pulvinar tristique elit, consectetur consectetur elit facilisis vel.  
+                    Streaming level 1, top-of-the-book, market data is available for all instruments using the Client Portal API. For streaming data the topic <b>smd+conid+{arguments}</b> is used. 
+                    The conid is the instrument's unique identifier within Interactive Brokers' database. By default conIDs will use SMART routing, where supported. If you wish to specify the exchange, the conid should be modified into the format <b>conid@EXCHANGE</b>, where EXCHANGE is the exchange on which the contract trades.
+                    In order to find the conid for a particular instrument, the endpoint '/iserver/secdef/search' can be used.
+
                 </p>
-                <p>
-                    Donec quis venenatis mi, in finibus neque. Vestibulum molestie felis vel metus tempus scelerisque. Suspendisse in magna viverra, sollicitudin lacus sed, porttitor libero. Nam faucibus risus ligula, eu ultrices risus lacinia et. finibus neque. Vestibulum molestie felis vel metus tempus scelerisque. Suspendisse in magna.
-                </p>
-                <h5>Request close price and day percent change for APPL contract</h5>
+                <h5>Request streaming close price and day percent change for APPL contract</h5>
                 <p>
                     In order to request streaming market data, a subscription request must first be sent for the specific contract. In this case, we know that the APPL@NASDAQ contract
                     has a contract ID of 265598. In addition, we must also specify the fields that should be returned. In this case we are interested in fields 31 - close price, and 83 - the % change, or difference between the last price and the close price for the previous day.
@@ -28,7 +28,9 @@ const websocketsInstitutional = [
             {
                 id: 'historical-data',
                 title: 'Historical Data',
-                content: 'Donec quis venenatis mi, in finibus neque. Vestibulum molestie felis vel metus tempus scelerisque. Suspendisse in magna viverra, sollicitudin lacus sed, porttitor libero. Nam faucibus risus ligula, eu ultrices risus lacinia et. Nunc porttitor magna eget euismod dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus pulvinar tristique elit, consectetur consectetur elit facilisis vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla a luctus turpis. Cras elementum tincidunt dictum. Vivamus euismod tempor dolor rhoncus pulvinar. Fusce a metus quis sem ullamcorper iaculis nec sit amet dolor. Etiam ac vestibulum urna, ac consequat nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at interdum dolor, ut volutpat odio. Sed et erat sagittis, interdum elit id, tristique elit.',
+                content: `
+                
+                `,
             } 
         ]
     },
