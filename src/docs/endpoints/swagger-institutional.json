@@ -1538,57 +1538,6 @@
                 }
             }
         },
-        "/iserver/account/{accountId}/order": {
-            "post": {
-                "summary": "Place Order (Deprecated)",
-                "deprecated": true,
-                "description": "This end-point is going to be deprecated, you can use /iserver/account/{accountId}/orders, just pass one order\nin the array, the order structure will be same.\nPlease note here, sometimes this endpoint alone can't make sure you submit the order successfully,\nyou could receive some questions in the response, you have to to answer them in order to submit the order\nsuccessfully. You can use \"/iserver/reply/{replyid}\" endpoint to answer questions\n",
-                "tags": [
-                    "Order"
-                ],
-                "parameters": [
-                    {
-                        "name": "accountId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string",
-                        "description": "account id"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "order request info",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/order-request"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "returns an array",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "string"
-                                    },
-                                    "message": {
-                                        "type": "array",
-                                        "description": "Please note here, if the message is a question, you have to reply to question in order to submit\nthe order successfully. See more in the \"/iserver/reply/{replyid}\" endpoint.\n",
-                                        "items": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/iserver/account/{accountId}/orders": {
             "post": {
                 "summary": "Place Orders",
@@ -1761,108 +1710,6 @@
                                 },
                                 "statusCode": {
                                     "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/iserver/account/{accountId}/order/whatif": {
-            "post": {
-                "summary": "Preview Order (Deprecated)",
-                "deprecated": true,
-                "description": "This end-point is going to be deprecated, you can use /iserver/account/{accountId}/orders/whatif,\njust pass one order in the array, the order structure will be same.\nThis endpoint allows you to preview order without actually submitting the order and you can get\ncommission information in the response.\n",
-                "tags": [
-                    "Order"
-                ],
-                "parameters": [
-                    {
-                        "name": "accountId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string",
-                        "description": "account id"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "order info",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/order-request"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "returns an object",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "amount": {
-                                    "type": "object",
-                                    "properties": {
-                                        "amount": {
-                                            "type": "string",
-                                            "description": "for example 23,000 USD"
-                                        },
-                                        "commission": {
-                                            "type": "string",
-                                            "description": "for example 1.1 ... 1.2 USD"
-                                        },
-                                        "total": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "equity": {
-                                    "type": "object",
-                                    "properties": {
-                                        "current": {
-                                            "type": "string"
-                                        },
-                                        "change": {
-                                            "type": "string"
-                                        },
-                                        "after": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "initial": {
-                                    "type": "object",
-                                    "properties": {
-                                        "current": {
-                                            "type": "string"
-                                        },
-                                        "change": {
-                                            "type": "string"
-                                        },
-                                        "after": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "maintenance": {
-                                    "type": "object",
-                                    "properties": {
-                                        "current": {
-                                            "type": "string"
-                                        },
-                                        "change": {
-                                            "type": "string"
-                                        },
-                                        "after": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "warn": {
-                                    "type": "string"
-                                },
-                                "error": {
-                                    "type": "string"
                                 }
                             }
                         }
@@ -2224,10 +2071,6 @@
                                     "87": {
                                         "type": "string",
                                         "description": "Volume - Volume for the day, formatted with 'K' for thousands or 'M' for millions. For higher precision volume refer to field 7762."
-                                    },
-                                    "87_raw (deprecated)": {
-                                        "type": "string",
-                                        "description": "Raw Volume - Volume for the day, provided in long form without formatted with K/M. This field value is deprecated, for high precision volume refer to field 7762."
                                     },
                                     "88": {
                                         "type": "string",
@@ -6989,10 +6832,6 @@
                         "TRUST",
                         "DEMO"
                     ]
-                },
-                "tradingType": {
-                    "type": "string",
-                    "description": "UNI - Deprecated property"
                 },
                 "faclient": {
                     "type": "boolean",

@@ -1579,10 +1579,6 @@
                                         "type": "string",
                                         "description": "Volume - Volume for the day, formatted with 'K' for thousands or 'M' for millions. For higher precision volume refer to field 7762."
                                     },
-                                    "87_raw (deprecated)": {
-                                        "type": "string",
-                                        "description": "Raw Volume - Volume for the day, provided in long form without formatted with K/M. This field value is deprecated, for high precision volume refer to field 7762."
-                                    },
                                     "88": {
                                         "type": "string",
                                         "description": "Bid Size - The number of contracts or shares bid for at the bid price. For US stocks, the number displayed is divided by 100."
@@ -6343,10 +6339,6 @@
                         "TRUST",
                         "DEMO"
                     ]
-                },
-                "tradingType": {
-                    "type": "string",
-                    "description": "UNI - Deprecated property"
                 },
                 "faclient": {
                     "type": "boolean",
