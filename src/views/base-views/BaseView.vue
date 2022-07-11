@@ -38,6 +38,7 @@ export default {
     flex-direction: column;
     flex: 1;
     padding-inline: 1.5rem;
+    padding-bottom: 3rem;
 }
 
 .main.reverse {
