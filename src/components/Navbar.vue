@@ -58,7 +58,7 @@ nav {
   flex-direction: column;
   user-select: none;
   background-color: #F5F5F5;
-  width: 100vh;
+  width: 100%;
 }
 
 nav a {
