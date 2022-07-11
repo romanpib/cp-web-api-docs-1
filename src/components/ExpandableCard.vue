@@ -2,21 +2,27 @@
 export default {
     props: {
         title: { type: String, required: true },
-        content: { type: String, required: true }
+        content: { type: String, required: true },
+        isExpanded: { type: Boolean, default: false, required: false },
+    },
+    data() {
+        return {
+            isHidden: this.isExpanded
+        }
     },
     methods: {
-        toggleExpanded() {
+        toggleContent() {
             let cardContent = this.$el.querySelector('.content');
+            cardContent.hidden = !this.isHidden;
+            this.toggleDropdownStatusIcon();
+            this.isHidden = !this.isHidden;
+        },
+        toggleDropdownStatusIcon() {
             let icon = this.$el.querySelector('i');
-            if (cardContent.hidden) {
-                cardContent.hidden = false;
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            }
-            else {
-                cardContent.hidden = true;
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
+            if (this.isHidden) {
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            } else {
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
             }
         }
     }
@@ -25,12 +31,12 @@ export default {
 
 <template>
     <div class="expandable-card">
-        <div class="header" @click="toggleExpanded">
+        <div class="header" @click="toggleContent">
             <span>{{ title }}</span>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
-        <div class="content" hidden>
-            <p>{{ content }}</p>
+        <div class="content" :hidden="!isHidden">
+            <span v-html="content"></span>
         </div>
     </div>
 </template>

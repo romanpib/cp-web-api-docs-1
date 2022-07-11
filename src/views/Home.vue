@@ -13,39 +13,75 @@ export default {
       cards: [
         {
           title: 'How to use this guide',
-          content: 'The aim of this guide is to provide a general overview of the functionalities available to Interactive Brokers clients using Client Portal API. It also aims to provide answers to most common questions and issues encountered by our clients while working with the API.',
+          content: `
+          <p>
+            The aim of this guide is to provide a general overview of the functionalities available to Interactive Brokers clients using Client Portal API. It also aims to provide answers to most common questions and issues encountered by our clients while working with the API.
+          </p>
+          `,
         },
         {
           title: 'How does Client Portal API differ from TWS API?',
-          content: 'Client Portal API is a HTTP based API, that is, requests to the IBKR backed are sent over the internet. In comparison, TWS API is designed to programatically interact with the Trader Workstation software. In order to use Client Portal API, a lightweights API gateway is required, for TWS API, a working installation of TWS is required.'
+          content: `
+          <p>
+            Client Portal API is a HTTP based API, that is, requests to the IBKR backed are sent over the internet. In comparison, TWS API is designed to programatically interact with the Trader Workstation software. In order to use Client Portal API, a lightweights API gateway is required, for TWS API, a working installation of TWS is required.          
+          </p>
+          `
         },
         {
           title: 'Are there any additional fees for using Client Portal API?',
-          content: 'There are no additional fees associated with the use of Client Portal API. In addition, there are no minimum funding requirements for accounts, however, please note that funding may be required where clients wish to receive realtime market data. For more information on market data fees and choosing the correct market data subscription, please see the workflows page of this guide.'
+          content: `
+          <p>
+            There are no additional fees associated with the use of Client Portal API. In addition, there are no minimum funding requirements for accounts, however, please note that funding may be required where clients wish to receive realtime market data. For more information on market data fees and choosing the correct market data subscription, please see the workflows page of this guide.
+          </p>
+          `
         },
         {
           title: 'What are the account requirements?',
-          content: 'An IBKR PRO account is required in order to use Client Portal API. IBKR LITE clients will need to upgrade their account to PRO before connecting via the API. For instructions on upgrading to an IBKR PRO account, please see the quickstart page.'
+          content: `
+          <p>
+            An IBKR PRO account is required in order to use Client Portal API. IBKR LITE clients will need to upgrade their account to PRO before connecting via the API. For instructions on upgrading to an IBKR PRO account, please see the quickstart page.
+          </p>
+          `
         },
         {
           title: 'Can I use the Client Portal API with a paper account?',
-          content: 'Yes, both paper and live accounts can be used with Client Portal API. We recommend using the paper account for initial testing and development, and only switching to live if you are happy with the results.'
+          content: `
+          <p>
+            Yes, both paper and live accounts can be used with Client Portal API. We recommend using the paper account for initial testing and development, and only switching to live if you are happy with the results.
+          </p>  
+          `
         },  
         {
           title: 'Can I use the Client Portal API with a free trial account?',
-          content: 'Yes, a free trial account can be used with any of Interactive Brokers\' API solutions, including Client Portal API. To sign up for a free trial, please see the free trial page, here: https://interactivebrokers.com/en/trading/free-trial.php'
+          content: `
+          <p>
+            Yes, a free trial account can be used with any of Interactive Brokers\' API solutions, including Client Portal API. To sign up for a free trial, please see the <a href="https://interactivebrokers.com/en/trading/free-trial.php" target="_blank">free trial page.</a>        
+          </p>
+          `
         },  
         {
           title: 'How do I get started?',
-          content: 'See the "Quickstart" section of the guide for instructions on getting started with Client Portal API.'
+          content: `
+          <p>
+            See the <a href="./quickstart" /> section of the guide for instructions on getting started with Client Portal API.
+          </p>
+          `
         },
         {
           title: 'Does the Client Portal API support automated authentication methods?',
-          content: 'Automated authentication with the Client Portal API using OAuth 1.0a is supported for institutional clients only. Individual account holders are not currently eligible for automated authentication, and, as such, must use the API gateway to authenticate the brokerage session.'
+          content: `
+          <p>
+            Automated authentication with the Client Portal API using OAuth 1.0a is supported for institutional clients only. Individual account holders are not currently eligible for automated authentication, and, as such, must use the API gateway to authenticate the brokerage session.
+          </p>
+          `
         },
         {
           title: 'Information for institutional clients',
-          content: 'Where available, information specific to institutional clients can be toggled on and off by toggling the "Institutional" option at the top of each page. TO switch back to information pertaining to Indiviudal clients only, simply toggle the seletor again.'
+          content: `
+          <p>
+            Where available, information specific to institutional clients can be toggled on and off by toggling the "Institutional" option at the top of each page. TO switch back to information pertaining to Indiviudal clients only, simply toggle the seletor again.
+          </p>  
+          `
         },
       ]
     })
