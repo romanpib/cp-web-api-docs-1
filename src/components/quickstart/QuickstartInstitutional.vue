@@ -3,7 +3,7 @@
     <h3>Step One: Have an Institutional type account</h3>
     <p>Have an organizational account</p>
     <div class="action-buttons">
-      <button type="button">Create a free <b>account</b></button>
+      <button type="button">Compare and create institutional <b>accounts</b></button>
       <button type="button">Upgrade an existing <b>account</b></button>
     </div>
 

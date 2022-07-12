@@ -49,6 +49,7 @@ export default {
 .header h3 {
     font-size: large;
     font-weight: normal;
+    text-decoration: underline;
 }
 .header .changelog-tags {
     display: flex;

@@ -26,7 +26,6 @@
     .download-card {
         margin-bottom: 1.25rem;
         background-color: #f5f5f5;
-        font-size: small;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     }
 

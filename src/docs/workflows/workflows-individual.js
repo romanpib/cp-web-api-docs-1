@@ -1,42 +1,79 @@
 const workflowsIndividual = [
     {
-        category: 'Market Data',
+        category: 'General',
         items: [
             {
-                id: 'snapshot-data',
-                title: 'Snapshot Data',
+                id: 'invalid-certificate',
+                title: 'Invalid SSL Certificate',
                 content: `
                 <p>
-                    Donec quis venenatis mi, in finibus neque. Vestibulum molestie felis vel metus tempus scelerisque. Suspendisse in magna viverra, sollicitudin lacus sed, porttitor libero. Nam faucibus risus ligula, eu ultrices risus lacinia et. Nunc porttitor magna eget euismod dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus pulvinar tristique elit, consectetur consectetur elit facilisis vel.  
+                    Since the gateway is running on your premises, the certificate needs to be created and self-signed by you, or offically signed by a trusted third-party. 
+                    The gateway is similar to other webservers, such as Tomcat, which doesn't provide a certificate along with the release. To fix this issue, 
+                    please see the certificate generation steps below:
+                    <ol>
+                        <li>Create a self-signed certificate by following the following <a href="https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-using-java-keytool.html">guide</a>.</li>     
+                        <li>Place the generated *.jks certificate file in the 'root' folder in the gateway directory.</li>
+                        <li>Update the sslCert field in the gateway configuration file with the details of the generated certificate</li>
+                        <li>Restart the gateway</li>
+                    </ol>
                 </p>
+                `
+            }
+        ]
+    },
+    {
+        category: 'Connectivity',
+        items: [
+            {
+                id: 'competing-session',
+                title: 'Competing Session',
+                content: `
                 <p>
-                    Donec quis venenatis mi, in finibus neque. Vestibulum molestie felis vel metus tempus scelerisque. Suspendisse in magna viverra, sollicitudin lacus sed, porttitor libero. Nam faucibus risus ligula, eu ultrices risus lacinia et.
+                    Only a single active brokerage session can exist for any username accross all IBKR services. If you are logged in to either Client Portal, TWS, or IBKR Mobile, make sure to log our and try reauthenticating your session again. The endpoint /reauthenticate can be used to reauthenticate the brokerage session.
                 </p>
-                <h5>Example code:</h5>
-                <p>Print the message "Hello world" to the console: </p>
-                <div class='code'>
-                    <code>
-                        console.log('Hello world 🌎')
-                    </code>
-                </div>
                 `
             },
             {
-                id: 'historical-data',
-                title: 'Historical Data',
+                id: 'mutliple-usernames',
+                title: 'Multiple Usernames',
                 content: `
                 <p>
-                    Donec quis venenatis mi, in finibus neque. Vestibulum molestie felis vel metus tempus scelerisque. Suspendisse in magna viverra, sollicitudin lacus sed, porttitor libero. Nam faucibus risus ligula, eu ultrices risus lacinia et. Nunc porttitor magna eget euismod dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus pulvinar tristique elit, consectetur consectetur elit facilisis vel.  
+                    Clients wishing to use multiple IBKR products at the same time can do so by creating a new username that can then be used to log into other services while using the Client Portal API. To create a second username from Client Portal, please see the following <a href="https://ibkr.info/node/1004" target="_blank">article</a>. Please note, that in accordance with market data vendor requirements, market data services are user-specific and any username subscribed will be assessed a separate market data subscription fee.
                 </p>
+                `
+            },
+            {
+                id: 'network-error-cors',
+                title: 'Network Error while accessing endpoints',
+                content: `
                 <p>
-                    Donec quis venenatis mi, in finibus neque. Vestibulum molestie felis vel metus tempus scelerisque. Suspendisse in magna viverra, sollicitudin lacus sed, porttitor libero. Nam faucibus risus ligula, eu ultrices risus lacinia et. Nunc porttitor magna eget euismod dignissim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus pulvinar tristique elit, consectetur consectetur elit facilisis vel.  
+                    In order to use the endpoints and websockets functionality on the documentation page inside the browser, CORS (Cross Origin Resource Sharing) needs to be disabled from within this browser.
+                    Several extensions for both Chrome and Firefox are available to toggle CORS on and off. CORS is disabled by default when using API testing tools such as Postman or Thunder Client.
                 </p>
-                <div class='code'>
-                    <code>
-                        let variable = calculateSomeVariable() </br>
-                        console.log(variable) </br>
-                    </code>
-                </div>
+                `
+            },
+        ]
+    },
+    {
+        category: 'Market Data',
+        items: [
+            {
+                id: 'snapshot-request',
+                title: 'Snapshot Requests',
+                content: `
+                <p>
+                    Client Portal API allows API consumers to request market data snapshots for most instruments. In order to retrieve market data snapshots, the API consumer must first create a snapshot request subscription. The response contains details about the subscribed snapshot request, the symbol, and requested fields.
+                    In order to retrieve the market data, subsequent calls to the /marketdata/snapshot endpoint must be made.
+                </p>
+                `
+            },
+            {
+                id: 'option-chain',
+                title: 'Option Chains',
+                content: `
+                <p>
+                    When requesting market data for options, set the strike price to zero to retrieve the entire option chain for that symbol.
+                </p>
                 `
             }
         ]

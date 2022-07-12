@@ -58,8 +58,12 @@ export default {
     padding: 0.75rem;
 }
 
-.expandable-card .content p {
-    margin: 0;
+.expandable-card .content {
     padding: 1rem;
+}
+
+.expandable-card .content a {
+    color: #DB1222;
+    font-weight: bold;
 }
 </style>

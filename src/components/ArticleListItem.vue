@@ -12,3 +12,21 @@ export default {
     <h4 :id="`${this.id}`">{{ this.title }}</h4>
     <component :innerHTML="this.content" />
 </template>
+
+<style>
+div.code {
+  width: 100%;
+  margin-block: 0.5rem;
+  background-color: black;
+  padding: 1rem 1.5rem;
+  word-break: break-all;
+}
+
+code {
+  color: white;
+}
+
+samp {
+    color: white;
+}
+</style>

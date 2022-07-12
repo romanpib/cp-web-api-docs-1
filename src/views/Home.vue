@@ -12,7 +12,7 @@ export default {
   data: () => ({
       cards: [
         {
-          title: 'How to use this guide',
+          title: 'How to use this guide?',
           content: `
           <p>
             The aim of this guide is to provide a general overview of the functionalities available to Interactive Brokers clients using Client Portal API. It also aims to provide answers to most common questions and issues encountered by our clients while working with the API.
@@ -60,10 +60,10 @@ export default {
           `
         },  
         {
-          title: 'How do I get started?',
+          title: 'How do I get started with Client Portal API?',
           content: `
           <p>
-            See the <a href="./quickstart" /> section of the guide for instructions on getting started with Client Portal API.
+            See the <a href="./quickstart"/>Quickstart</a> section of the guide for instructions on getting started with Client Portal API.
           </p>
           `
         },

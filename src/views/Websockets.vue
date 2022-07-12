@@ -127,15 +127,4 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-
-div.code {
-  width: 100%;
-  margin-block: 0.5rem;
-  background-color: black;
-  padding: 1rem 1.5rem;
-}
-
-code {
-  color: white;
-}
 </style>

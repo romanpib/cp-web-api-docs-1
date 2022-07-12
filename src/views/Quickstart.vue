@@ -23,9 +23,9 @@ export default {
     return {
       downloads: [
         {
-          title: 'Gateway',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem.',
-          url: 'https://www.interactivebrokers.com/en/?f=%2Fen%2Ftrading%2Fibgateway-stable.php'
+          title: 'API Gateway',
+          content: 'Download a latest version of the Client Portal API gateway.',
+          url: 'https://download2.interactivebrokers.com/portal/clientportal.gw.zip'
         },
         {
           title: 'Java',
@@ -54,7 +54,7 @@ export default {
   </base-view>
 </template>
 
-<style>
+<style scoped>
 .content-header {
   display: flex;
   flex-direction: row;

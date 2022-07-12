@@ -7,13 +7,13 @@ export default {
     },
     computed: {
         formatUpdateDate() {
-
-            // Show when the update was published in days ago
+            // TODO Handle future cases
+            
             const date = Date.parse(this.date);
             const now = Date.now();
             const diff = (now - date) / 1000;
             if (diff < 60) {
-                return 'just now';
+                return 'Today';
             } else if (diff < 3600) {
                 return Math.floor(diff / 60) + ' minutes ago';
             } else if (diff < 86400) {
@@ -29,7 +29,7 @@ export default {
 <template>
     <div class="latest-update-card">
         <div class="header">
-            <span>{{ title }}</span>
+            <span>{{ title }}</span> |
             <span>{{ formatUpdateDate }}</span>
         </div>
         <div class="content">
