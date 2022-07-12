@@ -29,8 +29,8 @@ export default {
         },
         {
           title: 'Java',
-          content: 'Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.',
-          url: 'https://java.com/en/'
+          content: 'Download the latest version of the Java SDK.',
+          url: 'https://www.java.com/en/download/'
         }
       ]
     }

@@ -59,10 +59,10 @@ export default {
 }
 
 .expandable-card .content {
-    padding: 1rem;
+    padding: 0.75rem 0.75rem;
 }
 
-.expandable-card .content a {
+.expandable-card .content > a {
     color: #DB1222;
     font-weight: bold;
 }

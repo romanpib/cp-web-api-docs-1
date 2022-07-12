@@ -30,12 +30,105 @@ const websocketsInstitutional = [
                 title: 'Historical Data',
                 content: `
                 <p>
-                For streaming historical data, the topic smh+conid is used. There are also optional params available in Json format. If no params are specified then pass an empty {} param. If a param is specified incorrectly it will be ignored and default returned. For details on the conid review Market Data (Level I) section. Only a max of 5 concurrent request available at a time. To unsubscribe, the topic is umh+serverId whereby use the serverId from the received data.
+                    For streaming historical data, the topic smh+conid is used. There are also optional params available in JSON format. If no params are specified then pass an empty {} param. If a param is specified incorrectly it will be ignored and default returned. For details on the conid review Market Data (Level I) section. Only a max of 5 concurrent request available at a time. To unsubscribe, the topic is umh+serverId whereby use the serverId from the received data.
+                    The historical market data request takes the following parameters:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Description</th>
+                            <th>Valid Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>exchange: String</td>
+                            <td>Contract exchange</td>
+                            <td>Valid exchange on which the contract trades</td>
+                        </tr>
+                        <tr>
+                            <td>period: String</td>
+                            <td>Request duration</td>
+                            <td>
+                                <ul>
+                                    <li>{1-30}min</li>
+                                    <li>{1-8}h</li>
+                                    <li>{1-1000}d</li>
+                                    <li>{1-792}w</li>
+                                    <li>{1-182}m</li>
+                                    <li>{1-15}y</li>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>bar: String</td>
+                            <td>Request bar size</td>
+                            <td>
+                                <ul>
+                                    <li>1min</li>
+                                    <li>2min</li>
+                                    <li>3min</li>
+                                    <li>5min</li>
+                                    <li>10min</li>
+                                    <li>15min</li>
+                                    <li>30min</li>
+                                    <li>1h</li>
+                                    <li>2h</li>
+                                    <li>3h</li>
+                                    <li>4h</li>
+                                    <li>8h</li>
+                                    <li>1d</li>
+                                    <li>1w</li>
+                                    <li>1m</li>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>outsideRTH: Boolean</td>
+                            <td>Request data outside trading hours</td>
+                            <td>
+                                true/false
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>source: String</td>
+                            <td>Type of date requested</td>
+                            <td>
+                                <ul>
+                                    <li>midpoint</li>
+                                    <li>trades</li>
+                                    <li>bid_ask</li>
+                                    <li>bid</li>
+                                    <li>ask</li>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>format: String</td>
+                            <td>Historical values returned</td>
+                            <td>
+                                <ul>
+                                    <li>%o - open</li>
+                                    <li>%c - close</li>
+                                    <li>%h - high</li>
+                                    <li>%l - low</li>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Multiple historical values can be requested in a single request by separating them with a slash, for example:
+                </p>
+                <div class='code'>
+                    <code>
+                        smh+265598+{"period":"1d","bar":"1min", "source":"trades", "format":"%o/%c/%h/%l"}
+                    </code>
+                </div>
+                <p>
+                    returns the open, close, high, and low trades prices for the last day with one minute bars.
                 </p>
                 <h5>Example: Request AAPL historical trade high data for past 2 hours with 5 mins bars</h5>
                 <div class='code'>
                     <code>
-                        smh+265598+{"exchange":"ISLAND","period":"2h","bar":"5min","outsideRth":false,"source":"t","format":"%h/%l"}
+                        smh+265598+{"exchange":"ISLAND","period":"2h","bar":"5min","outsideRth":false,"source":"trades","format":"%h/%l"}
                     </code>
                 </div>
                 <p>
@@ -427,7 +520,7 @@ const websocketsInstitutional = [
             },
             {
                 id: 'bulletins',
-                title: 'Notifications',
+                title: 'Bulletins',
                 content: `
                 <p>
                     If there is an urgent message concerning exchange issues, system problems and other trading information the topic blt is sent along with the message argument.

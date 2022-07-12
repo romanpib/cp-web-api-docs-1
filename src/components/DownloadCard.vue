@@ -49,7 +49,6 @@
 
     .download-card .content p {
         margin: 0;
-        padding: 1rem;
-        height: 10%;
+        padding: 1rem 0.75rem;
     }
 </style>

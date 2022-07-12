@@ -76,9 +76,9 @@ export default {
     <template #content>
       <h2>Support</h2>
       <warning>
-        <span>
+        <p>
           For common integration questions, make sure you have reviewed the <router-link to="/workflows" style="color: black; font-weight: bold;">workflows</router-link> section first.
-        </span>
+        </p>
       </warning>
       <p>
         If after going through the workflows section has not made things correct, please follow the steps below in order to contact us for assistance. Please note that 

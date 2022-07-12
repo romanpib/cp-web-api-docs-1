@@ -29,7 +29,7 @@ export default {
 <template>
     <div class="latest-update-card">
         <div class="header">
-            <span>{{ title }}</span> |
+            <span>{{ title }}</span>
             <span>{{ formatUpdateDate }}</span>
         </div>
         <div class="content">
@@ -53,6 +53,7 @@ export default {
     align-items: center;
     background-color: #DB1222;
     color: white;
+    gap: 0.5rem;
     padding: 1rem 0.75rem;
 }
 

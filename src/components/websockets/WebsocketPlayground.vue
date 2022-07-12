@@ -1,10 +1,8 @@
 <script>
 import WebsocketMessage from './WebsocketMessage.vue';
-import Warning from '@/components/Warning.vue';
 export default {
     components: {
         WebsocketMessage,
-        Warning
     },
     data() {
         return {
@@ -72,17 +70,6 @@ export default {
 </script>
 
 <template>
-    <h3>Websockets Playground</h3>
-    <p>
-        Donec non arcu sollicitudin, hendrerit nisl vitae, ullamcorper ex. Etiam hendrerit nisl viverra lectus
-        lacinia, sed semper ligula sagittis. Etiam efficitur tortor et sem pharetra vulputate. Ut vulputate tristique
-        turpis vitae fringilla.
-    </p>
-    <warning>
-        <span>In order to use the playground, you need to authenticate your session. See the <router-link
-            to='/authentication' style="color: black; font-weight: bold;">authentication</router-link> page for
-        getting started instructions.</span>
-    </warning>
     <div class="playground-container">
         <div class="playground-row">
             <span>URL:</span>

@@ -6,13 +6,15 @@ import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
 import AccountToggle from '@/components/AccountToggle.vue'
 import ArticleList from '../components/ArticleList.vue';
 import WebsocketPlayground from '../components/websockets/WebsocketPlayground.vue';
+import Warning from '../components/Warning.vue';
 export default {
   components: {
     BaseViewSidenav,
     ScrollableSidenav,
     AccountToggle,
     ArticleList,
-    WebsocketPlayground
+    WebsocketPlayground,
+    Warning
   },
   data() {
     return {
@@ -110,6 +112,17 @@ export default {
       is being subscribed to, or an <b>u</b> if unsubscribing from a topic.
       </p>
       <article-list :articles="this.activeTab" @onArticleScroll="this.onScroll" />
+      <h3>Websockets Playground</h3>
+      <p>
+        The following playground can be used to test the websockets functionality before implementing it in your application.
+      </p>
+      <warning>
+        <p>
+          In order to use the playground, you need to authenticate your session. See the
+          <router-link to='/authentication'>authentication</router-link> page for
+          getting started instructions.
+        </p>
+      </warning>
       <websocket-playground />
     </template>
     <template #aside>

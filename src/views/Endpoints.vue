@@ -4,12 +4,14 @@ import BaseView from "@/views/base-views/BaseView.vue";
 import AccountToggle from "@/components/AccountToggle.vue";
 import EndpointsList from '@/components/endpoints/EndpointsList.vue';
 import DownloadCard from '../components/DownloadCard.vue';
+import Warning from '../components/Warning.vue';
 export default {
   components: {
     BaseView,
     AccountToggle,
     EndpointsList,
-    DownloadCard
+    DownloadCard,
+    Warning
 },
   setup() {
     return {
@@ -27,16 +29,14 @@ export default {
         <account-toggle />
       </div>
       <p>
-        Quisque ultrices leo quam, sed eleifend mauris bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
-        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris
-        bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
-        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris
-        bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
-        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim. Quisque ultrices leo quam, sed eleifend mauris
-        bibendum in. Donec molestie vehicula ullamcorper. Maecenas id
-        fermentum sem. Etiam egestas lorem ac elit iaculis dignissim.
-
+        On this page you will find all of the available endpoints along with their descriptions. Please note, the Client Portal
+        API does not allow any banking or account operation operations. For this, please see the Digital Account Management (DAM) API.
       </p>
+      <warning>
+        <p>
+          This page is intended to be used on a desktop or laptop.
+        </p>
+      </warning>
       <endpoints-list :accountType="this.store.accountType" />
     </template>
     <template #aside>
@@ -47,11 +47,22 @@ export default {
   </base-view>
 </template>
 
-<style>
+<style scoped>
 .content-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
+
+.warning-message {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .warning-message {
+    display: flex;
+  }
+}
+
 </style>
