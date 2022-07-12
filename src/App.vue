@@ -7,8 +7,8 @@
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
 body {
@@ -20,4 +20,16 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  color: #DB1222;
+  font-weight: bold;
+}
+
+p {
+  color: #666;
+}
+
+li {
+  color: #666;
+}
 </style>

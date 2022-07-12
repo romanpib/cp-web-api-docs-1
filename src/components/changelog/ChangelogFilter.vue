@@ -2,7 +2,7 @@
 export default {
     props: {
         tag: { type: String, required: true },
-        isActive: { type: Boolean, required: false, default: false }
+        isActive: { type: Boolean, required: false, default: false },
     }
 }
 </script>
@@ -24,7 +24,7 @@ export default {
     user-select: none;
 }
 
-#active {
+.filter-container#active {
     background-color: #5E7D99;
 }
 </style>

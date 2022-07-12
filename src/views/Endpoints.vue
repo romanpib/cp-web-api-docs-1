@@ -28,15 +28,15 @@ export default {
         <h2>Endpoints Explorer</h2>
         <account-toggle />
       </div>
-      <p>
-        On this page you will find all of the available endpoints along with their descriptions. Please note, the Client Portal
-        API does not allow any banking or account operation operations. For this, please see the Digital Account Management (DAM) API.
-      </p>
       <warning>
         <p>
           This page is intended to be used on a desktop or laptop.
         </p>
       </warning>
+      <p>
+        On this page you will find all of the available endpoints along with their descriptions. Please note, the Client Portal
+        API does not allow any banking or account operation operations. For this, please see the Digital Account Management (DAM) API.
+      </p>
       <endpoints-list :accountType="this.store.accountType" />
     </template>
     <template #aside>
@@ -55,12 +55,12 @@ export default {
   align-items: center;
 }
 
-.warning-message {
+.warning {
   display: none;
 }
 
 @media (max-width: 700px) {
-  .warning-message {
+  .warning {
     display: flex;
   }
 }

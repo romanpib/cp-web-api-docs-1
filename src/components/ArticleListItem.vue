@@ -35,6 +35,7 @@ table {
   width: 100%;
 }
 
+
 table th {
   text-align: left;
   padding: 0.5rem 0.5rem;
@@ -49,5 +50,4 @@ table td {
   font-size: small;
   border: 1px solid black;
 }
-
 </style>

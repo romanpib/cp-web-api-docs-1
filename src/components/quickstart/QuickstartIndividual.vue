@@ -53,10 +53,7 @@
 </template>
 
 <style scoped>
-a {
-  color: #DB1222;
-  font-weight: bold;
-}
+
 .action-buttons {
   display: flex;
   flex-direction: row;

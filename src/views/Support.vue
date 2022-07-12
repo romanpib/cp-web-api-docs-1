@@ -18,7 +18,7 @@ export default {
           content: `
           <p>
             In order to use the API, the API sesssion must be authenticated. The easiest way to check if the current session is authenticated is by calling the endpoint /iserver/auth/status. If the session
-            is fully authenticated the response will contain the field 'authenticated' set to true. If you are not seeing this first check the <a href="./authentication" style="color: black; font-weight: bold;">authentication</a>
+            is fully authenticated the response will contain the field 'authenticated' set to true. If you are not seeing this first check the <a href="./authentication">authentication</a>
             page for common authentication errors before proceeding with the next steps. One thing to note, is that 'authenticated': true may not return immediately, but after some time. Allow up to 15 minutes
             when running the API for the first time to authenticate the session. Forthcoming session authentication should be near immediate.
           </p>
@@ -77,7 +77,7 @@ export default {
       <h2>Support</h2>
       <warning>
         <p>
-          For common integration questions, make sure you have reviewed the <router-link to="/workflows" style="color: black; font-weight: bold;">workflows</router-link> section first.
+          For common integration questions, make sure you have reviewed the <router-link to="/workflows">workflows</router-link> section first.
         </p>
       </warning>
       <p>

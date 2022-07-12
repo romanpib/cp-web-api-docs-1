@@ -37,11 +37,12 @@ export default {
 
 .subsections a {
     text-decoration: none;
-    color: #000;
+    color: #777;
     display: block;
     font-size: small;
     padding: 0.75rem 1.5rem;
     cursor: pointer;
+    font-weight: normal;
 }
 
 .subsections a.active {

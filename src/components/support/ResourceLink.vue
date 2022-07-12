@@ -29,6 +29,7 @@ export default {
 
 .link-container a {
     color: black;
+    font-weight: normal;
 }
 
 .link-container i {

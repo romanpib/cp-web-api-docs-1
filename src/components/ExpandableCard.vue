@@ -32,7 +32,7 @@ export default {
 <template>
     <div class="expandable-card">
         <div class="header" @click="toggleContent">
-            <span>{{ title }}</span>
+            <h4>{{ title }}</h4>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
         <div class="content" :hidden="!isHidden">
@@ -55,15 +55,23 @@ export default {
     cursor: pointer;
     background-color: #344D78;
     color: white;
-    padding: 0.75rem;
+    padding: 1rem 0.75rem;
+    gap: 1rem;
 }
 
-.expandable-card .content {
+.expandable-card .header h4 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.expandable-card .content p {
+    color: #666;
+    margin-block: 0.5rem;
     padding: 0.75rem 0.75rem;
 }
 
-.expandable-card .content > a {
-    color: #DB1222;
+.expandable-card .content a {
+    color: black;
     font-weight: bold;
 }
 </style>

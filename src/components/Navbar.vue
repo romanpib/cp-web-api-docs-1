@@ -64,6 +64,7 @@ nav {
 nav a {
   text-decoration: none;
   color: black;
+  font-weight: normal;
 }
 
 nav a:hover {

@@ -1,12 +1,14 @@
 <template>
-    <div class="warning-message">
+    <div class="warning">
         <i class="fa-solid fa-triangle-exclamation"></i>
-        <slot></slot>
+        <div class="slot">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
 <style>
-.warning-message {
+.warning {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,12 +19,21 @@
     margin-block: 0.5rem;
 }
 
-.warning-message i {
+.warning i {
     font-size: large;
 }
 
-.warning-message a {
-    color: black; 
+.warning .slot {
+    color: black;
+}
+
+.warning a {
+    color: black;
+    text-decoration: underline;
     font-weight: bold;
+}
+
+.warning p {
+    color: black;
 }
 </style>

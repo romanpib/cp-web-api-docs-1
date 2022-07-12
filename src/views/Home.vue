@@ -91,19 +91,12 @@ export default {
 <template>
   <base-view>
     <template #content>
-      <h2>Client Portal Web API Documentation</h2>
-      <p>
-        Interactive Brokers offers the ability to trade, monitor and manage your IB account using a single RESTful API.
-      </p>
-      <p>
-        With the Client Portal Web API:
-      </p>
-      <ul class="features-list">
-        <li>There is no need for special libraries to integrate with your application.</li>
-        <li>You use only a small, headless gateway to connect to your application.</li>
-        <li>Additional security with IP restrictions is available.</li>
-        <li>Enjoy access to data that's not available through our existing APIs, including PortfolioAnalyst, Statements,
-          Transaction History (up to 90 days) and more.</li>
+      <h2>Client Portal API Reference & Documentation</h2>
+      <ul id="features-list">
+        <li>Many of the features that make your trading successful are available through Client Portal API</li>
+        <li>Client Portal API offers Interactive Brokers' clients the ability to trade, monitor and manage their account</li>
+        <li>With Client Portal API there is no need to import special libraries</li>
+        <li>To connect, you use either a small headless gateway or OAuth if you are an institutional client</li>
       </ul>
       <h2>Frequently Asked Questions</h2>
       <expandable-card v-for="card in cards" v-bind="card" />
@@ -131,5 +124,9 @@ export default {
     color: #db1222;
     font-size: small;
     font-weight: bold;
+}
+
+ul#features-list {
+  line-height: 1.5rem;
 }
 </style>
