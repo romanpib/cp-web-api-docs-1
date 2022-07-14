@@ -9,8 +9,10 @@ export default {
 </script>
 
 <template>
-  <h4 :id="`${this.id}`">{{ this.title }}</h4>
-  <component :innerHTML="this.content" />
+  <article>
+    <h4 :id="`${this.id}`">{{ this.title }}</h4>
+    <component :innerHTML="this.content" />
+  </article>
 </template>
 
 <style>

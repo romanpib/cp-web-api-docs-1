@@ -60,6 +60,5 @@ export default {
 .latest-update-card .content p {
     margin: 0;
     padding: 1rem;
-    height: 10%;
 }
 </style>

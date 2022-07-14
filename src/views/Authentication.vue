@@ -1,13 +1,13 @@
 <script>
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
-import BaseView from '@/views/base-views/BaseView.vue'
+import BaseLayout from '@/layouts/BaseLayout.vue'
 import DownloadCard from '@/components/DownloadCard.vue'
 import AuthenticationIndividual from '@/components/authentication/AuthenticationIndividual.vue'
 import AuthenticationInstitutional from '@/components/authentication/AuthenticationInstitutional.vue'
 import AccountToggle from '@/components/AccountToggle.vue'
 export default {
   components: {
-    BaseView,
+    BaseLayout,
     DownloadCard,
     AuthenticationIndividual,
     AuthenticationInstitutional,
@@ -34,26 +34,56 @@ export default {
 </script>
 
 <template>
-  <base-view>
+  <base-layout>
     <template #content>
       <div class="content-header">
         <h2>Authentication</h2>
-        <account-toggle />
+        <account-toggle id="active"/>
       </div>
       <component :is="activeTab" />
     </template>
     <template #aside>
-      <h2>Resources</h2>
-      <download-card v-for="download in downloads" v-bind="download" />
+      <div class="downloads">
+        <h2>Resources</h2>
+        <download-card v-for="download in downloads" v-bind="download" />
+      </div>
     </template>
-  </base-view>
+  </base-layout>
 </template>
 
-<style>
+<style scoped>
 .content-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.content-header:last-child {
+  display: none;
+}
+
+.downloads {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 1.5rem;
+}
+
+#active {
+  display: none;
+}
+
+@media only screen and (min-width: 700px) {
+  #active {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .downloads {
+    margin-inline: 0;
+    margin-right: 1.5rem;
+    margin-top: 3rem;
+  }
 }
 </style>

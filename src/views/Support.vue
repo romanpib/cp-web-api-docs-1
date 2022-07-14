@@ -1,11 +1,11 @@
 <script>
-import BaseView from '@/views/base-views/BaseView.vue'
+import BaseLayout from '@/layouts/BaseLayout.vue';
 import ExpandableCard from '@/components/ExpandableCard.vue'
 import ResourceLink from '@/components/support/ResourceLink.vue'
 import Warning from '@/components/Warning.vue'
 export default {
   components: {
-    BaseView,
+    BaseLayout,
     ExpandableCard,
     ResourceLink,
     Warning
@@ -72,32 +72,47 @@ export default {
 </script>
 
 <template>
-  <base-view>
+  <base-layout>
     <template #content>
       <h2>Support</h2>
       <warning>
         <p>
-          For common integration questions, make sure you have reviewed the <router-link to="/workflows">workflows</router-link> section first.
+          For common integration questions, make sure you have reviewed the <router-link to="/workflows">workflows
+          </router-link> section first.
         </p>
       </warning>
       <p>
-        If after going through the workflows section has not made things correct, please follow the steps below in order to contact us for assistance. Please note that 
-        Interactive Brokers is unable to provide support for third-party solutions build on top of Client Portal API. For troubleshooting issues with third-party libraries,
-        first try recreating the issue with the native Client Portal API, and only get in touch with support if the issues persist when using the native API, otherwise, please get in touch with the third-party
+        If after going through the workflows section has not made things correct, please follow the steps below in order
+        to contact us for assistance. Please note that
+        Interactive Brokers is unable to provide support for third-party solutions build on top of Client Portal API.
+        For troubleshooting issues with third-party libraries,
+        first try recreating the issue with the native Client Portal API, and only get in touch with support if the
+        issues persist when using the native API, otherwise, please get in touch with the third-party
         developer.
       </p>
       <expandable-card v-for="card in cards" v-bind="card" />
     </template>
     <template #aside>
-      <h2>Resources</h2>
-      <resource-link v-for="resource in resources" v-bind="resource" />
+      <div class="resources">
+        <h2>Resources</h2>
+        <resource-link v-for="resource in resources" v-bind="resource" />
+      </div>
     </template>
-  </base-view>
+  </base-layout>
 </template>
 
-<style>
-.features-list {
-  margin-bottom: 2rem;
-  line-height: 2rem;
+<style scoped>
+.resources {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 1.5rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  .resources {
+    margin-inline: 0;
+    margin-right: 1.5rem;
+    margin-top: 3rem;
+  }
 }
 </style>

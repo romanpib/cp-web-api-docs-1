@@ -1,4 +1,81 @@
-const websocketsInstitutional = [
+const websocketsIndividual = [
+    {
+        category: 'Getting Started',
+        items: [
+            {
+                id: 'connection',
+                title: 'Connection Guide',
+                content: `
+                <p>
+                    The websocket endpoint is available at <a href="wss://localhost:5000/v1/api/ws">wss://localhost:5000/v1/api/ws</a>. Once connected, 
+                    the session needs to be authorized. This can be achieved in two ways:
+                    <ol>
+                        <li>
+                            Include the cookies from the 'set-cookie' headers from previous API requests. If you are using a browser to
+                            test API functionality, this will generally be done automatically by the browser.
+                        </li>
+                        <br>
+                        <li>
+                            Request the session ID from the /tickle endpoint and send it to the websocket endpoint in the following
+                            format:
+                            <div class="code">
+                                <code>
+                                    {'session': 'SESSION_ID_FROM_TICKLE_ENDPOINT'}
+                                </code>
+                            </div>
+                        </li>
+                    </ol>
+                </p>
+                <p>
+                    If the request is successful one of the following responses will be returned:
+                    <div class="code">
+                        <code>
+                        {'topic': 'sts', 'args': {'authenticated': true}}
+                        </code>
+                    </div>
+                    or:
+                    <div class="code">
+                        <code>
+                        {'topic': 'system', 'success': 'username'}
+                        </code>
+                    </div>
+                </p>
+                `
+            },
+            {
+                id: 'websocket-messages',
+                title: 'Websocket Messages',
+                content: `
+                <p>
+                    There are two types of messages used by the websocket:
+                </p>
+                <ul>
+                    <li>
+                        Solicited messages: messages that have been explicitly sent by the client
+                    </li>
+                    <li>
+                        Unsolicited messages: messages that have been sent by the server, either as a response to a request or
+                        containing information about the connected session
+                    </li>
+                </ul>
+                <p>
+                    In order to receive streaming data via the websocket, the relevant topic must be subscribed to. In order to do so,
+                    a solicited message of the format: <b>TOPIC+{ARGUMENTS}</b> must be sent to the websocket endpoint, where:
+                </p>
+                <ul>
+                    <li>TOPIC represents the request that is being sent via the websocket</li>
+                    <li>The plus symbol <b>+</b> is used as the message separator</li>
+                    <li>{ARGUMENTS} contains a list of arguments passed as part of the request. An empty list {} needs to be passed
+                    if no arguments are required</li>
+                </ul>
+                <p>
+                Solicited message topics are generally three characters in length and start with either an <b>s</b>, if the topic
+                is being subscribed to, or an <b>u</b> if unsubscribing from a topic.
+                </p>
+                `
+            },
+        ]
+    },
     {
         category: 'Market Data',
         items: [
@@ -7,10 +84,10 @@ const websocketsInstitutional = [
                 title: 'Streaming Market Data',
                 content: `
                 <p>
-                    Streaming level 1, top-of-the-book, market data is available for all instruments using the Client Portal API. For streaming data the topic <b>smd+conid+{arguments}</b> is used. 
-                    The conid is the instrument's unique identifier within Interactive Brokers' database. By default conIDs will use SMART routing, where supported. If you wish to specify the exchange, the conid should be modified into the format <b>conid@EXCHANGE</b>, where EXCHANGE is the exchange on which the contract trades.
-                    In order to find the conid for a particular instrument, the endpoint '/iserver/secdef/search' can be used.
-
+                    Streaming level 1, top-of-the-book, market data is available for all instruments using the Client Portal API. For streaming data the topic <b>smd+conID+{arguments}</b> is used. 
+                    The conID is the instrument's unique identifier within Interactive Brokers' database. By default contracts use SMART routing where supported. 
+                    If you wish to specify the exchange explicitly, the "conID" should be modified into the format <b>conID@EXCHANGE</b>, where EXCHANGE is the exchange on which the contract trades.
+                    In order to find the conID for a particular instrument, the endpoint '/iserver/secdef/search' can be used.
                 </p>
                 <h5>Example: Request streaming close price and day percent change for APPL contract</h5>
                 <p>
@@ -30,7 +107,14 @@ const websocketsInstitutional = [
                 title: 'Historical Data',
                 content: `
                 <p>
-                    For streaming historical data, the topic smh+conid is used. There are also optional params available in JSON format. If no params are specified then pass an empty {} param. If a param is specified incorrectly it will be ignored and default returned. For details on the conid review Market Data (Level I) section. Only a max of 5 concurrent request available at a time. To unsubscribe, the topic is umh+serverId whereby use the serverId from the received data.
+                    For streaming historical data, the topic <b>smh+conID</b> is used. There are also optional params available in JSON format. If no params are specified, an empty array <b>{}</b> can be passed. 
+                    If a param is specified incorrectly it will be ignored and default returned. 
+                    To unsubscribe, the topic is <b>umh+serverId</b> whereby use the serverId from the received data.
+                </p>
+                <p>
+                    NOTE: Only a max of 5 concurrent historical data request available at a time.
+                </p>
+                <p>
                     The historical market data request takes the following parameters:
                 </p>
                 <table>
@@ -180,7 +264,8 @@ const websocketsInstitutional = [
                 title: 'Live Orders',
                 content: `
                 <p>
-                    As long as an order is active, it is possible to retrive it using the Web API. For streaming live orders the topic is sor. Once live orders are requested we will start to relay back when there is an update. To receive all orders for the current day the endpoint /iserver/account/orders?force=false can be used. It is advised to query all orders for the current day first before subscribing to live orders. To unsubscribe from live orders, the topic is uor.
+                    As long as an order is active, it is possible to retrive it using the Web API. For streaming live orders the topic is sor. Once live orders are requested we will start to relay back when there is an update. 
+                    To receive all orders for the current day the endpoint /iserver/account/orders?force=false can be used. It is advised to query all orders for the current day first before subscribing to live orders. To unsubscribe from live orders, the topic is uor.
                 </p>
                 <div class='code'>
                     <code>
@@ -188,7 +273,7 @@ const websocketsInstitutional = [
                     </code>
                 </div>
                 <p>
-                    Which returns the following, sample, response:
+                    Which returns the following sample response:
                 </p>
                 <div class='code'>
                     <code>
@@ -226,7 +311,7 @@ const websocketsInstitutional = [
                     </code>
                 </div>
                 <p>
-                    To unsubscribe from live order updates, the topic uor is sent:
+                    To unsubscribe from live order updates, the topic <b>uor</b> is sent:
                 </p>
                 <div class='code'>
                     <code>
@@ -314,7 +399,11 @@ const websocketsInstitutional = [
                 title: 'Weekly Trades Details',
                 content: `
                 <p>
-                    To review a list of your trades for the current day and six previous days use the topic str. If trades are required of less than 7 days, "days" parameter can be passed with integer value corresponding to the number of days needed (1 represents today and value can be upto 7). For updates you would only receive new orders as they fill. To receive only new trade updates and no previous trades, "realtimeUpdatesOnly" parameter can be passed. To unsubscribe from trades, the topic is utr.                </p>
+                    To review a list of your trades for the current day and six previous days use the topic <b>str</b>. 
+                    If trades are required of less than 7 days, "days" parameter can be passed with integer value corresponding to the number of days needed (1 represents today and value can be up to 7). 
+                    For updates you would only receive new orders as they fill. To receive only new trade updates and no previous trades, "realtimeUpdatesOnly" parameter can be passed. 
+                    To unsubscribe from trades, the topic <b>utr</b> needs to be sent.                
+                </p>
                 </p>
                 <div class='code'>
                     <code>
@@ -360,9 +449,6 @@ const websocketsInstitutional = [
                       }
                     </code>
                 </div>
-                <p>
-                    To unsubscribe from live trade updates, the topic utr is sent:
-                </p>
                 <div class='code'>
                     <code>
                         utr+{}
@@ -387,7 +473,10 @@ const websocketsInstitutional = [
                 title: 'Profit & Loss Updates',
                 content: `
                 <p>
-                    For existing positions it is possible to receive Profit and Loss updates to the Web API using the topic spl. In the payload response the daily profit and loss (dpl) and unrealized profit and loss (upl) are received as a total value for all positions. Updates are relayed back as quickly as once per second but can vary based on market activity. To unsubscribe from profit and loss the topic is upl.                </p>
+                    For existing positions it is possible to receive Profit and Loss updates to the Web API using the topic <b>spl</b>. 
+                    In the payload response the daily profit and loss (dpl) and unrealized profit and loss (upl) are received as a total value for all positions. 
+                    Updates are relayed back as quickly as once per second but can vary based on market activity.                
+                </p>
                 </p>
                 <div class='code'>
                     <code>
@@ -412,7 +501,7 @@ const websocketsInstitutional = [
                     </code>
                 </div>
                 <p>
-                    In order to unsubscribe, the upl topic is sent:
+                    In order to unsubscribe, the topic <b>upl</b> is sent:
                 </p>
                 <div class='code'>
                     <code>
@@ -425,14 +514,14 @@ const websocketsInstitutional = [
         ]
     },
     {
-        category: 'Miscellanous Operations',
+        category: 'Miscellaneous Operations',
         items: [
             {
                 id: 'echo',
                 title: 'Echo',
                 content: `
                 <p>
-                    To maintain an active websocket connection the topic ech is used to send a hearbeat with the argument hb. It is advised to send a heatbeat at least once per minute.
+                    To maintain an active websocket connection the topic <b>ech</b> is used to send a hearbeat with the argument hb. It is advised to send a heatbeat at least once per minute.
                 </p>
                 <div class='code'>
                     <code>
@@ -446,7 +535,7 @@ const websocketsInstitutional = [
                 title: 'Ping Session',
                 content: `
                 <p>
-                    To maintain a session for accessing /iserver or /ccp endpoints use the topic tic. It is advised to ping the session at least once per minute. It still requires the UI to send the endpoint /tickle every few minutes or when expires from /sso/validate = 0.
+                    To maintain a session for accessing /iserver or /ccp endpoints use the topic <b>tic</b>. It is advised to ping the session at least once per minute.
                 </p>
                 <div class='code'>
                     <code>
@@ -544,4 +633,4 @@ const websocketsInstitutional = [
     },
 ]
 
-export default websocketsInstitutional;
+export default websocketsIndividual;

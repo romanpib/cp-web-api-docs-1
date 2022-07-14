@@ -28,7 +28,7 @@ export default {
       <router-link to="/">Home</router-link>
       <router-link to="/quickstart">Quickstart</router-link>
       <router-link to="/authentication">Authentication</router-link>
-      <router-link to="/endpoints">Endpoints Explorer</router-link>
+      <router-link to="/endpoints">Endpoints</router-link>
       <router-link to="/websockets">Websockets</router-link>
       <router-link to="/workflows">Workflows</router-link>
       <router-link to="/changelog">Changelog</router-link>
@@ -40,7 +40,7 @@ export default {
       <router-link to="/">Home</router-link>
       <router-link to="/quickstart">Quickstart</router-link>
       <router-link to="/authentication">Authentication</router-link>
-      <router-link to="/endpoints">Endpoints Explorer</router-link>
+      <router-link to="/endpoints">Endpoints</router-link>
       <router-link to="/websockets">Websockets</router-link>
       <router-link to="/workflows">Workflows</router-link>
       <router-link to="/changelog">Changelog</router-link>
@@ -84,7 +84,7 @@ nav a.router-link-active {
 }
 
 .branding img {
-  width: 10rem;
+  width: max-content;
 }
 
 .branding i.hidden {
@@ -190,7 +190,7 @@ nav a.router-link-active {
 @media only screen and (min-width: 700px) {
   nav {
     height: 100vh;
-    width: 250px;
+    width: 225px;
   }
 
   nav a:not(:first-child) {

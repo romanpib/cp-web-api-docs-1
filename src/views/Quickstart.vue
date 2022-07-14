@@ -1,13 +1,13 @@
 <script>
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
-import BaseView from '@/views/base-views/BaseView.vue'
+import BaseLayout from '@/layouts/BaseLayout.vue';
 import DownloadCard from '@/components/DownloadCard.vue'
 import QuickstartIndividual from '@/components/quickstart/QuickstartIndividual.vue'
 import QuickstartInstitutional from '@/components/quickstart/QuickstartInstitutional.vue'
 import AccountToggle from '@/components/AccountToggle.vue'
 export default {
   components: {
-    BaseView,
+    BaseLayout,
     DownloadCard,
     QuickstartIndividual,
     QuickstartInstitutional,
@@ -24,7 +24,7 @@ export default {
       downloads: [
         {
           title: 'API Gateway',
-          content: 'Download a latest version of the Client Portal API gateway.',
+          content: 'Download the latest version of the Client Portal API gateway.',
           url: 'https://download2.interactivebrokers.com/portal/clientportal.gw.zip'
         },
         {
@@ -39,19 +39,21 @@ export default {
 </script>
 
 <template>
-  <base-view>
+  <base-layout>
     <template #content>
       <div class="content-header">
         <h2>Quickstart Guide</h2>
-        <account-toggle />
+        <account-toggle id="active"/>
       </div>
       <component :is="activeTab" />
     </template>
     <template #aside>
-      <h2>Downloads</h2>
-      <download-card v-for="download in downloads" v-bind="download" />
+      <div class="downloads">
+        <h2>Downloads</h2>
+        <download-card v-for="download in downloads" v-bind="download" />
+      </div>
     </template>
-  </base-view>
+  </base-layout>
 </template>
 
 <style scoped>
@@ -60,5 +62,33 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.content-header:last-child {
+  display: none;
+}
+
+.downloads {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 1.5rem;
+}
+
+#active {
+  display: none;
+}
+
+@media only screen and (min-width: 700px) {
+  #active {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .downloads {
+    margin-inline: 0;
+    margin-right: 1.5rem;
+    margin-top: 3rem;
+  }
 }
 </style>

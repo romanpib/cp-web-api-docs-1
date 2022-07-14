@@ -1,13 +1,13 @@
 <script>
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 import { workflowsIndividual, workflowsInstitutional } from "@/docs/workflows";
-import BaseViewSidenav from "@/views/base-views/BaseViewSidenav.vue";
+import BaseLayout from "@/layouts/BaseLayout.vue";
 import ScrollableSidenav from "@/components/ScrollableSidenav.vue";
 import AccountToggle from '@/components/AccountToggle.vue'
 import ArticleList from '../components/ArticleList.vue';
 export default {
   components: {
-    BaseViewSidenav,
+    BaseLayout,
     ScrollableSidenav,
     AccountToggle,
     ArticleList
@@ -48,18 +48,18 @@ export default {
 </script>
 
 <template>
-  <base-view-sidenav>
+  <base-layout>
     <template #content>
       <div class="content-header">
         <h2>Workflows</h2>
-        <account-toggle />
+        <account-toggle id="active"/>
       </div>
       <article-list :articles="this.activeTab" @onArticleScroll="this.onScroll" />
     </template>
     <template #aside>
       <scrollable-sidenav :sections="this.sections" :activeSection="this.activeSection" />
     </template>
-  </base-view-sidenav>
+  </base-layout>
 </template>
 
 <style>
@@ -73,11 +73,21 @@ export default {
 
 div.code {
   width: 100%;
-  background-color: black;
+  background-color: #303031;
   padding: 1rem 1.5rem;
 }
 
 code {
   color: white;
+}
+
+#active {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  #active {
+    display: block;
+  }
 }
 </style>

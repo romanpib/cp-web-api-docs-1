@@ -47,15 +47,6 @@ const workflowsInstitutional = [
                 </p>
                 `
             },
-            {
-                id: 'option-chain',
-                title: 'Option Chains',
-                content: `
-                <p>
-                    When requesting market data for options, set the strike price to zero to retrieve the entire option chain for that symbol.
-                </p>
-                `
-            }
         ]
     },
 ]

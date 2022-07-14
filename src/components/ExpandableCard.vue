@@ -41,7 +41,7 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
 .expandable-card {
     margin-bottom: 1.25rem;
     background-color: #f5f5f5;
@@ -64,8 +64,8 @@ export default {
     font-weight: normal;
 }
 
-.expandable-card .content p {
-    color: #666;
+.expandable-card .content {
+    color: black;
     margin-block: 0.5rem;
     padding: 0.75rem 0.75rem;
 }

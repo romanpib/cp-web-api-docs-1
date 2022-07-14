@@ -1,11 +1,11 @@
 <script>
-import BaseView from '@/views/base-views/BaseView.vue'
+import BaseLayout from '@/layouts/BaseLayout.vue';
 import ExpandableCard from '@/components/ExpandableCard.vue'
 import LatestUpdatesList from '@/components/home/LatestUpdatesList.vue'
 
 export default {
   components: {
-    BaseView,
+    BaseLayout,
     ExpandableCard,
     LatestUpdatesList
   },
@@ -15,7 +15,8 @@ export default {
           title: 'How to use this guide?',
           content: `
           <p>
-            The aim of this guide is to provide a general overview of the functionalities available to Interactive Brokers clients using Client Portal API. It also aims to provide answers to most common questions and issues encountered by our clients while working with the API.
+            The aim of this guide is to provide a general overview of the functionalities available to Interactive Brokers clients using Client Portal API. 
+            It also provides answers to most common questions and issues encountered while working with the API.
           </p>
           `,
         },
@@ -23,7 +24,9 @@ export default {
           title: 'How does Client Portal API differ from TWS API?',
           content: `
           <p>
-            Client Portal API is a HTTP based API, that is, requests to the IBKR backed are sent over the internet. In comparison, TWS API is designed to programatically interact with the Trader Workstation software. In order to use Client Portal API, a lightweights API gateway is required, for TWS API, a working installation of TWS is required.          
+            Client Portal API is a HTTP based API, that is, requests to the IBKR backend are sent over the internet. 
+            In comparison, TWS API is designed to programatically interact with the Trader Workstation software. 
+            In order to use Client Portal API, a lightweight API gateway is required whereas for TWS API, a working installation of TWS is required.          
           </p>
           `
         },
@@ -31,7 +34,7 @@ export default {
           title: 'Are there any additional fees for using Client Portal API?',
           content: `
           <p>
-            There are no additional fees associated with the use of Client Portal API. In addition, there are no minimum funding requirements for accounts, however, please note that funding may be required where clients wish to receive realtime market data. For more information on market data fees and choosing the correct market data subscription, please see the workflows page of this guide.
+            There are no additional fees associated with the use of Client Portal API. In addition, there are no minimum funding requirements for accounts. However, please note that funding may be required where clients wish to receive realtime market data. For more information on market data fees and choosing the correct market data subscription, please see the workflows page of this guide.
           </p>
           `
         },
@@ -47,7 +50,7 @@ export default {
           title: 'Can I use the Client Portal API with a paper account?',
           content: `
           <p>
-            Yes, both paper and live accounts can be used with Client Portal API. We recommend using the paper account for initial testing and development, and only switching to live if you are happy with the results.
+            Yes, both paper and live accounts can be used with Client Portal API. We recommend using the paper account for initial testing and development, and only switching to live once you are happy with the results.
           </p>  
           `
         },  
@@ -55,7 +58,8 @@ export default {
           title: 'Can I use the Client Portal API with a free trial account?',
           content: `
           <p>
-            Yes, a free trial account can be used with any of Interactive Brokers\' API solutions, including Client Portal API. To sign up for a free trial, please see the <a href="https://interactivebrokers.com/en/trading/free-trial.php" target="_blank">free trial page.</a>        
+            Yes, a free trial account can be used with any of Interactive Brokers\' API solutions, including Client Portal API. 
+            To sign up for a free trial, please see the <a href="https://interactivebrokers.com/en/trading/free-trial.php" target="_blank">free trial page.</a>        
           </p>
           `
         },  
@@ -63,7 +67,7 @@ export default {
           title: 'How do I get started with Client Portal API?',
           content: `
           <p>
-            See the <a href="./quickstart"/>Quickstart</a> section of the guide for instructions on getting started with Client Portal API.
+            See the <a href="./quickstart"/>Quickstart</a> section for step by step instructions on getting started with Client Portal API.
           </p>
           `
         },
@@ -71,7 +75,8 @@ export default {
           title: 'Does the Client Portal API support automated authentication methods?',
           content: `
           <p>
-            Automated authentication with the Client Portal API using OAuth 1.0a is supported for institutional clients only. Individual account holders are not currently eligible for automated authentication, and, as such, must use the API gateway to authenticate the brokerage session.
+            Automated authentication with the Client Portal API using OAuth 1.0a is supported for institutional clients only. 
+            Individual account holders are not currently eligible for automated authentication, and, as such, must use the API gateway to authenticate the brokerage session.
           </p>
           `
         },
@@ -79,7 +84,8 @@ export default {
           title: 'Information for institutional clients',
           content: `
           <p>
-            Where available, information specific to institutional clients can be toggled on and off by toggling the "Institutional" option at the top of each page. TO switch back to information pertaining to Indiviudal clients only, simply toggle the seletor again.
+            Where available, information specific to institutional clients can be toggled on and off by toggling the "Institutional" option at the top of each page. 
+            To switch back to information pertaining to Indiviudal clients only, simply toggle the selector again.
           </p>  
           `
         },
@@ -89,7 +95,7 @@ export default {
 </script>
 
 <template>
-  <base-view>
+  <base-layout>
     <template #content>
       <h2>Client Portal API Reference & Documentation</h2>
       <ul id="features-list">
@@ -102,16 +108,22 @@ export default {
       <expandable-card v-for="card in cards" v-bind="card" />
     </template>
     <template #aside>
-      <div class="latest-updates-header">
-        <h2>Latest Updates</h2>
-        <router-link to="/changelog">Changelog</router-link>
+      <div class="latest-updates">
+        <div class="latest-updates-header">
+          <h2>Latest Updates</h2>
+          <router-link to="/changelog">Changelog</router-link>
+        </div>
+        <latest-updates-list />
       </div>
-      <latest-updates-list />
     </template>
-  </base-view>
+  </base-layout>
 </template>
 
-<style>
+<style scoped>
+.latest-updates {
+  margin-inline: 1.5rem;
+}
+
 .latest-updates-header {
     display: flex;
     flex-direction: row;
@@ -128,5 +140,13 @@ export default {
 
 ul#features-list {
   line-height: 1.5rem;
+}
+
+@media only screen and (min-width: 1200px) {
+    .latest-updates {
+        margin-top: 3rem;
+        margin-inline: 0;
+        margin-right: 1.5rem;
+    }
 }
 </style>

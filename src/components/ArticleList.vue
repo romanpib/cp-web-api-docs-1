@@ -2,7 +2,7 @@
 import ArticleListItem from '@/components/ArticleListItem.vue'
 export default {
     props: {
-        articles: {type: Array, required: true}
+        articles: {type: Array, required: false}
     },
     components: {
         ArticleListItem
