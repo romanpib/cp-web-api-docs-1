@@ -26,7 +26,7 @@ export default {
           <p>
             Client Portal API is a HTTP based API, that is, requests to the IBKR backend are sent over the internet. 
             In comparison, TWS API is designed to programatically interact with the Trader Workstation software. 
-            In order to use Client Portal API, a lightweight API gateway is required whereas for TWS API, a working installation of TWS is required.          
+            In order to use Client Portal API, a lightweight API gateway, or in the case of institutional clients OAuth, is required whereas for TWS API, a working installation of TWS is required.          
           </p>
           `
         },
