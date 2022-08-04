@@ -14,7 +14,7 @@ export default {
     AccountToggle,
     ArticleList,
     WebsocketPlayground,
-    Warning
+    Warning,
   },
   data() {
     return {

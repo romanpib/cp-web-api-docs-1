@@ -38,15 +38,14 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
 .latest-update-card {
-    margin-bottom: 1.25rem;
     background-color: #f5f5f5;
     font-size: small;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.latest-update-card .header {
+.header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -57,7 +56,7 @@ export default {
     padding: 1rem 0.75rem;
 }
 
-.latest-update-card .content p {
+.content p {
     margin: 0;
     padding: 1rem;
 }

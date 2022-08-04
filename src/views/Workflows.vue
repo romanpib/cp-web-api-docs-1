@@ -71,16 +71,6 @@ export default {
   align-items: center;
 }
 
-div.code {
-  width: 100%;
-  background-color: #303031;
-  padding: 1rem 1.5rem;
-}
-
-code {
-  color: white;
-}
-
 #active {
   display: none;
 }

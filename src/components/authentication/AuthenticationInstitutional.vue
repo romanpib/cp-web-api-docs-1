@@ -7,9 +7,5 @@
       only create a single brokerage session at a time, so launching TWS or IBKR mobile will disconnect a brokerage session
       in the CP API, and vice versa.
     </p>
-<!-- 
-    <h3>OAuth</h3>
-    <h4>First-Party OAuth</h4>
-    <h4>Third-Party OAuth</h4> -->
   </div>
 </template>

@@ -35,8 +35,11 @@ const workflowsIndividual = [
                 title: 'Network Error while accessing endpoints',
                 content: `
                 <p>
-                    In order to use the endpoints and websockets functionality on the documentation page inside the browser, CORS (Cross Origin Resource Sharing) needs to be disabled from within this browser.
-                    Several extensions for both Chrome and Firefox are available to toggle CORS on and off. CORS is disabled by default when using API testing tools such as Postman or Thunder Client.
+                    In order to use the endpoints and websockets functionality on the documentation page inside a web browser, Cross Origin Resource Sharing (CORS) needs to be disabled from within the browser.
+                    Several extensions for both Chrome and Firefox are available to toggle CORS on and off. 
+                </p>
+                <p>
+                    <b>Tip:</b> CORS is disabled by default when using API testing tools such as Postman or Thunder Client.
                 </p>
                 `
             },
@@ -64,8 +67,11 @@ const workflowsIndividual = [
                 title: 'Automated Login',
                 content: `
                 <p>
-                    For security reasons, automated login to Client Portal API is not supported for individual clients. The API gateway was designed to require
-                    the end user to manually enter their credentials into a web browser to login.
+                    For security reasons, automated login to Client Portal API is not currently supported for individual clients. The API gateway was designed to require
+                    the end user to manually enter their credentials into a web browser to authenticate their brokerage session. 
+                </p>
+                <p>
+                    <b>Note:</b> Interactive Brokers is unable to provide recommendations or support for third-party solutions that provide a workaround around this requirement.
                 </p>
                 `
             },
@@ -91,8 +97,10 @@ const workflowsIndividual = [
                 title: 'Too Many Requests Error',
                 content: `
                 <p>
-                    The error "429 - Too many requsts" is returned when a client application is blocked for sending requests at an excessive rate. Violator IP addresses are put in a penalty box for 10 minutes.
-                    After this period, the IP address is removed from the penalty box until another request exceeds the limitation again. Repeat violator IP addresses can be permamently blocked until the issue is resolved.
+                    Interactive Brokers has implemented rate limiting on endpoints accessible via Client Portal API. Currently a limit of 60 requests per minute exists.
+                    Where this limit is exceeded, the API will return a "429 Too Many Requests" exception. Violator IP addresses are put in a penalty box for 10 minutes.
+                    After this period, the IP address is removed from the penalty box until another request exceeds the limit again. 
+                    Repeat violator IP addresses can be permamently blocked until the issue is resolved.
                 </p>
                 `
             }
@@ -123,7 +131,7 @@ const workflowsIndividual = [
         ]
     },
     {
-        category: 'Account Data',
+        category: 'Account Data & Reports',
         items: [
             {
                 id: 'portfolio-discrepancies',
@@ -141,8 +149,11 @@ const workflowsIndividual = [
                 title: 'Flex Queries',
                 content: `
                 <p>
-                    Flex Query generation is not supported in Client Portal API. To generate a Flex Query, please refer to the <a href="https://guides.interactivebrokers.com/am/am/reports/using_the_flex_web_service.htm" target="_blank">Flex Web Services API</a> documentation. 
-                    Please note that when setting up the Flex Queries, the live account must be used.
+                    Generating complex reports is not currently supported in Client Portal API. Interactive Brokers does provide an alternative API, Flex Web Service, which allows for the retrieval of pre-made reports, known as Flex Queries, from Client Portal via HTTPS. 
+                    To learn more about Flex Query and the Flex Web Service API please refer to the official <a href="https://guides.interactivebrokers.com/am/am/reports/using_the_flex_web_service.htm" target="_blank">Flex Web Service API</a> documentation. 
+                </p>
+                <p>
+                    <b>Note:</b> A live account must be used when creating Flex Queries.
                 </p>
                 `
             },

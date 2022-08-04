@@ -95,10 +95,10 @@ const websocketsIndividual = [
                     has a contract ID of 265598. In addition, we must also specify the fields that should be returned. In this case we are interested in fields 31 - close price, and 83 - the % change, or difference between the last price and the close price for the previous day.
                     For a list of available tags, please see the <a href='/endpoints'>endpoint explorer</a>.  
                 </p>
-                <div class='code'>
-                    <code>
-                        smd+265598+{"fields":["31","83"]}
-                    </code>
+                <div class="code">
+                <code>
+                    smd+265598+{"fields":["31","83"]}
+                </code>
                 </div>
                 `
             },
@@ -118,140 +118,140 @@ const websocketsIndividual = [
                     The historical market data request takes the following parameters:
                 </p>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Description</th>
-                            <th>Valid Values</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>exchange: String</td>
-                            <td>Contract exchange</td>
-                            <td>Valid exchange on which the contract trades</td>
-                        </tr>
-                        <tr>
-                            <td>period: String</td>
-                            <td>Request duration</td>
-                            <td>
-                                <ul>
-                                    <li>{1-30}min</li>
-                                    <li>{1-8}h</li>
-                                    <li>{1-1000}d</li>
-                                    <li>{1-792}w</li>
-                                    <li>{1-182}m</li>
-                                    <li>{1-15}y</li>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>bar: String</td>
-                            <td>Request bar size</td>
-                            <td>
-                                <ul>
-                                    <li>1min</li>
-                                    <li>2min</li>
-                                    <li>3min</li>
-                                    <li>5min</li>
-                                    <li>10min</li>
-                                    <li>15min</li>
-                                    <li>30min</li>
-                                    <li>1h</li>
-                                    <li>2h</li>
-                                    <li>3h</li>
-                                    <li>4h</li>
-                                    <li>8h</li>
-                                    <li>1d</li>
-                                    <li>1w</li>
-                                    <li>1m</li>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>outsideRTH: Boolean</td>
-                            <td>Request data outside trading hours</td>
-                            <td>
-                                true/false
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>source: String</td>
-                            <td>Type of date requested</td>
-                            <td>
-                                <ul>
-                                    <li>midpoint</li>
-                                    <li>trades</li>
-                                    <li>bid_ask</li>
-                                    <li>bid</li>
-                                    <li>ask</li>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>format: String</td>
-                            <td>Historical values returned</td>
-                            <td>
-                                <ul>
-                                    <li>%o - open</li>
-                                    <li>%c - close</li>
-                                    <li>%h - high</li>
-                                    <li>%l - low</li>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>
-                    Multiple historical values can be requested in a single request by separating them with a slash, for example:
-                </p>
-                <div class='code'>
-                    <code>
-                        smh+265598+{"period":"1d","bar":"1min", "source":"trades", "format":"%o/%c/%h/%l"}
-                    </code>
-                </div>
-                <p>
-                    returns the open, close, high, and low trades prices for the last day with one minute bars.
-                </p>
-                <h5>Example: Request AAPL historical trade high data for past 2 hours with 5 mins bars</h5>
-                <div class='code'>
-                    <code>
-                        smh+265598+{"exchange":"ISLAND","period":"2h","bar":"5min","outsideRth":false,"source":"trades","format":"%h/%l"}
-                    </code>
-                </div>
-                <p>
-                    The following response will be returned:
-                </p>
-                <div class='code'>
-                    <code>
-                    {
-                        "serverId": "341115",
-                        "symbol": "AAPL",
-                        "text": "AAPLE INC",
-                        "priceFactor": 100,
-                        "startTime": "20210317-18:00:00",
-                        "high": "12586/14469/65",
-                        "low": "12283/34103/0",
-                        "timePeriod": "7200s",
-                        "barLength": 300,
-                        "mdAvailability": "S",
-                        "mktDataDelay": 0,
-                        "outsideRth": false,
-                        "volumeFactor": 1,
-                        "priceDisplayRule": 1,
-                        "priceDisplayValue": "2",
-                        "negativeCapable": false,
-                        "messageVersion": 2,
-                        "data": [...],
-                        "points": 23, 
-                        "topic": "smh+265598",
-                    }                   
-                    </code>
-                </div>
-                <p>
-                    Note the server ID associated with the subscription. In order to unsubscribe from the topic, we send the unsubscription message with the server ID:
-                </p>
-                <div class='code'>
-                    <code>
-                        umh+{serverId}
-                    </code>
-                </div>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                        <th>Valid Values</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>exchange: String</td>
+                        <td>Contract exchange</td>
+                        <td>Valid exchange on which the contract trades</td>
+                    </tr>
+                    <tr>
+                        <td>period: String</td>
+                        <td>Request duration</td>
+                        <td>
+                            <ul>
+                                <li>{1-30}min</li>
+                                <li>{1-8}h</li>
+                                <li>{1-1000}d</li>
+                                <li>{1-792}w</li>
+                                <li>{1-182}m</li>
+                                <li>{1-15}y</li>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>bar: String</td>
+                        <td>Request bar size</td>
+                        <td>
+                            <ul>
+                                <li>1min</li>
+                                <li>2min</li>
+                                <li>3min</li>
+                                <li>5min</li>
+                                <li>10min</li>
+                                <li>15min</li>
+                                <li>30min</li>
+                                <li>1h</li>
+                                <li>2h</li>
+                                <li>3h</li>
+                                <li>4h</li>
+                                <li>8h</li>
+                                <li>1d</li>
+                                <li>1w</li>
+                                <li>1m</li>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>outsideRTH: Boolean</td>
+                        <td>Request data outside trading hours</td>
+                        <td>
+                            true/false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>source: String</td>
+                        <td>Type of date requested</td>
+                        <td>
+                            <ul>
+                                <li>midpoint</li>
+                                <li>trades</li>
+                                <li>bid_ask</li>
+                                <li>bid</li>
+                                <li>ask</li>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>format: String</td>
+                        <td>Historical values returned</td>
+                        <td>
+                            <ul>
+                                <li>%o - open</li>
+                                <li>%c - close</li>
+                                <li>%h - high</li>
+                                <li>%l - low</li>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                Multiple historical values can be requested in a single request by separating them with a slash, for example:
+            </p>
+            <div class='code'>
+                <code>
+                    smh+265598+{"period":"1d","bar":"1min", "source":"trades", "format":"%o/%c/%h/%l"}
+                </code>
+            </div>
+            <p>
+                returns the open, close, high, and low trades prices for the last day with one minute bars.
+            </p>
+            <h5>Example: Request AAPL historical trade high data for past 2 hours with 5 mins bars</h5>
+            <div class='code'>
+                <code>
+                    smh+265598+{"exchange":"ISLAND","period":"2h","bar":"5min","outsideRth":false,"source":"trades","format":"%h/%l"}
+                </code>
+            </div>
+            <p>
+                The following response will be returned:
+            </p>
+            <div class='code'>
+                <code>
+                {
+                    "serverId": "341115",
+                    "symbol": "AAPL",
+                    "text": "AAPLE INC",
+                    "priceFactor": 100,
+                    "startTime": "20210317-18:00:00",
+                    "high": "12586/14469/65",
+                    "low": "12283/34103/0",
+                    "timePeriod": "7200s",
+                    "barLength": 300,
+                    "mdAvailability": "S",
+                    "mktDataDelay": 0,
+                    "outsideRth": false,
+                    "volumeFactor": 1,
+                    "priceDisplayRule": 1,
+                    "priceDisplayValue": "2",
+                    "negativeCapable": false,
+                    "messageVersion": 2,
+                    "data": [...],
+                    "points": 23, 
+                    "topic": "smh+265598",
+                }
+                </code>
+            </div>
+            <p>
+                Note the server ID associated with the subscription. In order to unsubscribe from the topic, we send the unsubscription message with the server ID:
+            </p>
+            <div class='code'>
+                <code>
+                    umh+{serverId}
+                </code>
+            </div>
                 `,
             }
         ]
@@ -399,13 +399,10 @@ const websocketsIndividual = [
                 title: 'Weekly Trades Details',
                 content: `
                 <p>
-                    To review a list of your trades for the current day and six previous days use the topic <b>str</b>. 
-                    If trades are required of less than 7 days, "days" parameter can be passed with integer value corresponding to the number of days needed (1 represents today and value can be up to 7). 
-                    For updates you would only receive new orders as they fill. To receive only new trade updates and no previous trades, "realtimeUpdatesOnly" parameter can be passed. 
-                    To unsubscribe from trades, the topic <b>utr</b> needs to be sent.                
-                </p>
-                </p>
-                <div class='code'>
+                    To review a list of your trades for the current and previous six days, the topic <b>str</b> can be sent to the websocket endpoint.
+                    In addition to the trades history, this topic will also return trade updates as they become available.
+                    </p>
+                    <div class='code'>
                     <code>
                         str+{}
                     </code>
@@ -449,18 +446,27 @@ const websocketsIndividual = [
                       }
                     </code>
                 </div>
+                <p>
+                    To unsubscribe from trades, the topic <b>utr</b> needs to be sent.                
+                </p>
                 <div class='code'>
                     <code>
                         utr+{}
-                    </code>
+                        </code>
                 </div>
-                <h5>Example: Request real-time updates only</h5>
+                <h5>Example: Request real-time trade updates only</h5>
+                <p>
+                    To receive new trade updates only and no previous trades details, the "realtimeUpdatesOnly" parameter can be passed as part of the <b>str</b> message as follows: 
+                </p>
                 <div class='code'>
                     <code>
                         str+{"realtimeUpdatesOnly": true}
                     </code>
                 </div>
-                <h5>Example: Request trades for the last 1 day</h5>
+                <h5>Example: Request trade history for a specified number of days</h5>
+                <p>
+                    If trades are required for less than 7 days the "days" parameter can be passed with integer value corresponding to the number of days needed (1 represents today and value can be up to 7). 
+                </p>
                 <div class='code'>
                     <code>
                         str+{"days": 1}

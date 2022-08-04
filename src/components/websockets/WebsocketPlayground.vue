@@ -14,15 +14,16 @@ export default {
         }
     },
     methods: {
-        connect() {
+        connect(websocketURL) {
             if (this.connected) {
                 return;
             }
-            this.socket = new WebSocket(this.url);
+            this.socket = new WebSocket(websocketURL);
+            this.socket.timeout = 10000;
             this.socket.binaryType = 'blob';
             this.messages.push({
                 type: 'outbound',
-                message: `Attempting to open a websocket connection to: ${this.url}`
+                message: `Attempting to open a websocket connection to: ${websocketURL}`
             });
             this.socket.onopen = () => {
                 this.connected = true;
@@ -75,7 +76,7 @@ export default {
             <span>URL:</span>
             <input type="url" v-model="this.url" />
             <div class="buttons">
-                <button id="connect" v-if="!this.connected" @click="connect">Connect</button>
+                <button id="connect" v-if="!this.connected" @click="connect(this.url)">Connect</button>
                 <button id="disconnect" v-if="this.connected" @click="disconnect">Disconnect</button>
             </div>
         </div>
@@ -93,7 +94,7 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
 .playground-container {
     margin-block: 1rem;
     border: 1px solid #e0e0e0;

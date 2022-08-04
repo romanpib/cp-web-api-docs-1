@@ -2,15 +2,30 @@
 import { useChangelogStore } from '@/stores/changelogStore'
 import LatestUpdateCard from '@/components/home/LatestUpdateCard.vue'
 export default {
-    setup: () => ({store: useChangelogStore()}),
-    data: () => ({numChanges: 3}),
     components: {
         LatestUpdateCard
-    }
+    },
+    setup() {
+        const store = useChangelogStore();
+        return {
+            store
+        }
+    },
 }
 </script>
 
 <template>
-    <latest-update-card v-for="update in store.recentChanges(numChanges)" v-bind="update" />
+    <div class="latest-updates-list">
+        <latest-update-card v-for="update in store.recentChanges(numChanges)" v-bind="update" />
+    </div>
 </template>
 
+<style scoped>
+.latest-updates-list {
+    margin-inline: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+</style>

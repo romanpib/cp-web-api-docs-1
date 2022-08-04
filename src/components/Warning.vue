@@ -1,14 +1,13 @@
 <template>
-    <div class="warning">
+    <div class="warning-container">
         <i class="fa-solid fa-triangle-exclamation"></i>
-        <div class="slot">
-            <slot></slot>
-        </div>
+        <slot></slot>
     </div>
 </template>
 
-<style>
-.warning {
+<style scoped>
+.warning-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,22 +17,7 @@
     padding: 0.5rem 1.5rem;
     margin-block: 0.5rem;
 }
-
-.warning i {
+.warning-container i {
     font-size: large;
-}
-
-.warning .slot {
-    color: black;
-}
-
-.warning a {
-    color: black;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.warning p {
-    color: black;
 }
 </style>
