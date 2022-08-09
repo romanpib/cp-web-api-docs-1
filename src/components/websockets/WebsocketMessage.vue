@@ -6,7 +6,9 @@ export default {
     },
     computed: {
         messageIcon () {
-            return (this.type == 'outbound') ? 'fa-solid fa-arrow-right' : 'fa-solid fa-arrow-left'
+            const OUTBOUND_MESSAGE_ICON = 'fa-solid fa-arrow-right';
+            const INBOUND_MESSAGE_ICON = 'fa-solid fa-arrow-left';
+            return (this.type == 'outbound') ? OUTBOUND_MESSAGE_ICON : INBOUND_MESSAGE_ICON;
         }
     }
 }
@@ -21,11 +23,12 @@ export default {
 
 <style>
 .message {
-    display: flex;
-    flex: row;
-    align-items: baseline;
+    width: 100%;
     padding: 0.5rem 1rem;
     gap: 1rem;
     word-break: break-all;
+}
+.message i {
+    padding-right: 1rem;
 }
 </style>

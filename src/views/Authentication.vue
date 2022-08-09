@@ -2,8 +2,8 @@
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 import BaseLayout from '@/layouts/BaseLayout.vue'
 import DownloadCard from '@/components/DownloadCard.vue'
-import AuthenticationIndividual from '@/components/authentication/AuthenticationIndividual.vue'
-import AuthenticationInstitutional from '@/components/authentication/AuthenticationInstitutional.vue'
+import AuthenticationIndividual from '@/docs/authentication/AuthenticationIndividual.vue'
+import AuthenticationInstitutional from '@/docs/authentication/AuthenticationInstitutional.vue'
 import AccountToggle from '@/components/AccountToggle.vue'
 export default {
   components: {

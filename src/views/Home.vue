@@ -63,32 +63,32 @@ export default {
           </p>
           `
         },  
-        {
-          title: 'How do I get started with Client Portal API?',
-          content: `
-          <p>
-            See the <a href="./quickstart"/>Quickstart</a> section for step by step instructions on getting started with Client Portal API.
-          </p>
-          `
-        },
-        {
-          title: 'Does the Client Portal API support automated authentication methods?',
-          content: `
-          <p>
-            Automated authentication with the Client Portal API using OAuth 1.0a is supported for institutional clients only. 
-            Individual account holders are not currently eligible for automated authentication, and, as such, must use the API gateway to authenticate the brokerage session.
-          </p>
-          `
-        },
-        {
-          title: 'Information for institutional clients',
-          content: `
-          <p>
-            Where available, information specific to institutional clients can be toggled on and off by toggling the "Institutional" option at the top of each page. 
-            To switch back to information pertaining to Indiviudal clients only, simply toggle the selector again.
-          </p>  
-          `
-        },
+        // {
+        //   title: 'How do I get started with Client Portal API?',
+        //   content: `
+        //   <p>
+        //     See the <a href="./quickstart"/>Quickstart</a> section for step by step instructions on getting started with Client Portal API.
+        //   </p>
+        //   `
+        // },
+        // {
+        //   title: 'Does the Client Portal API support automated authentication methods?',
+        //   content: `
+        //   <p>
+        //     Automated authentication with the Client Portal API using OAuth 1.0a is supported for institutional clients only. 
+        //     Individual account holders are not currently eligible for automated authentication, and, as such, must use the API gateway to authenticate the brokerage session.
+        //   </p>
+        //   `
+        // },
+        // {
+        //   title: 'Information for institutional clients',
+        //   content: `
+        //   <p>
+        //     Where available, information specific to institutional clients can be toggled on and off by toggling the "Institutional" option at the top of each page. 
+        //     To switch back to information pertaining to Indiviudal clients only, simply toggle the selector again.
+        //   </p>  
+        //   `
+        // },
       ]
     })
 }
@@ -98,6 +98,9 @@ export default {
   <base-layout>
     <template #content>
       <h2>Client Portal API Reference & Documentation</h2>
+      <p>
+        
+      </p>
       <ul id="features-list">
         <li>Many of the features that make your trading successful are available through Client Portal API</li>
         <li>Client Portal API offers Interactive Brokers' clients the ability to trade, monitor and manage their account</li>

@@ -7,7 +7,12 @@ const workflowsIndividual = [
                 title: 'Competing Session',
                 content: `
                 <p>
-                    Only a single active brokerage session can exist for any username accross all IBKR services. If you are logged in to either Client Portal, TWS, or IBKR Mobile, make sure to log out and try reauthenticating your session again. The endpoint /reauthenticate can be used to reauthenticate the brokerage session.
+                    Only a single active brokerage session can exist for any username accross all IBKR services. 
+                    If you are logged in to either Client Portal, TWS, or IBKR Mobile, make sure to log out and try reauthenticating your session Client Portal API again. 
+                    The endpoint <b>/reauthenticate</b> can be used to reauthenticate the brokerage session. 
+                </p>
+                <p>
+                    <b>Tip:</b> The query parameter <b>force=true</b> can be passed to the <b>/reauthenticate</b> endpoint to disconnect other competing sessions before reauthenticating.
                 </p>
                 `
             },
@@ -16,8 +21,10 @@ const workflowsIndividual = [
                 title: 'Session Duration',
                 content: `
                 <p>
-                    The maximum amount of time that the Client Portal API session can remain authenticated is 24 hours. After this time, clients will need to reauthenticate their sessionby following the instructions on the Auhtentication page.
-                    In addition, the session will time out if no requests are received within a span of 5 minutes. In order to prevent this from happening, you can use the /sso/validate endpoint can be called on a regular basis, for example once every 1 minute.
+                    The maximum amount of time that the Client Portal API session can remain authenticated is 24 hours. 
+                    After this time, clients will need to reauthenticate their session by following the instructions on the <a href='./quickstart'>Quickstart</a> page.
+                    In addition, the session will time out if no requests are received within a span of 5 minutes. 
+                    In order to prevent this from happening, you can use the <b>/sso/validate</b> endpoint can be called on a regular basis. It is recommended to call this endpoint approximately every minute.
                 </p>
                 `
             },
@@ -26,7 +33,12 @@ const workflowsIndividual = [
                 title: 'Multiple Usernames',
                 content: `
                 <p>
-                    Clients wishing to use multiple IBKR products at the same time can do so by creating a new username that can then be used to log into other services while using the Client Portal API. To create a second username from Client Portal, please see the following <a href="https://ibkr.info/node/1004" target="_blank">article</a>. Please note, that in accordance with market data vendor requirements, market data services are user-specific and any username subscribed will be assessed a separate market data subscription fee.
+                    Clients wishing to use multiple IBKR products at the same time (TWS, IBKR Mobile or Client Portal) can do so by creating a new username 
+                    that can then be used to log into other services while using the Client Portal API. 
+                    To create a second username please see the following <a href="https://ibkr.info/node/1004" target="_blank">article</a>. 
+                </p>
+                <p>
+                    <b>Note:</b> In accordance with market data vendor requirements, market data services are user-specific and any username subscribed will be assessed a separate market data subscription fee.
                 </p>
                 `
             },
@@ -35,11 +47,12 @@ const workflowsIndividual = [
                 title: 'Network Error while accessing endpoints',
                 content: `
                 <p>
-                    In order to use the endpoints and websockets functionality on the documentation page inside a web browser, Cross Origin Resource Sharing (CORS) needs to be disabled from within the browser.
-                    Several extensions for both Chrome and Firefox are available to toggle CORS on and off. 
+                    In order to use the endpoints and websockets functionality on the documentation page inside a web browser, Cross Origin Resource Blocking (CORB) 
+                    needs to be disabled from within the browser.
+                    Several extensions for both Chrome and Firefox are available to toggle CORB on and off from within the browser.
                 </p>
                 <p>
-                    <b>Tip:</b> CORS is disabled by default when using API testing tools such as Postman or Thunder Client.
+                    <b>Tip:</b> CORB is disabled by default when using API testing tools such as Postman or Thunder Client.
                 </p>
                 `
             },
@@ -103,7 +116,17 @@ const workflowsIndividual = [
                     Repeat violator IP addresses can be permamently blocked until the issue is resolved.
                 </p>
                 `
-            }
+            },
+            {
+                id: 'bad-request',
+                title: 'Bad Request Error',
+                content: `
+                <p>
+                    A Bad Request may be returned from some endpoints in the case of an invalid JSON body, for instance if it has carriage returns/newlines. 
+                    Please try first removing these and call the endpoint again.
+                </p>
+                `
+            },
         ]
     },
     {
@@ -114,8 +137,10 @@ const workflowsIndividual = [
                 title: 'Snapshot Requests',
                 content: `
                 <p>
-                    Client Portal API allows API consumers to request market data snapshots for most instruments. In order to retrieve market data snapshots, the API consumer must first create a snapshot request subscription. The response contains details about the subscribed snapshot request, the symbol, and requested fields.
-                    In order to retrieve the market data, subsequent calls to the /marketdata/snapshot endpoint must be made.
+                    Client Portal API allows API consumers to request market data snapshots for most instruments. 
+                    In order to retrieve market data snapshots, the API consumer must first create a snapshot request subscription. 
+                    The response contains details about the subscribed snapshot request, the symbol, and requested fields.
+                    In order to retrieve the market data, subsequent calls to the <b>/marketdata/snapshot</b> endpoint must be made.
                 </p>
                 `
             },
@@ -138,9 +163,8 @@ const workflowsIndividual = [
                 title: 'Portfolio Discrepancies',
                 content: `
                 <p>
-                    Due to filtering differences accross our platform, there might be some differences present in portfolio data obtained via the Client Portal API.
-                    Statemenents generated via Client Portal and Flex Queries should be considered as reliable sources of information when. Flex Queries can be automated 
-                    using the Flex Web Services. 
+                    Due to filtering differences accross our platform, some discrepancies in portfolio data obtained via Client Portal API may be present.
+                    For comparison purposes, statemenents generated via Client Portal or via Flex Queries should be considered as reliable sources of information.
                 </p>
                 `
             },
@@ -156,7 +180,7 @@ const workflowsIndividual = [
                     <b>Note:</b> A live account must be used when creating Flex Queries.
                 </p>
                 `
-            },
+            }
         ]
     },
 ]

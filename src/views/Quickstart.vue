@@ -2,8 +2,8 @@
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import DownloadCard from '@/components/DownloadCard.vue'
-import QuickstartIndividual from '@/components/quickstart/QuickstartIndividual.vue'
-import QuickstartInstitutional from '@/components/quickstart/QuickstartInstitutional.vue'
+import QuickstartIndividual from '@/docs/quickstart/QuickstartIndividual.vue'
+import QuickstartInstitutional from '@/docs/quickstart/QuickstartInstitutional.vue'
 import AccountToggle from '@/components/AccountToggle.vue'
 export default {
   components: {
@@ -82,13 +82,17 @@ export default {
   #active {
     display: block;
   }
+
+  .downloads {
+    margin-bottom: 3rem;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   .downloads {
     margin-inline: 0;
     margin-right: 1.5rem;
-    margin-top: 3rem;
+    margin-block: 3rem;
   }
 }
 </style>

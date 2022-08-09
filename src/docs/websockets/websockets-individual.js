@@ -59,8 +59,8 @@ const websocketsIndividual = [
                     </li>
                 </ul>
                 <p>
-                    In order to receive streaming data via the websocket, the relevant topic must be subscribed to. In order to do so,
-                    a solicited message of the format: <b>TOPIC+{ARGUMENTS}</b> must be sent to the websocket endpoint, where:
+                    In order to receive streaming data from the websocket, the relevant topic must be subscribed to. In order to do so,
+                    a message of the format: <b>TOPIC+{ARGUMENTS}</b> must be sent to the websocket endpoint, where:
                 </p>
                 <ul>
                     <li>TOPIC represents the request that is being sent via the websocket</li>
@@ -69,8 +69,8 @@ const websocketsIndividual = [
                     if no arguments are required</li>
                 </ul>
                 <p>
-                Solicited message topics are generally three characters in length and start with either an <b>s</b>, if the topic
-                is being subscribed to, or an <b>u</b> if unsubscribing from a topic.
+                    Solicited message topics are generally three characters in length and start with either an <b>s</b>, if the topic
+                    is being subscribed to, or an <b>u</b> if unsubscribing from a topic.
                 </p>
                 `
             },
@@ -84,10 +84,30 @@ const websocketsIndividual = [
                 title: 'Streaming Market Data',
                 content: `
                 <p>
-                    Streaming level 1, top-of-the-book, market data is available for all instruments using the Client Portal API. For streaming data the topic <b>smd+conID+{arguments}</b> is used. 
-                    The conID is the instrument's unique identifier within Interactive Brokers' database. By default contracts use SMART routing where supported. 
-                    If you wish to specify the exchange explicitly, the "conID" should be modified into the format <b>conID@EXCHANGE</b>, where EXCHANGE is the exchange on which the contract trades.
-                    In order to find the conID for a particular instrument, the endpoint '/iserver/secdef/search' can be used.
+                    Streaming, top-of-the-book market data is available for all instruments using Client Portal API's websocket endpoint. For streaming data the following message needs to be sent to the endpoint:
+                    <div class="code">
+                        <code>
+                        smd+conID+{arguments}
+                        </code>
+                    </div>
+                </p>
+                <p>
+                The conID is the instrument's unique contract identifier within Interactive Brokers' database. 
+                </p>
+                <p>
+                    Contracts requested via this topic use SMART routing by default. If you wish to specify the exchange explicitly, 
+                    the passed contract identifier should be modified into the format <b>conID@EXCHANGE</b>, where EXCHANGE is the exchange on which the contract trades.
+                </p>
+                <p>
+                    <b>Tip:</b> The contract ID for a particular instrument can be found using the endpoint <b>/iserver/secdef/search</b>.
+                </p>
+                <p>
+                    In order to unsubscribe from market data for the specified contract ID, the following message needs to be sent to the endpoint:
+                    <div class="code">
+                        <code>
+                        umd+conID+{}
+                        </code>
+                    </div>
                 </p>
                 <h5>Example: Request streaming close price and day percent change for APPL contract</h5>
                 <p>
@@ -107,12 +127,13 @@ const websocketsIndividual = [
                 title: 'Historical Data',
                 content: `
                 <p>
-                    For streaming historical data, the topic <b>smh+conID</b> is used. There are also optional params available in JSON format. If no params are specified, an empty array <b>{}</b> can be passed. 
-                    If a param is specified incorrectly it will be ignored and default returned. 
-                    To unsubscribe, the topic is <b>umh+serverId</b> whereby use the serverId from the received data.
+                    For streaming historical data, the topic <b>smh+conID</b> is used. There are also optional parameters available in JSON format. 
+                    If no parameters are specified, the empty parameters array <b>{}</b> can be passed. 
+                    Incorrectly specified parameters are ignored and the default (empty) response is returned. 
+                    To unsubscribe, the topic is <b>umh+serverId</b> can be used, where <b>serverID</b> is the server ID associated with the request.
                 </p>
                 <p>
-                    NOTE: Only a max of 5 concurrent historical data request available at a time.
+                    <b>NOTE:</b> Only a max of 5 concurrent historical data request available at a time.
                 </p>
                 <p>
                     The historical market data request takes the following parameters:
@@ -198,8 +219,9 @@ const websocketsIndividual = [
                     </tr>
                 </tbody>
             </table>
+            <h5>Example: Requesting mutltiple historical values in a single request</h5>
             <p>
-                Multiple historical values can be requested in a single request by separating them with a slash, for example:
+                Multiple historical values can be requested using a single request by separating the fields to be returned with a forward slash, for example:
             </p>
             <div class='code'>
                 <code>
@@ -261,11 +283,13 @@ const websocketsIndividual = [
         items: [
             {
                 id: 'live-orders',
-                title: 'Live Orders',
+                title: 'Live Order Updates',
                 content: `
                 <p>
-                    As long as an order is active, it is possible to retrive it using the Web API. For streaming live orders the topic is sor. Once live orders are requested we will start to relay back when there is an update. 
-                    To receive all orders for the current day the endpoint /iserver/account/orders?force=false can be used. It is advised to query all orders for the current day first before subscribing to live orders. To unsubscribe from live orders, the topic is uor.
+                    As long as an order is active, it is possible to retrieve it using Client Portal API. Live streaming orders can be requested by subscribing to the <b>sor</b> topic. 
+                    Once live orders are requested we will start to relay back when there is an update. 
+                    To receive all orders for the current day the endpoint <b>/iserver/account/orders?force=false</b> can be used. 
+                    It is advised to query all orders for the current day first before subscribing to live orders. 
                 </p>
                 <div class='code'>
                     <code>
@@ -311,7 +335,7 @@ const websocketsIndividual = [
                     </code>
                 </div>
                 <p>
-                    To unsubscribe from live order updates, the topic <b>uor</b> is sent:
+                    To unsubscribe from streaming order updates, the topic <b>uor</b> needs to be sent to the websocket endpoint.
                 </p>
                 <div class='code'>
                     <code>
@@ -479,9 +503,9 @@ const websocketsIndividual = [
                 title: 'Profit & Loss Updates',
                 content: `
                 <p>
-                    For existing positions it is possible to receive Profit and Loss updates to the Web API using the topic <b>spl</b>. 
-                    In the payload response the daily profit and loss (dpl) and unrealized profit and loss (upl) are received as a total value for all positions. 
-                    Updates are relayed back as quickly as once per second but can vary based on market activity.                
+                    For existing positions it is possible to receive Profit & Loss updates via Client Portal API using the topic <b>spl</b>. 
+                    As part of the response the daily profit and loss (abbreviated as dpl) and unrealized profit and loss (upl) are received as a total value for all positions. 
+                    Position profit and loss updates are relayed back to the client as quickly as possible, usually once per second during market hours, but can vary based on market activity.                
                 </p>
                 </p>
                 <div class='code'>
@@ -490,7 +514,7 @@ const websocketsIndividual = [
                     </code>
                 </div>
                 <p>
-                    Which returns the following, sample, response:
+                    Which returns the following, sample, response. You can see the account number, the daily profit and loss and the unrealized profit and loss.
                 </p>
                 <div class='code'>
                     <code>
@@ -507,7 +531,7 @@ const websocketsIndividual = [
                     </code>
                 </div>
                 <p>
-                    In order to unsubscribe, the topic <b>upl</b> is sent:
+                    In order to unsubscribe from further updates, the topic <b>upl</b> is sent.
                 </p>
                 <div class='code'>
                     <code>
@@ -541,7 +565,10 @@ const websocketsIndividual = [
                 title: 'Ping Session',
                 content: `
                 <p>
-                    To maintain a session for accessing /iserver or /ccp endpoints use the topic <b>tic</b>. It is advised to ping the session at least once per minute.
+                    To maintain a session for accessing <b>/iserver</b> or <b>/ccp</b> endpoints use the topic <b>tic</b>. It is advised to ping the session at least once per minute.
+                </p>
+                <p>
+                    <b>Note:</b> It is still required to send a request to the <b>/tickle</b> endpoint every few minutes or when the session expires (<b>/sso/validate</b> is returning a 0). 
                 </p>
                 <div class='code'>
                     <code>
@@ -577,7 +604,8 @@ const websocketsIndividual = [
                 title: 'Authentication Status',
                 content: `
                 <p>
-                    When connecting to websocket the topic sts will relay back the status of the authentication. Authentication status is already relayed back if there is a change, such as a competing sessions.                
+                    When initially connecting to the websocket endpoint, the topic <b>sts</b> will relay back the current authentication status of the user. 
+                    Authentication status updates, for example those resulting from competing sessions, are also relayed back to the websocket client via this topic.
                 </p>
                 <div class='code'>
                     <code>
@@ -618,19 +646,17 @@ const websocketsIndividual = [
                 title: 'Bulletins',
                 content: `
                 <p>
-                    If there is an urgent message concerning exchange issues, system problems and other trading information the topic blt is sent along with the message argument.
+                    If there are urgent messages concerning exchange issues, system problems and other trading information the topic <b>blt</b> is sent along with the message argument.
                 </p>
                 <div class='code'>
                     <samp>
                     {
-                        "topic": "ntf" ,
-                        "args": {
-                          "id": INDICATIVE_DATA_SUGGESTION ,
-                          "text": "CFD quotes reference the trade, volume and bid/ask market data on the underlying STK" ,
-                          "title": "Warning" ,
-                          "url": "https://interactivebrokers.com/"
-                            }
-                      }      
+                        "topic": "blt" ,
+                        "args": [
+                            "id": "" ,
+                            "message": "" 
+                        ]
+                    }                      
                     </samp>
                 </div>
                 `

@@ -2,18 +2,17 @@
 import { useAccountTypeStore } from '@/stores/accountTypeStore.js';
 export default {
     setup() {
-        const store = useAccountTypeStore();
         return {
-            store
+            store: useAccountTypeStore()
         }
     },
     methods: {
         onAccountToggled(event) {
-            let clickedElement = event.target.id;
-            if (!clickedElement) {
+            let clickedElementID = event.target.id;
+            if (!clickedElementID) {
                 return;
             }
-            this.store.setAccountType(clickedElement);
+            this.store.setAccountType(clickedElementID);
         }
     }
 }
@@ -27,7 +26,7 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
 .toggle-switch {
     display: flex;
     flex-direction: row;

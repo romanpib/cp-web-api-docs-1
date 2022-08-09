@@ -6,4 +6,7 @@ import '@/styles/theme-common.css'
 import '@/styles/theme-light.css'
 
 
-createApp(App).use(router).use(createPinia()).mount('#app')
+createApp(App)
+    .use(router)
+    .use(createPinia())
+    .mount('#app')

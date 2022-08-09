@@ -14,18 +14,22 @@ export default {
     return {
       cards: [
         {
-          title: 'Step One - Ensure your session is authenticated',
+          title: 'Step One: Ensure your session is authenticated',
           content: `
           <p>
-            In order to use the API, the API sesssion must be authenticated. The easiest way to check if the current session is authenticated is by calling the endpoint /iserver/auth/status. If the session
-            is fully authenticated the response will contain the field 'authenticated' set to true. If you are not seeing this first check the <a href="./authentication">authentication</a>
-            page for common authentication errors before proceeding with the next steps. One thing to note, is that 'authenticated': true may not return immediately, but after some time. Allow up to 15 minutes
-            when running the API for the first time to authenticate the session. Forthcoming session authentication should be near immediate.
+            In order to use Client Portal API, an authenticated brokerage session must be established. 
+            The easiest way to check if the current session is authenticated is by making a POST request to the endpoint <b>/iserver/auth/status</b>. 
+            If the session is fully authenticated the response will contain the field 'authenticated' set to true. 
+            If you are not seeing this, first check the <a href='./quickstart'>Quickstart</a> page for instructions on authenticating your session, or <a href="./authentication">Authentication</a> for common authentication questions.
+          </p>
+          <p>
+            <b>Note:</b> It may take a some time for the <b>/iserver/auth/status</b> endpoint to return a true value for the authentication status when logging in. 
+            If you're using Client Portal API for the first time, please allow up to 15 minutes for the session to fully authenticate.
           </p>
           `
         },
         {
-          title: 'Step Two - Try calling other endpoints',
+          title: 'Step Two: Call other endpoints',
           content: `
             <p>
               In case /iserver/auth/status endpoint returns 'authenticated': false, meaning there is no valid brokerage session, create a brokerage session with the /portal/iserver/reauthenticate endpoint. 
@@ -35,12 +39,17 @@ export default {
             `
         },
         {
-          title: 'Step Three - Generate request logs',
+          title: 'Step Three: Generate request logs',
           content: `
             <p>
-              When troubleshooting web API issues, it is sometimes necessary for our Client Services team to obtain additional information in the form of a request log, so you may be asked for record and provide a .har file. 
-              This file contains additional information about the network requests that are sent and received by your browser. Your browser can generate such files by recording the content, timeline and status of network requests and response while the issue occurs.
-              Most browsers fo have an option to preserve log, which can then be exported. Please see the 'How to generate a HAR file' link below for more information.
+              When troubleshooting Client Portal API issues, it may sometimes be necessary for our client services team to obtain additional information about the request in the form of a request log. 
+              As such you may be asked to generate a request log (HAR) and send it to us.
+            </p>
+            <p>
+              This file contains additional information about the network requests that are sent and received by your browser. 
+              Your browser can generate such files by recording the content, timeline and status of network requests and response while the issue occurs.
+              Most browsers fo have an option to preserve log, which can then be exported. 
+              Please see the 'How to generate a HAR file' link below for more information.
             </p>
           `
         },
