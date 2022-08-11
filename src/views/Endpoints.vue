@@ -28,22 +28,21 @@ export default {
         <h2>Endpoints Explorer</h2>
         <account-toggle id="active"/>
       </div>
-      <warning>
+      <warning class="warning">
         <p>
           This page is intended to be used on a desktop or laptop.
         </p>
       </warning>
-      <p>
-        On this page you will find all of the available endpoints along with their descriptions. Please note, the Client Portal
-        API does not allow any banking or account operations. For this, please see the Digital Account Management (DAM) API.
-      </p>
+      <!-- <p>
+        On this page you will find all of the available endpoints along with their descriptions.
+      </p> -->
       <endpoints-list :accountType="this.store.accountType" />
     </template>
     <template #aside>
       <div class="downloads">
         <h2>Resources</h2>
         <download-card :title="'Download swagger.json'" :url="'https://interactivebrokers.github.io/cpwebapi/swagger.json'" :content="'Download the swagger.json file'"/>
-        <download-card :title="'Doc style endpoints'" :url="'https://www.interactivebrokers.com/api/doc.html'" :content="'DOC style endpoints'"/>
+        <download-card :title="'Available endpoints'" :url="'https://www.interactivebrokers.com/api/doc.html'" :content="'DOC style endpoints'"/>
       </div>
     </template>
   </base-layout>

@@ -32,9 +32,10 @@ export default {
           title: 'Step Two: Call other endpoints',
           content: `
             <p>
-              In case /iserver/auth/status endpoint returns 'authenticated': false, meaning there is no valid brokerage session, create a brokerage session with the /portal/iserver/reauthenticate endpoint. 
-              Please also note, most endpoints are independent, however in a few cases a specific endpoint must first be preceded by a different endpoint. As an example of this, the /portfolio/accounts endpoint must be called 
-              prior to other /portfolio endpoints in an individual account structure, and /portfolio/subaaccounts must be called first in an advisor or master account structure. This iwll return the list of accounts that are valid to use with the other /portfolio endpoints.
+              Most endpoints are self-contained, however in a few cases a preceeding endpoint must first be called before calling another endpoint. 
+              As an example of this, the <b>/portfolio/accounts</b> endpoint must be called prior to other <b>/portfolio</b> endpoints in an individual account structure, 
+              and <b>/portfolio/subaccounts</b> must be called first in an advisor or master account structure. 
+              This will return a list of accounts that are valid to use with the other <b>/portfolio</b> endpoints.
             </p>
             `
         },
@@ -47,9 +48,9 @@ export default {
             </p>
             <p>
               This file contains additional information about the network requests that are sent and received by your browser. 
-              Your browser can generate such files by recording the content, timeline and status of network requests and response while the issue occurs.
-              Most browsers fo have an option to preserve log, which can then be exported. 
-              Please see the 'How to generate a HAR file' link below for more information.
+              Your browser can generate such files by recording the content, timeline and status of network requests and responses while the issue occurs.
+              Most browsers have an option to preserve logs, which can then be exported. 
+              Please see the 'How to generate a HAR file' link in the resources section of this page.
             </p>
           `
         },
@@ -74,6 +75,11 @@ export default {
           url: 'https://ibkr.info/article/3512',
           description: 'Information on generating the HAR file used when troubleshooting web API issues.'
         },
+        {
+          title: 'Troubleshooting Client Portal API login failures',
+          url: 'https://ibkr.info/node/1132',
+          description: 'Review this article if you are experiencing issues logging in to Client Portal API.'
+        },
       ]
     }
   }
@@ -86,18 +92,17 @@ export default {
       <h2>Support</h2>
       <warning>
         <p>
-          For common integration questions, make sure you have reviewed the <router-link to="/workflows">workflows
-          </router-link> section first.
+          For common integration scenarios, make sure you have reviewed the <router-link to="/workflows">workflows</router-link> section first.
         </p>
       </warning>
       <p>
-        If after going through the workflows section has not made things correct, please follow the steps below in order
-        to contact us for assistance. Please note that
-        Interactive Brokers is unable to provide support for third-party solutions build on top of Client Portal API.
-        For troubleshooting issues with third-party libraries,
-        first try recreating the issue with the native Client Portal API, and only get in touch with support if the
-        issues persist when using the native API, otherwise, please get in touch with the third-party
-        developer.
+        This page is intended to provide guidance on how to troubleshoot issues with Client Portal API and get
+        in touch with the support team.
+      </p>
+      <p>
+        Please note that Interactive Brokers is unable to provide support for third-party solutions. 
+        When troubleshooting third-party libraries, try to reproduce the problem using the native Client Portal API first. 
+        If the problem still exists after using the native API, contact support; otherwise, contact the third-party developer.
       </p>
       <expandable-card v-for="card in cards" v-bind="card" />
     </template>

@@ -21,7 +21,7 @@ export default {
     <template #content>
       <h2>Changelog</h2>
       <p>
-        This page is intended to showcase updates for both Client Portal API and it's Documentation page.
+        This page showcases updates for both Client Portal API and it's Documentation page.
       </p>
       <warning v-if="store.filteredChangelog.length == 0">
         <span>There are no changes available that meet the selected criteria. Remove some filters to see results.</span>

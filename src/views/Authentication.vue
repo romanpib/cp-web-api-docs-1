@@ -5,6 +5,7 @@ import DownloadCard from '@/components/DownloadCard.vue'
 import AuthenticationIndividual from '@/docs/authentication/AuthenticationIndividual.vue'
 import AuthenticationInstitutional from '@/docs/authentication/AuthenticationInstitutional.vue'
 import AccountToggle from '@/components/AccountToggle.vue'
+import ResourceLink from '../components/support/ResourceLink.vue';
 export default {
   components: {
     BaseLayout,
@@ -12,7 +13,8 @@ export default {
     AuthenticationIndividual,
     AuthenticationInstitutional,
     AccountToggle,
-  },
+    ResourceLink
+},
   computed: {
     activeTab() {
       const store = useAccountTypeStore()
@@ -45,7 +47,7 @@ export default {
     <template #aside>
       <div class="downloads">
         <h2>Resources</h2>
-        <download-card v-for="download in downloads" v-bind="download" />
+        <!-- TODO https://ibkr.info/article/2260   -->
       </div>
     </template>
   </base-layout>

@@ -24,12 +24,12 @@ export default {
       downloads: [
         {
           title: 'API Gateway',
-          content: 'Download the latest version of the Client Portal API gateway.',
+          content: 'Download the latest version of the Client Portal API Gateway',
           url: 'https://download2.interactivebrokers.com/portal/clientportal.gw.zip'
         },
         {
           title: 'Java',
-          content: 'Download the latest version of the Java SDK.',
+          content: 'Download the latest version of the Java Runtime Environment',
           url: 'https://www.java.com/en/download/'
         }
       ]

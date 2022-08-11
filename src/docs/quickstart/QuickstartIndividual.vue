@@ -7,7 +7,7 @@
         via the API. See the links below on how you can create a free account or upgrade your existing IBKR LITE account to PRO. 
       </p>
       <p>
-        <b>Note:</b> The account creation or upgrade process may take up to 24 hours to complete.
+        <b>Note:</b> The account creation or upgrade process may take up to 48 hours to complete.
       </p>
       <div class="action-buttons">
         <a href="https://www.interactivebrokers.com/en/index.php?f=46380#open-account" target="_blank">Create a free <b>account</b></a>
@@ -23,22 +23,28 @@
         The Client Portal API gateway can be downloaded <a href="https://www.interactivebrokers.com/en/index.php?f=5041" target="_blank">here</a>, or, by clicking on the Gateway card in the Downloads section of this page.
       </p>
       <p>
-        <b>Note:</b> New gateway release versions are released frequently. It is recommended that you periodically download the latest version of the gateway by following the link above.
+        <b>Note:</b> Once a new version of the Client Portal API Gateway is released, it is recommended that you download this new version. 
+        Details about new Gateway releases can be found in the <a href="./changelog">Changelog</a>.
       </p>
     </section>
     <hr>
     <section>
       <h3>Step Three: Download and install Java</h3>
       <p>
-        As the Client Portal API Gateway was built using Java, a working installation of Java is required. The minimum requirement is Java 8 update 192.
+        As the Client Portal API Gateway was built using Java, a working installation of the Java Runtime Environment (JRE) is required. The minimum requirement is Java 8 update 192.
         In order to check if you have a working installation of Java, open a terminal and run the following command:
         <div class="code">
           <code>java --version</code>
         </div>
       </p>
       <p>
-        If Java is installed and correctly configured you should see information about the currently installed version, otherwise an error is raised. 
-        If you don't currently have Java installed you can download it by clicking on the Java card in the Downloads section of this page.
+        If Java is installed and correctly configured you should see information about the currently installed version, otherwise an error is raised. An example response is the following:
+        <div class="code">
+          <code>java 17.0.1 2021-10-19 LTS</code>
+        </div>
+        <p>
+          If you don't currently have Java installed you can download it by clicking on the Java card in the Downloads section of this page.
+        </p>
       </p>
     </section>
     <hr>
@@ -48,7 +54,7 @@
         Using the terminal, navigate to the directory where the gateway has been unzipped. For example:
       </p>
       <div class="code">
-        <code>cd 'C:/Users/Example/Desktop/Cp Gateway'</code>
+        <code>cd C:/Users/Example/Desktop/Cp Gateway</code>
       </div>
       <p>
         On Windows, launch the gateway using the following command:
@@ -57,7 +63,7 @@
         <code>bin\run.bat root\conf.yaml</code>
       </div>
       <p>
-        and in the case of Linux:
+        And in the case of Unix systems:
       </p>
       <div class="code">
         <code>bin/run.sh root/conf.yaml</code>
@@ -72,6 +78,25 @@
       </p>
       <p>
         <b>Tip:</b> By default, the gateway will listen on port 5000. To change this update the conf.yaml file found in the 'root' directory of the gateway.
+      </p>
+    </section>
+    <hr>
+    <section>
+      <h3>Where to go from here?</h3>
+      <p>
+        Ensure your session is authenticated by following the tips and tricks on the <a href="./authentication">Authentication</a> page. 
+      </p>
+      <p>  
+        Once you are successful in authenticating, review the available endpoints on the <a href="./endpoints">Endpoints</a> page. 
+      </p>
+      <p>
+        Websockets can retrieve and deliver streaming data. For more information on how to use websockets, see the <a href="./websockets">Websockets</a> page.
+      </p>
+      <p>
+        Once you have reviewed pages above, go through the <a href="./workflows">Workflows</a> to understand the use cases.
+      </p>
+      <p>
+        <b>Good luck! 🍀</b>
       </p>
     </section>
     <hr>

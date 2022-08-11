@@ -9,23 +9,23 @@ const websocketsIndividual = [
                 <p>
                     The websocket endpoint is available at <a href="wss://localhost:5000/v1/api/ws">wss://localhost:5000/v1/api/ws</a>. Once connected, 
                     the session needs to be authorized. This can be achieved in two ways:
-                    <ol>
-                        <li>
-                            Include the cookies from the 'set-cookie' headers from previous API requests. If you are using a browser to
-                            test API functionality, this will generally be done automatically by the browser.
-                        </li>
-                        <br>
-                        <li>
-                            Request the session ID from the /tickle endpoint and send it to the websocket endpoint in the following
-                            format:
-                            <div class="code">
-                                <code>
-                                    {'session': 'SESSION_ID_FROM_TICKLE_ENDPOINT'}
-                                </code>
-                            </div>
-                        </li>
-                    </ol>
                 </p>
+                <h5>From a browser</h5>
+                <p>
+                    Include the cookies from the 'set-cookie' headers from previous API requests. If you are using a browser to
+                    test API functionality, this will generally be done automatically by the browser.
+                </p>
+                <h5>From your client application</h5>
+                <p>    
+                Request the session ID from the /tickle endpoint and send it to the websocket endpoint in the following
+                    format:
+                    <div class="code">
+                    <code>
+                    {'session': 'SESSION_ID_FROM_TICKLE_ENDPOINT'}
+                    </code>
+                    </div>
+                    </p>
+                <h5>Sample response</h5>
                 <p>
                     If the request is successful one of the following responses will be returned:
                     <div class="code">
@@ -109,7 +109,7 @@ const websocketsIndividual = [
                         </code>
                     </div>
                 </p>
-                <h5>Example: Request streaming close price and day percent change for APPL contract</h5>
+                <h5>Example: How to request streaming closing price and daily percent change for APPL</h5>
                 <p>
                     In order to request streaming market data, a subscription request must first be sent for the specific contract. In this case, we know that the APPL@NASDAQ contract
                     has a contract ID of 265598. In addition, we must also specify the fields that should be returned. In this case we are interested in fields 31 - close price, and 83 - the % change, or difference between the last price and the close price for the previous day.
@@ -288,7 +288,7 @@ const websocketsIndividual = [
                 <p>
                     As long as an order is active, it is possible to retrieve it using Client Portal API. Live streaming orders can be requested by subscribing to the <b>sor</b> topic. 
                     Once live orders are requested we will start to relay back when there is an update. 
-                    To receive all orders for the current day the endpoint <b>/iserver/account/orders?force=false</b> can be used. 
+                    To receive all orders for the current day the endpoint <b>/iserver/account/orders</b> can be used. 
                     It is advised to query all orders for the current day first before subscribing to live orders. 
                 </p>
                 <div class='code'>

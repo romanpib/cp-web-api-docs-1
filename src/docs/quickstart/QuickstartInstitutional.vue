@@ -1,13 +1,13 @@
+<script setup>
+  import Warning from '@/components/Warning.vue';
+</script>
+
 <template>
-  <div>
-    <h3>Step one: Have an Institutional type account</h3>
-    <div class="action-buttons">
-      <a href="https://www.interactivebrokers.com/en/index.php?f=46380#open-account" target="_blank">Compare institutional <b>accounts</b></a>
-    </div>
-    <h3>Step two: Request OAuth consumer key</h3>
-    <h3>Step three: Try out endpoints with OAuth key</h3>
-    <h3>Step four: Deploy</h3>
-  </div>
+  <warning>
+    <p>
+      This page is under development. Please check back soon.
+    </p>
+  </warning>
 </template>
 
 <style>
