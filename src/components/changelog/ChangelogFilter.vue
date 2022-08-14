@@ -24,7 +24,13 @@ export default {
     user-select: none;
 }
 
-.filter-container#active {
+#active {
     background-color: #5E7D99;
+}
+
+@media only screen and (max-width: 700px) {
+    #active {
+        display: unset;
+    }    
 }
 </style>

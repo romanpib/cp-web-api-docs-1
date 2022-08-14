@@ -20,8 +20,10 @@ export default {
             <h2>Filter changes</h2>
             <a v-if="store.activeFilters.length != 0" @click="store.clearFilters">Clear all</a>
         </div>
-        <changelog-filter v-for="(filter, index) in store.changelogTags" :tag="filter"
-            :isActive="store.activeFilters.includes(filter)" :key="index" @click="store.toggleFilter(filter)" />
+        <div class="changelog-filters">
+            <changelog-filter v-for="(filter, index) in store.changelogTags" :tag="filter"
+                :isActive="store.activeFilters.includes(filter)" :key="index" @click="store.toggleFilter(filter)" />
+        </div>
     </div>
 </template>
 
@@ -46,7 +48,14 @@ export default {
     cursor: pointer;
 }
 
-.changelog-filters-list :not(:first-child) {
+.changelog-filters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.changelog-filters > * {
     cursor: pointer;
 }
 </style>
