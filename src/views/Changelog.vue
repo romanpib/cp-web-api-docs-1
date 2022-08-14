@@ -24,7 +24,7 @@ export default {
         This page showcases updates for both Client Portal API and it's Documentation page.
       </p>
       <warning v-if="store.filteredChangelog.length == 0">
-        <span>There are no changes available that meet the selected criteria. Remove some filters to see results.</span>
+        <p>There are no changes available that meet the selected criteria. Remove some filters to see results.</p>
       </warning>
       <changelog-section v-for="(change, index) in store.filteredChangelog" v-bind="change" :key="index" />
     </template>
