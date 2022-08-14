@@ -3,15 +3,14 @@
     <section>
       <h3>Step One: Create a free Interactive Brokers account</h3>
       <p>
-        In order to use Client Portal API an active IBKR PRO account is required. IBKR LITE clients will need to upgrade their account to PRO before connecting 
-        via the API. See the links below on how you can create a free account or upgrade your existing IBKR LITE account to PRO. 
+        In order to use Client Portal API an active Interactive Brokers account is required. If you do not have an account, you can create one for free by clicking the button below.
+        Free trial accounts are not currently supported, however support for free trial accounts is coming soon. 
       </p>
       <p>
-        <b>Note:</b> The account creation or upgrade process may take up to 48 hours to complete.
+        <b>Note:</b> The account creation process may take up to 48 hours to complete.
       </p>
       <div class="action-buttons">
         <a href="https://www.interactivebrokers.com/en/index.php?f=46380#open-account" target="_blank">Create a free <b>account</b></a>
-        <a href="https://www.ibkr.com/faq?id=76129136" target="_blank">Upgrade an existing <b>account</b></a>
       </div>
     </section>
     <hr>

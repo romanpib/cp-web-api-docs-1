@@ -21,14 +21,30 @@ export default {
       activeSectionID: null
     }
   },
+  // When the component is mounted called the parseJsonStrings method
+  mounted() {
+    this.parseJsonStrings();
+  },
   methods: {
     onScroll(articleID) {
       this.activeSectionID = articleID;
-    }
+    },
+    parseJsonStrings() {
+      // Parse code elements, if the element contains JSON, parse it and display it as a formatted JSON object
+      const codeElements = document.querySelectorAll('code');
+      codeElements.forEach(element => {
+        try {
+          const json = JSON.parse(element.textContent);
+          element.textContent = JSON.stringify(json, null, 2);
+        } catch (e) {
+          // Do nothing
+        }
+      });
+  }
   },
   computed: {
     sections() {
-      return this.activeTab.map(section => {
+      let sections = this.activeTab.map(section => {
         return {
           category: section.category,
           titles: section.items.map(item => {
@@ -37,8 +53,16 @@ export default {
               title: item.title
             }
           })
-        };
-      });
+        }});
+      // Add the websocket playground #websocket-playground to the sections
+      sections.push({
+        category: 'Websocket Playground',
+        titles: [{
+          id: 'websocket-playground',
+          title: 'Websocket Playground'
+        }]
+      })
+      return sections;
     },
     activeTab() {
       const store = useAccountTypeStore();
@@ -58,6 +82,12 @@ export default {
         <h2>Websockets</h2>
         <account-toggle id="active"/>
       </div>
+      <warning>
+        <p>
+          In order to use websocket endpoints, make sure you have authenticated your brokerage session first. For information on getting started
+          with Client Portal API, please see the <a href="./quickstart">Quickstart</a> page.
+        </p>
+      </warning>
       <article-list v-if="this.activeTab.length!=0" :articles="this.activeTab" @onArticleScroll="this.onScroll" />
       <h3>Websockets Playground</h3>
       <p>
@@ -70,7 +100,7 @@ export default {
           getting started instructions.
         </p>
       </warning>
-      <websocket-playground />
+      <websocket-playground id="websocket-playground"/>
     </template>
     <template #aside>
       <scrollable-sidenav :sections="this.sections" :activeSection="this.activeSection" />

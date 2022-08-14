@@ -49,12 +49,12 @@ export default {
 
 <template>
   <base-layout>
-    <template #content>
+    <template #content id="articles">
       <div class="content-header">
         <h2>Workflows</h2>
         <account-toggle id="active"/>
       </div>
-      <article-list :articles="this.activeTab" @onArticleScroll="this.onScroll" />
+      <article-list :articles="this.activeTab" @onArticleScroll="this.onScroll"/>
     </template>
     <template #aside>
       <scrollable-sidenav :sections="this.sections" :activeSection="this.activeSection" />
@@ -79,5 +79,9 @@ export default {
   #active {
     display: block;
   }
+}
+
+#articles {
+  margin-bottom: 10rem;
 }
 </style>

@@ -5,7 +5,7 @@
 <template>
   <warning>
     <p>
-      This page is under development. Please check back soon.
+      This page is under construction. Please check back soon.
     </p>
   </warning>
 </template>

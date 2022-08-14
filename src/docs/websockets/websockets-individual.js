@@ -234,7 +234,13 @@ const websocketsIndividual = [
             <h5>Example: Request AAPL historical trade high data for past 2 hours with 5 mins bars</h5>
             <div class='code'>
                 <code>
-                    smh+265598+{"exchange":"ISLAND","period":"2h","bar":"5min","outsideRth":false,"source":"trades","format":"%h/%l"}
+                    smh+265598+{
+                        "exchange":"ISLAND",
+                        "period":"2h",
+                        "bar":"5min",
+                        "outsideRth":false,
+                        "source":"trades",
+                        "format":"%h/%l"}
                 </code>
             </div>
             <p>

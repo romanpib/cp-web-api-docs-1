@@ -42,7 +42,7 @@ export default {
           title: 'What are the account requirements?',
           content: `
           <p>
-            An IBKR PRO account is required in order to use Client Portal API. IBKR LITE clients will need to upgrade their account to PRO before connecting via the API. For instructions on upgrading to an IBKR PRO account, please see the quickstart page.
+            All Interactive Brokers' accounts are eligible to use Client Portal API.
           </p>
           `
         },
@@ -58,37 +58,10 @@ export default {
           title: 'Can I use the Client Portal API with a free trial account?',
           content: `
           <p>
-            Yes, a free trial account can be used with any of Interactive Brokers\' API solutions, including Client Portal API. 
-            To sign up for a free trial, please see the <a href="https://interactivebrokers.com/en/trading/free-trial.php" target="_blank">free trial page.</a>        
+            Free trial accounts are not currently eligible for use with Client Portal API. Support for free trial accounts will be added in late Q3 2022.        
           </p>
           `
-        },  
-        // {
-        //   title: 'How do I get started with Client Portal API?',
-        //   content: `
-        //   <p>
-        //     See the <a href="./quickstart"/>Quickstart</a> section for step by step instructions on getting started with Client Portal API.
-        //   </p>
-        //   `
-        // },
-        // {
-        //   title: 'Does the Client Portal API support automated authentication methods?',
-        //   content: `
-        //   <p>
-        //     Automated authentication with the Client Portal API using OAuth 1.0a is supported for institutional clients only. 
-        //     Individual account holders are not currently eligible for automated authentication, and, as such, must use the API gateway to authenticate the brokerage session.
-        //   </p>
-        //   `
-        // },
-        // {
-        //   title: 'Information for institutional clients',
-        //   content: `
-        //   <p>
-        //     Where available, information specific to institutional clients can be toggled on and off by toggling the "Institutional" option at the top of each page. 
-        //     To switch back to information pertaining to Indiviudal clients only, simply toggle the selector again.
-        //   </p>  
-        //   `
-        // },
+        }
       ]
     })
 }

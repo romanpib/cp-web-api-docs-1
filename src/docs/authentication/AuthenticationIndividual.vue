@@ -26,7 +26,7 @@ import Warning from "@/components/Warning.vue";
     </article>
     <hr>
     <article>
-      <h3>How do I tell if my session is fully authenticated?</h3>
+      <h3>How can I tell if my brokerage session is authenticated?</h3>
       <p>
         The endpoint <b>/iserver/auth/status</b> can be used to determine the current authentication status of the session. 
         Once you have logged in using the Client Portal API Gateway, you can make a POST request to this endpoint to determine if your session is fully authenticated.

@@ -81,9 +81,6 @@ nav a.router-link-active {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-}
-
-.branding img {
   width: max-content;
 }
 

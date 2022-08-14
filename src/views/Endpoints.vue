@@ -42,7 +42,7 @@ export default {
       <div class="downloads">
         <h2>Resources</h2>
         <download-card :title="'Download swagger.json'" :url="'https://interactivebrokers.github.io/cpwebapi/swagger.json'" :content="'Download the swagger.json file'"/>
-        <download-card :title="'Available endpoints'" :url="'https://www.interactivebrokers.com/api/doc.html'" :content="'DOC style endpoints'"/>
+        <download-card :title="'Available endpoints'" :url="'https://www.interactivebrokers.com/api/doc.html'" :content="'See the full list of available endpoints'"/>
       </div>
     </template>
   </base-layout>
