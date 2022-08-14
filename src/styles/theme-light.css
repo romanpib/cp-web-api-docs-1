@@ -31,13 +31,13 @@ hr {
     border-top: 0.5px solid #C5C5C5;
 }
 
-table {
+article table {
     border-collapse: collapse;
     width: 100%;
     overflow: scroll;
 }
 
-table th {
+article table th {
     text-align: left;
     padding: 0.5rem 0.5rem;
     font-size: small;
@@ -45,7 +45,7 @@ table th {
     background-color: #ddd;
 }
 
-table td {
+article table td {
     padding: 0.5rem 0.5rem;
     padding-left: 0.5rem;
     font-size: small;
