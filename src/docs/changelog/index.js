@@ -1,7 +1,7 @@
 const changelog = [
     {
         title: 'New API documentation released',
-        date: '2022-07-12',
+        date: '2022-08-15',
         description: 'New API documentation released',
         changes: [
             'Released new Client Portal API documentation',
