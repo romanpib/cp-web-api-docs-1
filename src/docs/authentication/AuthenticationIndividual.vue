@@ -32,9 +32,9 @@ import Warning from "@/components/Warning.vue";
         Once you have logged in using the Client Portal API Gateway, you can make a POST request to this endpoint to determine if your session is fully authenticated.
         If the session is fully authenticated, the response from this endpoint will contain the following JSON object:
         <div class="code">
-            <code>
+            <samp>
               {'authenticated': true, 'connected': true, 'competing': false}
-            </code>
+            </samp>
         </div>
       </p>
     </article>

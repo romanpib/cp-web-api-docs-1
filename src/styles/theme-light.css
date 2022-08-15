@@ -32,9 +32,9 @@ hr {
 }
 
 article table {
+    overflow-x: auto;
     border-collapse: collapse;
     width: 100%;
-    overflow: scroll;
 }
 
 article table th {

@@ -89,18 +89,28 @@ export default {
         </p>
       </warning>
       <article-list v-if="this.activeTab.length!=0" :articles="this.activeTab" @onArticleScroll="this.onScroll" />
-      <h3>Websockets Playground</h3>
-      <p>
-        The following playground can be used to test the websockets functionality before implementing it in your application.
-      </p>
-      <warning>
+      <!-- Don't show the playground on mobile, instead show warning saying to view on desktop -->
+      <div class="playground-container">
+        <h3>Websockets Playground</h3>
         <p>
-          In order to use the playground, you need to authenticate your session. See the
-          <router-link to='/authentication'>authentication</router-link> page for
-          getting started instructions.
+          The following playground can be used to test the websockets functionality before implementing it in your application.
         </p>
-      </warning>
-      <websocket-playground id="websocket-playground"/>
+        <warning>
+          <p>
+            In order to use the playground, you need to authenticate your session. See the
+            <router-link to='/authentication'>Authentication</router-link> page for
+            getting started instructions.
+          </p>
+        </warning>
+        <websocket-playground id="websocket-playground"/>
+      </div>
+      <div class="playground-container-mobile">
+        <warning>
+          <p>
+            The playground is not available on mobile. It is intended to be used on a desktop or laptop.
+          </p>
+        </warning>
+      </div>
     </template>
     <template #aside>
       <scrollable-sidenav :sections="this.sections" :activeSection="this.activeSection" />
@@ -120,6 +130,17 @@ export default {
 
 #active {
   display: none;
+}
+
+@media (max-width: 700px) {
+  .playground-container {
+    display: none;
+  }
+
+  .playground-container-mobile {
+    display: block;
+    margin-bottom: 2rem;
+  }
 }
 
 @media (min-width: 700px) {

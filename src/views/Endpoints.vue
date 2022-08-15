@@ -33,9 +33,6 @@ export default {
           This page is intended to be used on a desktop or laptop.
         </p>
       </warning>
-      <!-- <p>
-        On this page you will find all of the available endpoints along with their descriptions.
-      </p> -->
       <endpoints-list :accountType="this.store.accountType" />
     </template>
     <template #aside>
@@ -76,7 +73,7 @@ export default {
 
 @media (max-width: 700px) {
   .warning {
-    display: block;
+    display: flex;
   }
 }
 

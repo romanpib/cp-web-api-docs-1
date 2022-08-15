@@ -28,6 +28,31 @@ export default {
                     return this.$emit('onArticleScroll', activeSectionID);
                 }
             }
+        },
+        parseJsonStrings() {
+            // Parse the JSON strings in the samp blocks
+            let sampBlocks = Array.prototype.slice.call(document.getElementsByTagName('samp'));
+            // Place each key/value pair on its own line
+            sampBlocks.forEach((sampBlock) => {
+                let content = sampBlock.innerText;
+                // Remove any whitespace
+                content = content.replace(/\s/g, '');
+                // Add a newline after each comma, unless it's a comma in a string
+                content = content.replace(/,(?![^"]*"(?:(?:[^"]*"){2})*[^"]*$)/g, ",\n");
+                // Add a newline after the opening brace
+                content = content.replace(/{/g, '{\n');
+                // Add a newline before the closing brace
+                content = content.replace(/}/g, '\n}');
+                // Indent each line
+                content = content.replace(/\n/g, '\n    ');
+                // Add a space after the colon, unless it's a colon in a string
+                content = content.replace(/:(?![^"]*"(?:(?:[^"]*"){2})*[^"]*$)/g, ": ");
+                // Add a newline after the opening bracket of the array
+                content = content.replace(/\[/g, '[\n    ');
+                // Add a newline before the closing bracket of the array
+                content = content.replace(/\]/g, '\n]');
+                sampBlock.innerText = content;
+            })
         }
     },
     created() {
@@ -41,6 +66,7 @@ export default {
     },
     mounted() {
         this.mapArticlesToIDs();
+        this.parseJsonStrings();
     },
     data() {
         return {elementToIdMap: null}

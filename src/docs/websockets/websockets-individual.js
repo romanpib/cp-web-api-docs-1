@@ -20,24 +20,24 @@ const websocketsIndividual = [
                 Request the session ID from the /tickle endpoint and send it to the websocket endpoint in the following
                     format:
                     <div class="code">
-                    <code>
+                    <samp>
                     {'session': 'SESSION_ID_FROM_TICKLE_ENDPOINT'}
-                    </code>
+                    </samp>
                     </div>
                     </p>
                 <h5>Sample response</h5>
                 <p>
                     If the request is successful one of the following responses will be returned:
                     <div class="code">
-                        <code>
+                        <samp>
                         {'topic': 'sts', 'args': {'authenticated': true}}
-                        </code>
+                        </samp>
                     </div>
                     or:
                     <div class="code">
-                        <code>
+                        <samp>
                         {'topic': 'system', 'success': 'username'}
-                        </code>
+                        </samp>
                     </div>
                 </p>
                 `
@@ -109,7 +109,7 @@ const websocketsIndividual = [
                         </code>
                     </div>
                 </p>
-                <h5>Example: How to request streaming closing price and daily percent change for APPL</h5>
+                <h5>Example: Requesting streaming close price and daily percent change for APPL stock</h5>
                 <p>
                     In order to request streaming market data, a subscription request must first be sent for the specific contract. In this case, we know that the APPL@NASDAQ contract
                     has a contract ID of 265598. In addition, we must also specify the fields that should be returned. In this case we are interested in fields 31 - close price, and 83 - the % change, or difference between the last price and the close price for the previous day.
@@ -247,7 +247,7 @@ const websocketsIndividual = [
                 The following response will be returned:
             </p>
             <div class='code'>
-                <code>
+                <samp>
                 {
                     "serverId": "341115",
                     "symbol": "AAPL",
@@ -270,7 +270,7 @@ const websocketsIndividual = [
                     "points": 23, 
                     "topic": "smh+265598",
                 }
-                </code>
+                </samp>
             </div>
             <p>
                 Note the server ID associated with the subscription. In order to unsubscribe from the topic, we send the unsubscription message with the server ID:
@@ -306,7 +306,7 @@ const websocketsIndividual = [
                     Which returns the following sample response:
                 </p>
                 <div class='code'>
-                    <code>
+                    <samp>
                     {
                         "topic": "sor" ,
                         "args": [
@@ -338,7 +338,7 @@ const websocketsIndividual = [
                            }
                          ]
                       }
-                    </code>
+                    </samp>
                 </div>
                 <p>
                     To unsubscribe from streaming order updates, the topic <b>uor</b> needs to be sent to the websocket endpoint.
@@ -354,7 +354,7 @@ const websocketsIndividual = [
                     An example of a status change is:
                 </p>
                 <div class='code'>
-                    <code>
+                    <samp>
                     {
                         "topic": "sor" ,
                         "args": [
@@ -380,13 +380,13 @@ const websocketsIndividual = [
                            }
                         ]
                     }
-                    </code>
+                    </samp>
                 </div>
                 <p>
                     And an example of a partial fill is:
                 </p>
                 <div class='code'>
-                    <code>
+                    <samp>
                     {
                         "topic": "sor" ,
                         "args": [
@@ -420,7 +420,7 @@ const websocketsIndividual = [
                            }
                          ]
                       }
-                    </code>
+                    </samp>
                 </div>
                 `
             },
@@ -441,7 +441,7 @@ const websocketsIndividual = [
                     Which returns the following, sample, response:
                 </p>
                 <div class='code'>
-                    <code>
+                    <samp>
                     {
                         "topic": "str" ,
                         "args": [
@@ -474,7 +474,7 @@ const websocketsIndividual = [
                            }
                          ]
                       }
-                    </code>
+                    </samp>
                 </div>
                 <p>
                     To unsubscribe from trades, the topic <b>utr</b> needs to be sent.                
@@ -523,18 +523,18 @@ const websocketsIndividual = [
                     Which returns the following, sample, response. You can see the account number, the daily profit and loss and the unrealized profit and loss.
                 </p>
                 <div class='code'>
-                    <code>
+                    <samp>
                     {
                         "topic": "spl" ,
                         "args": {
                           "DU1234.Core": {
                             "rowType":1,
-                            "dpl":-57520.0
+                            "dpl":-57520.0,
                             "upl":972100.0
                           }
                         }
                     }
-                    </code>
+                    </samp>
                 </div>
                 <p>
                     In order to unsubscribe from further updates, the topic <b>upl</b> is sent.
@@ -596,12 +596,12 @@ const websocketsIndividual = [
                 When initially connecting to websocket the topic system relays back a confirmation with the corresponding username. While the websocket is connecting every 10 seconds there after a heartbeat with corresponding unix time (in millisecond format) is relayed back. An example response is:
                 </p>
                 <div class='code'>
-                    <code>
+                    <samp>
                     {
                         "topic": "system" ,
                         "success": "user123"
                     }
-                    </code>
+                    </samp>
                 </div>
                 `
             },
@@ -614,14 +614,14 @@ const websocketsIndividual = [
                     Authentication status updates, for example those resulting from competing sessions, are also relayed back to the websocket client via this topic.
                 </p>
                 <div class='code'>
-                    <code>
+                    <samp>
                         {
                             "topic": "sts" ,
                             "args": {
                                 "authenticated": true
                             }
                         }
-                    </code>
+                    </samp>
                 </div>
                 `
             },
@@ -633,7 +633,7 @@ const websocketsIndividual = [
                     If there is a brief message regarding trading activity the topic ntf will be sent.
                 </p>
                 <div class='code'>
-                    <code>
+                    <samp>
                     {
                         "topic": "ntf" ,
                         "args": {
@@ -643,7 +643,7 @@ const websocketsIndividual = [
                           "url": "https://interactivebrokers.com/"
                             }
                       }      
-                    </code>
+                    </samp>
                 </div>
                 `
             },
